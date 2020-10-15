@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/users', function () {
-    return view('home');
+    return view('casa');
 });
 Route::get('/users/{id}', function ($id) {
-    return view('home');
+    return view('home', compact('id'));
 });
 
 

@@ -5,7 +5,7 @@
 </head>
 <body>
 	<h1>
-		holissss <?= $id ?>
+		holissss
 	</h1>
 
 </body>
