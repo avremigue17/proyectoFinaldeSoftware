@@ -5,8 +5,11 @@
 </head>
 <body>
 	<h1>
-		holissss
+		holissss {{$name}} {{$lastname}}
 	</h1>
+	<p>
+		{{$parrafo}}
+	</p>
 
 </body>
 </html>
