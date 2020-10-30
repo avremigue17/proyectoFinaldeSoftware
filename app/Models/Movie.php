@@ -9,13 +9,19 @@ class Movie extends Model
 {
     use HasFactory;
 
-     protected $fillable = [
-    	'title',
-    	'description',
-    	'minutes',
-    	'year',
-    	'cover',
-    	'trailer',
-    	'category_id',
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title',
+        'description',
+        'classification',
+        'minutes',
+        'year',
+        'cover',
+        'trailer',
+        'category_id', 
     ];
 }
