@@ -25,7 +25,7 @@
 				      	{{ $category->id }}
 				      </th>
 				      <td> {{ $category->name }} </td>
-				      <td> {{ $category->Description }} </td>
+				      <td> {{ $category->description }} </td>
 				      <td> {{ $category->created_at }} </td>
 				      <td> {{ count($category->movie) }} </td>
 				    </tr> 
