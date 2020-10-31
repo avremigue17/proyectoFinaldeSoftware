@@ -13,4 +13,9 @@ class Category extends Model
         'name',
         'description',
     ];
+
+    public function movie(){
+
+    	 return $this->hasMany(Movie::class);
+    }
 }

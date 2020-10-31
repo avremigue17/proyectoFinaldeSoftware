@@ -26,7 +26,7 @@
 				      </th>
 				      <td> {{ $movie->title }} </td>
 				      <td> {{ $movie->classification }} </td>
-				      <td> {{ $movie->category_id }} </td>
+				      <td> {{ $movie->category->name }} </td>
 				    </tr> 
 				  	@endforeach
 				  	@endif 
