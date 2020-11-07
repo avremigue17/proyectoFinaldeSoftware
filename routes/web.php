@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/contact', 'WebController@contact');
 
+Route::get('/contact','WebController@contact');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -26,7 +26,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth'])->group(function(){
 
+
 	Route::get('/movies','MovieController@index')->name('movies');
+
 	Route::get('/categories','CategoryController@index')->name('categories');
-	
+	Route::put('/categories','CategoryController@update')->name('categories');
+	Route::post('/categories','CategoryController@store')->name('categories');
+	Route::delete('/categories','CategoryController@destroy')->name('categories');
+
+
 });
