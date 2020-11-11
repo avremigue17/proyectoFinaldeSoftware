@@ -2,16 +2,16 @@
 	<x-slot name="header">
 		<div class="row">
 			<div class="col-8">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Categories') }} 
-        </h2>
-    		</div>
-    	<div class="col-4">
-        <button class="btn btn-success float-right" data-toggle="modal" data-target="#addCategory">
-        	add category
-        </button>
-    	</div>
-    </div>
+				<h2 class="font-semibold text-xl text-gray-800  leading-tight ">
+		            {{ __('Categories') }} 
+		        </h2>
+			</div>
+			<div class="col-4">
+				<button class="btn btn-primary float-right" data-toggle="modal" data-target="#addCategory">
+		        	Add category
+		        </button>
+			</div>
+		</div>  
     </x-slot>
 
     <div class="py-12">
@@ -49,10 +49,11 @@
 						    </button>
 						    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 						      <a onclick="edit({{ $category->id }},'{{ $category->name }}','{{ $category->description }}')" data-toggle="modal" data-target="#editCategory" class="dropdown-item" href="#">
-						      	Editar
+						      	Update
 						      </a>
-						      <a onclick="remove({{ $category->id }})" class="dropdown-item" href="#" )>delete</a>
-						      {{-- <a class="dropdown-item" href="#">Dropdown link</a> --}}
+						      <a onclick="remove({{ $category->id }},this)" class="dropdown-item" >
+						      	Delete
+						      </a>
 						    </div>
 						  </div>
 						</div>
@@ -68,7 +69,6 @@
     </div>
 
     <div class="modal fade" id="editCategory" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -119,13 +119,13 @@
 		        <input type="hidden" name="id" id="id" >
 		      </div>
 
-	      	</form>
-			</div>
-	  	</div>
-	</div> 
+	      </form>
+
+	    </div>
+	  </div>
+	</div>
 
 	<div class="modal fade" id="addCategory" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    	
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -136,7 +136,7 @@
 	      </div>
 
 	      <form method="post" action="{{ url('categories') }}" >
-	      	@csrf
+	      	@csrf 
 
 	      	<div class="modal-body">
 		        
@@ -148,7 +148,7 @@
 					  <div class="input-group-prepend">
 					    <span class="input-group-text" id="basic-addon1">@</span>
 					  </div>
-					  <input type="text" class="form-control" placeholder="Category example" aria-label="Category example" aria-describedby="basic-addon1" id="name" name="name" required="">
+					  <input type="text" class="form-control" placeholder="Category example" aria-label="Category example" aria-describedby="basic-addon1" name="name" required="">
 					</div>
 				 </div>
 
@@ -160,7 +160,7 @@
 					  <div class="input-group-prepend">
 					    <span class="input-group-text" id="basic-addon1">@</span>
 					  </div>
-					  <textarea class="form-control" rows="5" placeholder="description of de category" name="description" id="description"></textarea>
+					  <textarea class="form-control" rows="5" placeholder="description of de category" name="description"></textarea>
 					</div>
 				 </div>
 
@@ -170,28 +170,30 @@
 		        	Cancel
 		        </button>
 		        <button type="submit" class="btn btn-primary">
-		        	Update data
+		        	Save data
 		        </button>
 		      </div>
 
 	      </form>
 
 	    </div>
+	  </div>
+	</div> 
 
 	<x-slot name="scripts">
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript">
+     <script type="text/javascript">
      	
      	function edit(id,name,description){
      		$("#name").val(name)
 			$("#description").val(description)
 			$("#id").val(id)
      	}
-     	function remove(id){
+     	function remove(id,target){
      		swal({
 			  title: "Are you sure?",
-			  text: "Once deleted, you will not be able to recover this imaginary file!",
+			  text: "Once deleted, you will not be able to recover this record!",
 			  icon: "warning",
 			  buttons: true,
 			  dangerMode: true,
@@ -199,24 +201,30 @@
 			.then((willDelete) => {
 			  if (willDelete) {
 			  	axios({
-					  method: 'delete',
-					  url: '{{url('categories')}}',
-					  data:{
-					  	id:id,
-					  	_token:'{{csrf_token()}}'
-					  }
-					})
-					  .then(function (response) {
-					    console.log(response.data);
-					  });
-			    //swal("Poof! Your imaginary file has been deleted!", {
-			      //icon: "success",
-			    //});
+				  method: 'delete',
+				  url: '{{ url('categories') }}',
+				  data: {
+				    id: id,
+				    _token: '{{ csrf_token() }}'
+				  }
+				}).then(function (response) { 
+				    if(response.data.code==200){
+				    	swal("Poof! Your record has been deleted!", {
+					      icon: "success",
+					    });
+				    	$(target).parent().parent().parent().parent().parent().remove();
+				    }else{
+				    	swal("Error ocurred", {
+					      icon: "error",
+					    });
+				    }
+				});
+			    
 			  } else {
-			    swal("Your imaginary file is safe!");
+			    swal("Your record is safe!");
 			  }
 			});
-			console.log(id);
+     		console.log(id)
      	}
      </script>
     </x-slot>
