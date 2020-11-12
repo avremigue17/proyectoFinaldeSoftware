@@ -1,8 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Movies') }}
-        </h2>
+        <div class="row">
+			<div class="col-8">
+				<h2 class="font-semibold text-xl text-gray-800  leading-tight ">
+		            {{ __('Movies') }} 
+		        </h2>
+			</div>
+			<div class="col-4">
+				<button class="btn btn-primary float-right" data-toggle="modal" data-target="#addMovie">
+		        	Add Movie
+		        </button>
+			</div>
+		</div>  
     </x-slot>
 
     <div class="py-12">
@@ -35,4 +44,73 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="addMovie" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+
+	      <form method="post" action="{{ url('categories') }}" >
+	      	@csrf
+	      	@method('PUT')
+
+	      	<div class="modal-body">
+		        
+	      		<div class="form-group">
+				    <label for="exampleInputEmail1">
+				    	Title
+				    </label>
+				    <div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text" id="basic-addon1">@</span>
+					  </div>
+					  <input type="text" class="form-control" placeholder="Category example" aria-label="Category example" aria-describedby="basic-addon1" id="name" name="name" required="">
+					</div>
+				 </div>
+
+				 <div class="form-group">
+				    <label for="exampleInputEmail1">
+				    	Description
+				    </label>
+				    <div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text" id="basic-addon1">@</span>
+					  </div>
+					  <textarea class="form-control" rows="5" placeholder="description of de category" name="description" id="description"></textarea>
+					</div>
+				 </div>
+				 
+				 <div class="form-group">
+				    <label for="exampleInputEmail1">
+				    	Description
+				    </label>
+				    <div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text" id="basic-addon1">@</span>
+					  </div>
+					  <textarea class="form-control" rows="5" placeholder="description of de category" name="description" id="description"></textarea>
+					</div>
+				 </div>
+
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+		        	Cancel
+		        </button>
+		        <button type="submit" class="btn btn-primary">
+		        	Update data
+		        </button>
+		        <input type="hidden" name="id" id="id" >
+		      </div>
+
+	      </form>
+
+	    </div>
+	  </div>
+	</div>
 </x-app-layout>
