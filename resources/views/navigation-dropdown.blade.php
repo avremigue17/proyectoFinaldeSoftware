@@ -49,14 +49,15 @@
                             {{ __('Profile') }}
                         </x-jet-dropdown-link>
 
-                        @if(Auth::user()->hasRole('Admin'))
+                        
                         <x-jet-responsive-nav-link href="{{ route('movies')}}">
                             {{ __('Movies') }}
                         </x-jet-responsive-nav-link>
+                        @if(Auth::user()->hasRole('Admin'))
                         <x-jet-responsive-nav-link href="{{ route('categories')}}">
                             {{ __('Categories') }}
                         </x-jet-responsive-nav-link>
-                        @endif
+                        //@endif
 
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">

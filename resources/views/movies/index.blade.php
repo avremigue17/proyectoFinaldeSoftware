@@ -1,4 +1,5 @@
 <x-app-layout>
+	
     <x-slot name="header">
         <div class="row">
         	<div class="col-md-8">
@@ -6,37 +7,54 @@
 		            {{ __('Movies') }}
 		        </h2>
         	</div>
+        	@if(Auth::user()->hasRole('Admin'))
         	<div class="col-md-4">
         		<button class="btn btn-primary float-right" data-toggle="modal" data-target="#addMovie">
         			Add Movie
         		</button>
         	</div>
+        	@endif
         </div>
     </x-slot> 
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <div class="card-group">
+                	@if (isset($movies) && count($movies)>0)
+			  			@foreach ($movies as $movie)	
+							<div class="card">
+			   					<img src="{{url('/')}}/img/{{ $movie->cover }}" class="card-img-top" alt="...">
+			    				<div class="card-body">
+			      					<h5 class="card-title">{{ $movie->title }}</h5>
+			    				</div>
+			    				<div class="card-footer">
+			      					<small class="text-muted"> {{ $movie->classification }} </small>
+		    					</div>
+							</div>
+						@endforeach
+				  	@endif 
+				</div>
+			</div>
+        </div>
+    </div>
+
+
+
+
 				<table class="table table-striped table-bordered">
-				  <thead class="thead-dark ">
-				    <tr>
-				      <th scope="col">#</th>
-				      <th scope="col">Title</th>
-				      <th scope="col">Classification</th>
-				      <th scope="col">Category</th>
-				      <th> Actions </th>
-				    </tr>
-				  </thead>
 				  <tbody>
 				  	@if (isset($movies) && count($movies)>0)
 				  	@foreach ($movies as $movie)
 				  	<tr>
 				      <th scope="row">
-				      	{{ $movie->id }}
+
+				      	<img src="{{url('/')}}/img/{{ $movie->cover }}" style="height: 50px; width: 50px" >
+				      	
 				      </th>
-				      <td> {{ $movie->title }} </td>
-				      <td> {{ $movie->classification }} </td>
-				      <td> {{ $movie->category->name }} </td>
+				      <td> {{ $movie->year}} </td>
+				
 				      <td>
 				      	
 				      	<div class="btn-group" role="group" aria-label="Button group with nested dropdown"> 
