@@ -17,71 +17,83 @@
         </div>
     </x-slot> 
 
-
+    @if(Auth::user()->hasRole('user'))
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="card-group">
-                	@if (isset($movies) && count($movies)>0)
-			  			@foreach ($movies as $movie)	
-							<div class="card">
-			   					<img src="{{url('/')}}/img/{{ $movie->cover }}" class="card-img-top" alt="...">
-			    				<div class="card-body">
-			      					<h5 class="card-title">{{ $movie->title }}</h5>
-			    				</div>
-			    				<div class="card-footer">
-			      					<small class="text-muted"> {{ $movie->classification }} </small>
-		    					</div>
-							</div>
+ 				<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" >
+					@if (isset($movies) && count($movies)>0)
+			  			@foreach ($movies as $movie)
+  							<div class="col mb-4 col" >
+    							<div class="card dropdown-item col-md-12" onclick="viewMovie({{ $movie->id }})" data-toggle="modal" data-target="#viewMovie">
+			   						<img src="{{url('/')}}/img/{{ $movie->cover }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
+			    					<div class="card-body">
+			      						<h5 class="card-title">{{ $movie->title }}</h5>
+			    					</div>
+			    					<div class="card-footer">
+			      						<small class="text-muted"> {{ $movie->classification }} </small>
+		    						</div>
+								</div>
+ 							 </div>
 						@endforeach
 				  	@endif 
 				</div>
 			</div>
         </div>
     </div>
+    @endif 
 
 
+    @if(Auth::user()->hasRole('Admin'))
+	<div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+    			<table class="table table-striped table-bordered">
+    				<thead class="thead-dark ">
+				    	<tr>
+				      		<th scope="col">#</th>
+						    <th scope="col">Title</th>
+						    <th scope="col">Classification</th>
+						    <th scope="col">Category</th>
+						    <th> Actions </th>
+				    	</tr>
+				  	</thead>
+				  	<tbody>
+					  	@if (isset($movies) && count($movies)>0)
+						  	@foreach ($movies as $movie)
+						  	<tr>
+								<td> {{ $movie->id}} </td>
+						      	<td> {{ $movie->title }} </td>
+						      	<td> {{ $movie->classification }} </td>
+						      	<td> {{ $movie->category->name }} </td>
+						
+						      	<td>
+						      	
+						      		<div class="btn-group" role="group" aria-label="Button group with nested dropdown"> 
 
+									  	<div class="btn-group" role="group">
+									    	<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									      		Actions
+									    	</button>
+									   		<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+									      		<a onclick="editMovie({{ $movie->id }})" class="dropdown-item" data-toggle="modal" data-target="#editMovie" href="#">
+									      			Edit Movie
+									      		</a>
 
-				<table class="table table-striped table-bordered">
-				  <tbody>
-				  	@if (isset($movies) && count($movies)>0)
-				  	@foreach ($movies as $movie)
-				  	<tr>
-				      <th scope="row">
-
-				      	<img src="{{url('/')}}/img/{{ $movie->cover }}" style="height: 50px; width: 50px" >
-				      	
-				      </th>
-				      <td> {{ $movie->year}} </td>
-				
-				      <td>
-				      	
-				      	<div class="btn-group" role="group" aria-label="Button group with nested dropdown"> 
-
-						  <div class="btn-group" role="group">
-						    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						      Actions
-						    </button>
-						    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-						      <a onclick="editMovie({{ $movie->id }})" class="dropdown-item" data-toggle="modal" data-target="#editMovie" href="#">
-						      	Edit Movie
-						      </a>
-
-						      {{-- <a class="dropdown-item" href="#">Dropdown link</a> --}}
-						    </div>
-						  </div>
-						</div>
-
-				      </td>
-				    </tr> 
-				  	@endforeach
-				  	@endif 
-				  </tbody>
+									      		{{-- <a class="dropdown-item" href="#">Dropdown link</a> --}}
+									    	</div>
+									 	</div>
+									</div>
+						      	</td>
+						    </tr> 
+						  	@endforeach
+					  	@endif 
+				  	</tbody>
 				</table>
-            </div>
-        </div>
+			</div>
+    	</div>
     </div>
+    @endif 
 
     <div class="modal fade" id="addMovie" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg">
@@ -234,7 +246,7 @@
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <h5 class="modal-title" id="staticBackdropLabel">
-	        	Edit movie
+	        	movie
 	        </h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
@@ -376,14 +388,39 @@
 	  </div>
 	</div> 
 
+	<div class="modal" tabindex="-1" id="viewMovie">
+  		<div class="modal-dialog">
+  		  	<div class="modal-content">
+	      		<div class="modal-body">
+	      			<div class="card mb-3">
+	  					<img src="..." class="card-img-top" alt="..." id="imageview" style="width: 100%; height: 250px">
+	  					<div class="card-body">
+	    					<h5 class="card-title" id="titleview"></h5>
+							<p class="card-text" id="descriptionview"></p>
+							<p class="card-text" >Clasificacion: <small id="classificationview" class="text-muted"></small></p>
+							<p class="card-text" >Duracion: <small id="minutesview" class="text-muted"></small> minutos</p>
+							<p class="card-text" >Año de Lanzamiento: <small id="yearview" class="text-muted"></small></p>
+							<p class="card-text" >Trailer YouTube: <small id="trailerview" class="text-muted"></small></p>
+	  					</div>
+					</div>
+	      		</div>
+	      		<div class="modal-footer">
+	        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        		<button type="button" class="btn btn-primary">Solicitar Prestamo</button>
+	      		</div>
+    		</div>
+ 		</div>
+	</div>
+
+
+
 	<x-slot name="scripts">
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
 	<script type="text/javascript">
 		
 		function editMovie(id){
- 
-			axios.get('{{ url('movies-info') }}/'+id)
+ 			axios.get('{{ url('movies-info') }}/'+id)
 			  .then(function (response) { 
 			  	var data = response.data;
 			  	if (data.code == 200) {
@@ -393,8 +430,35 @@
 					$("#description").val(movie.description)
 					$("#classification").val(movie.classification)
 					$("#minutes").val(movie.minutes)
-					$("#year").val(movie.year)
+					$("#year").val(movie.Year)
 					$("#trailer").val(movie.trailer)
+					$("#category_id").val(movie.category_id)
+			  	}else{
+			  		//$("#editMovie").modal('hide')
+			  		swal("Record not found", {
+				      icon: "error",
+				    });
+			  	}
+			    console.log(data);
+			})
+			  .catch(function (error) { 
+			    console.log(error);
+			});
+		}
+
+		function viewMovie(id){
+			axios.get('{{ url('movies-info') }}/'+id)
+			  .then(function (response) { 
+			  	var data = response.data;
+			  	if (data.code == 200) {
+			  		var movie = data.movie;
+			  		document.getElementById("imageview").src = "{{url('/')}}/img/"+movie.cover;
+			  		document.getElementById("titleview").innerHTML = movie.title;
+			  		document.getElementById("descriptionview").innerHTML = movie.description;
+			  		document.getElementById("classificationview").innerHTML = movie.classification;
+			  		document.getElementById("minutesview").innerHTML = movie.minutes;
+			  		document.getElementById("yearview").innerHTML = movie.Year;
+			  		document.getElementById("trailerview").innerHTML = movie.trailer;
 					$("#category_id").val(movie.category_id)
 			  	}else{
 			  		//$("#editMovie").modal('hide')

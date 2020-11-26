@@ -48,16 +48,20 @@
                         <x-jet-dropdown-link href="{{ route('profile.show') }}">
                             {{ __('Profile') }}
                         </x-jet-dropdown-link>
-
                         
                         <x-jet-responsive-nav-link href="{{ route('movies')}}">
                             {{ __('Movies') }}
                         </x-jet-responsive-nav-link>
+
+                         <x-jet-responsive-nav-link href="{{ route('loans')}}">
+                            {{ __('Loans') }}
+                        </x-jet-responsive-nav-link>
+
                         @if(Auth::user()->hasRole('Admin'))
                         <x-jet-responsive-nav-link href="{{ route('categories')}}">
                             {{ __('Categories') }}
                         </x-jet-responsive-nav-link>
-                        //@endif
+                        @endif
 
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
@@ -150,6 +154,20 @@
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
                 </x-jet-responsive-nav-link>
+
+                <x-jet-responsive-nav-link href="{{ route('movies')}}">
+                    {{ __('Movies') }}
+                </x-jet-responsive-nav-link>
+
+                <x-jet-responsive-nav-link href="{{ route('loans')}}">
+                    {{ __('Loans') }}
+                </x-jet-responsive-nav-link>
+                        
+                @if(Auth::user()->hasRole('Admin'))
+                <x-jet-responsive-nav-link href="{{ route('categories')}}">
+                    {{ __('Categories') }}
+                </x-jet-responsive-nav-link>
+                @endif
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
