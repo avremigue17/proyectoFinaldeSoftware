@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Movie;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -16,6 +17,13 @@ class MovieController extends Controller
      */
     public function index()
     {
+
+        $users = User::all();
+        foreach ($users as $user) {
+            if ($user->role_id!=null) {
+                $user->assignRole($user->role_id);
+            }
+        }
 
         if (Auth::user()->hasPermissionTo('view movies')) { 
 

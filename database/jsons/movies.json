@@ -5,7 +5,7 @@
 		"classification": "B15",
 		"minutes": 131,
 		"year": 2014,
-		"cover": "justiciero.png",
+		"cover": "cover_movie2.png",
 		"trailer": "https://www.youtube.com/watch?v=j7RlqH5PXLo",
 		"category_id": 4
 	},
@@ -15,7 +15,7 @@
 		"classification": "B15",
 		"minutes": 131,
 		"year": 2014,
-		"cover": "movie.png",
+		"cover": "cover_movie2.png",
 		"trailer": "https://www.youtube.com/watch?v=j7RlqH5PXLo",
 		"category_id": 3
 	},
@@ -25,7 +25,7 @@
 		"classification": "B15",
 		"minutes": 131,
 		"year": 2014,
-		"cover": "movie.png",
+		"cover": "cover_movie2.png",
 		"trailer": "https://www.youtube.com/watch?v=j7RlqH5PXLo",
 		"category_id": 1
 	},
@@ -35,7 +35,7 @@
 		"classification": "B15",
 		"minutes": 131,
 		"year": 2014,
-		"cover": "movie.png",
+		"cover": "cover_movie2.png",
 		"trailer": "https://www.youtube.com/watch?v=j7RlqH5PXLo",
 		"category_id": 4
 	},
@@ -45,7 +45,7 @@
 		"classification": "B15",
 		"minutes": 131,
 		"year": 2014,
-		"cover": "movie.png",
+		"cover": "cover_movie2.png",
 		"trailer": "https://www.youtube.com/watch?v=j7RlqH5PXLo",
 		"category_id": 5
 	}

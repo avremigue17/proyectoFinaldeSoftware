@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Loan;
+use App\Models\Movie;
+use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Auth;
 
 class LoanController extends Controller
 {
@@ -14,7 +18,15 @@ class LoanController extends Controller
      */
     public function index()
     {
-        return view('loans.index');
+        if (auth()->user()->id!=1) {
+            $loans = Loan::with('movie')->where('user_id',auth()->user()->id)->get(); 
+        $categories = Category::all();
+        }else{
+        $loans = Loan::with('movie')->get(); 
+        $categories = Category::all();
+    }
+
+       return view('loans.index',compact('loans','categories'));
     }
 
     /**
@@ -35,7 +47,16 @@ class LoanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         if (Auth::user()->hasPermissionTo('add loans')) { 
+
+            if ($loan = Loan::create($request->all())) {
+            return redirect()->back()->with('success', 'El registro se ha creado correctamente');
+        }
+        return redirect()->back()->with('error', 'No se pudo crear el registro');
+            return redirect()->back();
+        
+        }
+        return redirect()->back()->with('error','no tienes permisos');
     }
 
     /**
@@ -67,9 +88,17 @@ class LoanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $loan = Loan::find($request['idloan']);
+
+        if ($loan) {
+            if ($loan->update($request->all())) {
+                
+                return redirect()->back()->with('success', 'El registro se ha actualizado correctamente');
+            }
+        }
+        return redirect()->back()->with('error', 'No se pudo actualizar el registro');
     }
 
     /**
@@ -80,6 +109,26 @@ class LoanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $note = Loan::find($id);
+        
+        $note->delete();
+        
+        return redirect('/');
+    }
+
+    public function get(Loan $loan)
+    {   
+        if ($loan) {
+            return response()->json([
+                'message' => 'Registro consultado correctamente',
+                'code' => '200',
+                'loan' => $loan
+            ]);
+        }
+        return response()->json([
+            'message' => 'Registro no encontrado',
+            'code' => '400',
+            'loan' => array()
+        ]);
     }
 }

@@ -69,7 +69,7 @@ class PermissionsTableSeeder extends Seeder
             'add loans'
         ]);
 
-        $users= User::all();
+        $users = User::all();
         foreach ($users as $user) {
         	if ($user->role_id!=null) {
         		$user->assignRole($user->role_id);

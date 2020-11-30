@@ -18,7 +18,7 @@ class CreateLoansTable extends Migration
 
             $table->integer('fecha_de_prestamo')->default(0);
             $table->integer('fecha_de_devolucion')->default(0);
-            $table->String('estatus')->default("activo");
+            $table->string('estatusLoan');
 
             $table->unsignedBigInteger('user_id');
 

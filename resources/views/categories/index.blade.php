@@ -78,7 +78,7 @@
 	        </button>
 	      </div>
 
-	      <form method="post" action="{{ url('categories') }}" >
+	      <form method="post" action="{{ url('categories') }}" enctype="multipart/form-data" >
 	      	@csrf
 	      	@method('PUT')
 
@@ -116,7 +116,6 @@
 		        <button type="submit" class="btn btn-primary">
 		        	Update data
 		        </button>
-		        <input type="hidden" name="id" id="id" >
 		      </div>
 
 	      </form>

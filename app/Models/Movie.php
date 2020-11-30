@@ -21,6 +21,7 @@ class Movie extends Model
         'minutes',
         'year',
         'cover',
+        'estatus',
         'trailer',
         'category_id', 
     ];

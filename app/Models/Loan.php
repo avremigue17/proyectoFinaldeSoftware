@@ -17,6 +17,16 @@ class Loan extends Model
     protected $fillable = [
         'fecha_de_prestamo',
         'fecha_de_devolucion',
-        'estatus',
+        'estatusLoan',
+        'user_id',
+        'movie_id',
     ];
+
+    public function movie(){
+        return $this->belongsTo(Movie::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

@@ -38,6 +38,9 @@ Route::middleware(['auth'])->group(function(){
 	Route::delete('/categories','CategoryController@destroy')->name('categories');
 
 	Route::get('/loans','LoanController@index')->name('loans');
-
+	Route::get('/loans-info/{loan}','LoanController@get');
+	Route::post('/loans','LoanController@store')->name('loans');
+	//Route::delete('loans/{id}', 'LoanController@destroy');
+	Route::put('/loans','LoanController@update');
 
 });
