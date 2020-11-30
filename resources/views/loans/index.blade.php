@@ -22,7 +22,7 @@
                                         @foreach ($loans as $loan)
                                           @if ($loan->estatusLoan=="activo")
                                             <div class="col mb-4 col" >
-                                                <div class="card dropdown-item col-md-12" onclick="viewMovie({{ $loan->movie->id }})" data-toggle="modal" data-target="#viewMovie">
+                                                <div class="card dropdown-item col-md-12" onclick="viewMovie({{ $loan->movie->id }},{{ $loan->id }})" data-toggle="modal" data-target="#viewMovie">
                                                     <img src="{{url('/')}}/img/{{ $loan->movie->cover }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
                                                     <div class="card-body">
                                                         <h5 class="card-title">{{ $loan->movie->title }}</h5>
@@ -171,7 +171,7 @@
               </button>
             </div>
 
-            <form  method="post" action="{{ url('loans') }}" enctype="multipart/form-data">
+            <form  method="post" action="{{ url('loans') }}" enctype="multipart/form-data" name="EliminarPrestamo">
               @csrf
               @method('PUT') 
 
@@ -247,7 +247,7 @@
      <script type="text/javascript">
         
 
-        function viewMovie(id){
+        function viewMovie(id,idLoan){
       axios.get('{{ url('movies-info') }}/'+id)
         .then(function (response) { 
           var data = response.data;
@@ -261,10 +261,10 @@
             document.getElementById("yearview").innerHTML = movie.Year;
             document.getElementById("trailerview").innerHTML = movie.trailer;
 
-            document.getElementById('buttonDevolver').setAttribute('onclick','devolverMovie('+movie.id+');');
+            document.getElementById('buttonDevolver').setAttribute('onclick','devolverMovie('+movie.id+","+idLoan+');');
 
 
-          $("#category_id").val(movie.category_id)
+  
           }else{
             //$("#editMovie").modal('hide')
             swal("Record not found", {
@@ -278,7 +278,7 @@
       });
     }
 
-    function devolverMovie(id){
+    function devolverMovie(id,idLoan){
       axios.get('{{ url('movies-info') }}/'+id)
         .then(function (response) { 
           var data = response.data;
@@ -295,8 +295,7 @@
           $("#category_id").val(movie.category_id)
 
           document.formDevolver.submit();
-          document.devolverLoan.submit();
-          //document.EliminarPrestamo.submit()
+          desactivarLoan(idLoan);
 
           }else{
             //$("#editMovie").modal('hide')
@@ -322,6 +321,34 @@
             $("#estatusLoan").val(loan.estatusLoan)
           $("#fecha_de_prestamo").val(loan.fecha_de_prestamo)
           $("#fecha_de_devolucion").val(loan.fecha_de_devolucion)
+          }else{
+            //$("#editMovie").modal('hide')
+            swal("Record not found", {
+              icon: "error",
+            });
+          }
+          console.log(data);
+      })
+        .catch(function (error) { 
+          console.log(error);
+      });
+    }
+
+    function desactivarLoan(id){
+      console.log(id);
+      axios.get('{{ url('loans-info') }}/'+id)
+        .then(function (response) { 
+          var data = response.data;
+          if (data.code == 200) {
+            $("#form_edit_loan").attr('action', '{{ url('loans') }}/'+id);
+            var loan = data.loan;
+            $("#idloan").val(loan.id)
+            $("#estatusLoan").val("inactivo")
+          $("#fecha_de_prestamo").val(loan.fecha_de_prestamo)
+          $("#fecha_de_devolucion").val(loan.fecha_de_devolucion)
+
+          document.EliminarPrestamo.submit()
+
           }else{
             //$("#editMovie").modal('hide')
             swal("Record not found", {
