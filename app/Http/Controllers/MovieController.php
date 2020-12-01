@@ -26,8 +26,6 @@ class MovieController extends Controller
         }
 
         if (Auth::user()->hasPermissionTo('view movies')) { 
-
-            
             $movies = Movie::with('category')->get(); 
             $categories = Category::all();
 
@@ -138,9 +136,7 @@ class MovieController extends Controller
 
                     $movie->cover = $file_name;
                     $movie->save(); 
-
                 }
-
                 return redirect()->back();
             }
         }

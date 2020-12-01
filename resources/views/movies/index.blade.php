@@ -58,7 +58,6 @@
 						    <th scope="col">Clasificacion</th>
 						    <th scope="col">Categoria</th>
 						    <th scope="col">Estatus</th>
-
 						    <th> Acciones </th>
 				    	</tr>
 				  	</thead>
@@ -71,10 +70,7 @@
 						      	<td> {{ $movie->classification }} </td>
 						      	<td> {{ $movie->category->name }} </td>
 						      	<td> {{ $movie->estatus }} </td>
-
-						
 						      	<td>
-						      	
 						      		<div class="btn-group" role="group" aria-label="Button group with nested dropdown"> 
 
 									  	<div class="btn-group" role="group">
@@ -259,8 +255,7 @@
 							  	<input type="text" class="form-control" placeholder="Titulo" aria-label="Title example" aria-describedby="		basic-addon1" name="title" id="title" required="">
 							</div>
 						</div>
-
-				<div class="form-group">
+					<div class="form-group">
 				    <label for="exampleInputEmail1">
 				    	Descripcion
 				    </label>
@@ -277,17 +272,17 @@
 				    	Clasificacion
 				    </label>
 				    <div class="input-group mb-3">
-					  <div class="input-group-prepend">
-					    <span class="input-group-text" id="basic-addon1">@</span>
-					  </div>
-					  <select class="form-control" id="classification" name="classification">
-					  	<option>AA</option>
-					  	<option>A</option>
-					  	<option>B</option>
-					  	<option>B15</option>
-					  	<option>C</option>
-					  	<option>D</option>
-					  </select>
+						<div class="input-group-prepend">
+						    <span class="input-group-text" id="basic-addon1">@</span>
+						</div>
+						<select class="form-control" id="classification" name="classification">
+						  	<option>AA</option>
+						  	<option>A</option>
+						  	<option>B</option>
+						  	<option>B15</option>
+						  	<option>C</option>
+						  	<option>D</option>
+						</select>
 					</div>
 				</div>
 

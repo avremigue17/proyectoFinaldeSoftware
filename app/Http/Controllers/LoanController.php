@@ -94,7 +94,6 @@ class LoanController extends Controller
 
         if ($loan) {
             if ($loan->update($request->all())) {
-                
                 return redirect()->back()->with('success', 'El registro se ha actualizado correctamente');
             }
         }

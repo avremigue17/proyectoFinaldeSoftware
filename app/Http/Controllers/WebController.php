@@ -14,6 +14,5 @@ class WebController extends Controller
     	$parrafo = 'fsakdgkjagjñsjdlkgjajdgkljadflkgjalñjgajdfgsklfjdgksdfgjklñsjdfklgjajflkjglkadfjglkjdflkgjdf';
 
     	return view('casa',compact('name','lastname','parrafo'));
-
     }
 }
