@@ -8,35 +8,33 @@
             </div>
         </div>  
     </x-slot>
-@if(Auth::user()->hasRole('user'))
+    @if(Auth::user()->hasRole('user'))
     <div class="py-12" style="background-color: rgb(26,32,44);">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" style="background-color: rgb(26,32,44);">
-                                    @if (isset($loans) && count($loans)>0)
-                                        @foreach ($loans as $loan)
-                                          @if ($loan->estatusLoan=="activo")
-                                            <div class="col mb-4 col" >
-                                                <div class="card dropdown-item col-md-12" onclick="viewMovie({{ $loan->movie->id }},{{ $loan->id }})" data-toggle="modal" data-target="#viewMovie">
-                                                    <img src="{{url('/')}}/img/{{ $loan->movie->cover }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
-                                                    <div class="card-body">
-                                                        <h5 class="card-title" style="text-align: center;">{{ $loan->movie->title }}</h5>
-                                                    </div>
-                                                    <div class="card-footer">
-                                                        <small class="text-muted" style="text-align: center;">Fecha de Prestamo: {{ $loan->fecha_de_prestamo }} </small>
-                                                    </div>
-              
-                                                </div>
-                                             </div>
-                                             @endif 
-                                        @endforeach
-                                    @endif 
-                                </div>
-                  
+              <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" style="background-color: rgb(26,32,44);">
+                  @if (isset($loans) && count($loans)>0)
+                      @foreach ($loans as $loan)
+                        @if ($loan->estatusLoan=="activo")
+                          <div class="col mb-4 col" >
+                              <div class="card dropdown-item col-md-12" onclick="viewMovie({{ $loan->movie->id }},{{ $loan->id }})" data-toggle="modal" data-target="#viewMovie">
+                                  <img src="{{url('/')}}/img/{{ $loan->movie->cover }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
+                                  <div class="card-body">
+                                    <h5 class="card-title" style="text-align: center;">{{ $loan->movie->title }}</h5>
+                                  </div>
+                                  <div class="card-footer">
+                                    <small class="text-muted" style="text-align: center;">Fecha de Prestamo: {{ $loan->fecha_de_prestamo }} </small>
+                                  </div>
+                              </div>
+                           </div>
+                           @endif 
+                      @endforeach
+                  @endif 
+              </div>    
             </div>
         </div>
     </div>
-@endif 
+    @endif 
     @if(Auth::user()->hasRole('Admin'))
       <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -46,6 +44,7 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Pelicula</th>
+                  <th scope="col">Usuario</th>
                   <th scope="col">Fecha de Prestamo</th>
                   <th scope="col">Fecha de Devolucion</th>
                   <th scope="col">Estatus</th>
@@ -58,6 +57,7 @@
                     <tr>
                       <td> {{ $loan->id}} </td>
                       <td> {{ $loan->movie->title }} </td>
+                      <td> {{ $loan->user_id }} </td>
                       <td> {{ $loan->fecha_de_prestamo }} </td>
                       <td> {{ $loan->fecha_de_devolucion }} </td>
                       <td> {{ $loan->estatusLoan }} </td>

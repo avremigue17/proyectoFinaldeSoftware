@@ -216,7 +216,6 @@
 					  		<option value="{{ $category->id}}">
 					  			{{ $category->name }}
 					  		</option> 
-
 					  	@endforeach
 					  	@endif 
 					  </select>
