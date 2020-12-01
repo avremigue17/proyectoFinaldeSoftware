@@ -2,15 +2,15 @@
 	
     <x-slot name="header">
         <div class="row">
-        	<div class="col-md-8">
-        		<h2 class="font-semibold text-xl text-gray-800 leading-tight">
-		            {{ __('Movies') }}
+        	<div class="col-md-8" >
+        		<h2 class="font-semibold text-xl text-gray-800 leading-tight" style="font-size: 50px; margin: 0">
+		            {{ __('Peliculas') }}
 		        </h2>
         	</div>
         	@if(Auth::user()->hasRole('Admin'))
         	<div class="col-md-4">
         		<button class="btn btn-primary float-right" data-toggle="modal" data-target="#addMovie">
-        			Add Movie
+        			Agregar Pelicula
         		</button>
         	</div>
         	@endif
@@ -18,10 +18,10 @@
     </x-slot> 
 
     @if(Auth::user()->hasRole('user'))
-    <div class="py-12">
+    <div class="py-12" style="background-color: rgb(26,32,44);">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
- 				<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" >
+ 				<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" style="background-color: rgb(26,32,44);" >
 					@if (isset($movies) && count($movies)>0)
 			  			@foreach ($movies as $movie)
 			  				@if ($movie->estatus =='libre')
@@ -29,9 +29,9 @@
 	    							<div class="card dropdown-item col-md-12" onclick="viewMovie({{ $movie->id }})" data-toggle="modal" data-target="#viewMovie">
 				   						<img src="{{url('/')}}/img/{{ $movie->cover }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
 				    					<div class="card-body">
-				      						<h5 class="card-title">{{ $movie->title }}</h5>
+				      						<h5 class="card-title" style="text-align: center;">{{ $movie->title }}</h5>
 				    					</div>
-				    					<div class="card-footer">
+				    					<div class="card-footer" style="text-align: center;">
 				      						<small class="text-muted"> {{ $movie->classification }} </small>
 			    						</div>
 									</div>
@@ -54,12 +54,12 @@
     				<thead class="thead-dark ">
 				    	<tr>
 				      		<th scope="col">#</th>
-						    <th scope="col">Title</th>
-						    <th scope="col">Classification</th>
-						    <th scope="col">Category</th>
+						    <th scope="col">Titulo</th>
+						    <th scope="col">Clasificacion</th>
+						    <th scope="col">Categoria</th>
 						    <th scope="col">Estatus</th>
 
-						    <th> Actions </th>
+						    <th> Acciones </th>
 				    	</tr>
 				  	</thead>
 				  	<tbody>
@@ -79,11 +79,11 @@
 
 									  	<div class="btn-group" role="group">
 									    	<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									      		Actions
+									      		Acciones
 									    	</button>
 									   		<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 									      		<a onclick="editMovie({{ $movie->id }})" class="dropdown-item" data-toggle="modal" data-target="#editMovie" href="#">
-									      			Edit Movie
+									      			Editar Pelicula
 									      		</a>
 
 									      		{{-- <a class="dropdown-item" href="#">Dropdown link</a> --}}
@@ -104,14 +104,6 @@
     <div class="modal fade" id="addMovie" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg">
 	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="staticBackdropLabel">
-	        	Add new movie
-	        </h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
 
 	      <form method="post" action="{{ url('movies') }}" enctype="multipart/form-data" >
 	      	@csrf 
@@ -120,31 +112,31 @@
 		        
 	      		<div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Title
+				    	Titulo
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text" id="basic-addon1">@</span>
 					  </div>
-					  <input type="text" class="form-control" placeholder="Title example" aria-label="Title example" aria-describedby="basic-addon1" name="title" required="">
+					  <input type="text" class="form-control" placeholder="Titulo" aria-label="Title example" aria-describedby="basic-addon1" name="title" required="">
 					</div>
 				</div>
 
 				<div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Description
+				    	Descripcion
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text" id="basic-addon1">@</span>
 					  </div>
-					  <textarea class="form-control" rows="5" placeholder="description of de movie" name="description"></textarea>
+					  <textarea class="form-control" rows="5" placeholder="Descripcion de la Pelicula" name="description"></textarea>
 					</div>
 				</div>
 
 				<div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Classification
+				    	Clasificacion
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
@@ -163,7 +155,7 @@
 
 				<div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Minutes
+				    	Duracion
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
@@ -175,7 +167,7 @@
 
 				<div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Year
+				    	Año
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
@@ -211,7 +203,7 @@
 
 				<div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Category
+				    	Categoria
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
@@ -234,10 +226,10 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-		        	Cancel
+		        	Cancelar
 		        </button>
 		        <button type="submit" class="btn btn-primary">
-		        	Save data
+		        	Guardar
 		        </button>
 		      </div>
 
@@ -250,14 +242,6 @@
 	<div class="modal fade" id="editMovie" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	  	<div class="modal-dialog modal-lg">
 	    	<div class="modal-content">
-	      		<div class="modal-header">
-	       			<h5 class="modal-title" id="staticBackdropLabel">
-	        			movie
-	       			</h5>
-	        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          			<span aria-hidden="true">&times;</span>
-	        		</button>
-	      		</div>
 
 	      		<form id="form_edit_movie" method="post" action="{{ url('movies') }}" enctype="multipart/form-data" name="formPrestar">
 			      	@csrf
@@ -267,31 +251,31 @@
 		        
 	      				<div class="form-group">
 				    		<label for="exampleInputEmail1">
-				    			Title
+				    			Titulo
 				    		</label>
 				    		<div class="input-group mb-3">
 					  			<div class="input-group-prepend">
 							    	<span class="input-group-text" id="basic-addon1">@</span>
 							  	</div>
-							  	<input type="text" class="form-control" placeholder="Title example" aria-label="Title example" aria-describedby="		basic-addon1" name="title" id="title" required="">
+							  	<input type="text" class="form-control" placeholder="Titulo" aria-label="Title example" aria-describedby="		basic-addon1" name="title" id="title" required="">
 							</div>
 						</div>
 
 				<div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Description
+				    	Descripcion
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text" id="basic-addon1">@</span>
 					  </div>
-					  <textarea class="form-control" rows="5" placeholder="description of de movie" id="description" name="description"></textarea>
+					  <textarea class="form-control" rows="5" placeholder="Descripcion de la Pelicula" id="description" name="description"></textarea>
 					</div>
 				</div>
 
 				<div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Classification
+				    	Clasificacion
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
@@ -310,7 +294,7 @@
 
 				<div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Minutes
+				    	Duracion
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
@@ -322,7 +306,7 @@
 
 				<div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Year
+				    	Año
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
@@ -370,7 +354,7 @@
 
 				<div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Category
+				    	Categoria
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
@@ -393,10 +377,10 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-		        	Cancel
+		        	Cancelar
 		        </button>
 		        <button type="submit" class="btn btn-primary">
-		        	Save data
+		        	Guardar
 		        </button>
 		      </div>
 
@@ -410,8 +394,8 @@
   		<div class="modal-dialog">
   		  	<div class="modal-content">
 	      		<div class="modal-body">
-	      			<div class="card mb-3">
-	  					<img src="..." class="card-img-top" alt="..." id="imageview" style="width: 100%; height: 250px">
+	      			<div class="card mb-3" style="align-items: center;">
+	  					<img src="..." class="card-img-top" alt="..." id="imageview" style="width: 80%; height: 250px">
 
 	  					<form method="post" action="{{ url('loans') }}" enctype="multipart/form-data">
 					      	@csrf 
@@ -420,7 +404,7 @@
 								<p class="card-text" id="descriptionview"></p>
 								<p class="card-text" >Clasificacion: <small id="classificationview" class="text-muted"></small></p>
 								<p class="card-text" >Duracion: <small id="minutesview" class="text-muted"></small> minutos</p>
-								<p class="card-text" >Año de Lanzamiento: <small id="yearview" class="text-muted"></small></p>
+								<p class="card-text" >Año: <small id="yearview" class="text-muted"></small></p>
 								<p class="card-text" >Trailer YouTube: <small id="trailerview" class="text-muted"></small></p>
 
 								<input type="hidden" class="form-control" placeholder="Title example" aria-label="Title example" aria-describedby="basic-addon1" id="fecha_de_prestamo" name="fecha_de_prestamo" >
@@ -430,7 +414,7 @@
 								<input type="hidden" class="form-control" placeholder="Title example" aria-label="Title example" aria-describedby="basic-addon1" id="movie_id" name="movie_id">
 		  					</div>
 	      					<div class="modal-footer">
-				        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 				        		<button type="submit" class="btn btn-primary" id="idPrestamo" onclick="">Solicitar Prestamo</button>
 				      		</div>
 	      				</form>
@@ -486,10 +470,12 @@
 			  		document.getElementById("minutesview").innerHTML = movie.minutes;
 			  		document.getElementById("yearview").innerHTML = movie.Year;
 			  		document.getElementById("trailerview").innerHTML = movie.trailer;
-					$("#category_id").val(movie.category_id)
+					$("#category_id").val(movie.category_id);
 
-					document.getElementById("fecha_de_prestamo").value = 2019;
-					document.getElementById("fecha_de_devolucion").value = 2020;
+					var dia = new Date();
+
+					document.getElementById("fecha_de_prestamo").value = dia.getDate()+'/'+(dia.getMonth()+1)+'/'+dia.getFullYear();
+					document.getElementById("fecha_de_devolucion").value = "sin devolver";
 					document.getElementById("estatusLoan").value = "activo";
 					document.getElementById("user_id").value = "{{auth()->user()->id}}";
 					document.getElementById("movie_id").value = id;

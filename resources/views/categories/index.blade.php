@@ -2,13 +2,13 @@
 	<x-slot name="header">
 		<div class="row">
 			<div class="col-8">
-				<h2 class="font-semibold text-xl text-gray-800  leading-tight ">
-		            {{ __('Categories') }} 
+				<h2 class="font-semibold text-xl text-gray-800  leading-tight " style="font-size: 50px; margin: 0">
+		            {{ __('Categorias') }} 
 		        </h2>
 			</div>
 			<div class="col-4">
 				<button class="btn btn-primary float-right" data-toggle="modal" data-target="#addCategory">
-		        	Add category
+		        	Agregar Categoria
 		        </button>
 			</div>
 		</div>  
@@ -22,11 +22,11 @@
 				  <thead class="thead-dark ">
 				    <tr>
 				      <th scope="col">#</th>
-				      <th scope="col">Name</th>
-				      <th scope="col">Description</th>
-				      <th scope="col">Created</th>
-				      <th scope="col">Movies</th>
-				      <th scope="col">Actions</th>
+				      <th scope="col">Nombre</th>
+				      <th scope="col">Descripcion</th>
+				      <th scope="col">Fecha de Creacion</th>
+				      <th scope="col">No. de Peliculas</th>
+				      <th scope="col">Acciones</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -45,14 +45,14 @@
 
 						  <div class="btn-group" role="group">
 						    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						      Actions
+						      Acciones
 						    </button>
 						    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 						      <a onclick="edit({{ $category->id }},'{{ $category->name }}','{{ $category->description }}')" data-toggle="modal" data-target="#editCategory" class="dropdown-item" href="#">
-						      	Update
+						      	Actualizar
 						      </a>
 						      <a onclick="remove({{ $category->id }},this)" class="dropdown-item" >
-						      	Delete
+						      	Borrar
 						      </a>
 						    </div>
 						  </div>
@@ -71,50 +71,56 @@
     <div class="modal fade" id="editCategory" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
 
 	      <form method="post" action="{{ url('categories') }}" enctype="multipart/form-data" >
 	      	@csrf
 	      	@method('PUT')
 
 	      	<div class="modal-body">
-		        
-	      		<div class="form-group">
+
+	      		<div class="form-group" hidden="">
 				    <label for="exampleInputEmail1">
-				    	Name
+				    	id
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text" id="basic-addon1">@</span>
 					  </div>
-					  <input type="text" class="form-control" placeholder="Category example" aria-label="Category example" aria-describedby="basic-addon1" id="name" name="name" required="">
+					  <input type="text" class="form-control" placeholder="Category example" aria-label="Category example" aria-describedby="basic-addon1" id="idcategory" name="idcategory" required="">
+					</div>
+				 </div>
+		        
+	      		<div class="form-group">
+				    <label for="exampleInputEmail1">
+				    	Nombre
+				    </label>
+				    <div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <span class="input-group-text" id="basic-addon1">@</span>
+					  </div>
+					  <input type="text" class="form-control" placeholder="Nombre de la Categoria" aria-label="Category example" aria-describedby="basic-addon1" id="name" name="name" required="">
 					</div>
 				 </div>
 
 				 <div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Description
+				    	Descripcion
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text" id="basic-addon1">@</span>
 					  </div>
-					  <textarea class="form-control" rows="5" placeholder="description of de category" name="description" id="description"></textarea>
+					  <textarea class="form-control" rows="5" placeholder="Descripcion de la Categoria" name="description" id="description"></textarea>
 					</div>
 				 </div>
 
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-		        	Cancel
+		        	Cancelar
 		        </button>
 		        <button type="submit" class="btn btn-primary">
-		        	Update data
+		        	Guardar
 		        </button>
 		      </div>
 
@@ -127,12 +133,6 @@
 	<div class="modal fade" id="addCategory" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
 
 	      <form method="post" action="{{ url('categories') }}" >
 	      	@csrf 
@@ -141,35 +141,35 @@
 		        
 	      		<div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Name
+				    	Nombre
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text" id="basic-addon1">@</span>
 					  </div>
-					  <input type="text" class="form-control" placeholder="Category example" aria-label="Category example" aria-describedby="basic-addon1" name="name" required="">
+					  <input type="text" class="form-control" placeholder="Nombre de la Categoria" aria-label="Category example" aria-describedby="basic-addon1" name="name" required="">
 					</div>
 				 </div>
 
 				 <div class="form-group">
 				    <label for="exampleInputEmail1">
-				    	Description
+				    	Descripcion
 				    </label>
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <span class="input-group-text" id="basic-addon1">@</span>
 					  </div>
-					  <textarea class="form-control" rows="5" placeholder="description of de category" name="description"></textarea>
+					  <textarea class="form-control" rows="5" placeholder="Descripcion de la Categoria" name="description"></textarea>
 					</div>
 				 </div>
 
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-		        	Cancel
+		        	Cancelar
 		        </button>
 		        <button type="submit" class="btn btn-primary">
-		        	Save data
+		        	Guardar
 		        </button>
 		      </div>
 
@@ -187,7 +187,7 @@
      	function edit(id,name,description){
      		$("#name").val(name)
 			$("#description").val(description)
-			$("#id").val(id)
+			$("#idcategory").val(id)
      	}
      	function remove(id,target){
      		swal({

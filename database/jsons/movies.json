@@ -1,52 +1,52 @@
 [
 	{
-		"title": "El Justiciero",
-		"description": "Una paleontóloga de Nueva York se dirige a Maine, donde oficiales locales de Caza y Pesca han aparentemente descubierto a un gigantesco cocodrilo de nueve metros que parece habitar en uno de los lagos de la localidad.",
+		"title": "Chicas Pesadas",
+		"description": "Una joven adolescente, Cady, acostumbrada a vivir en África con sus padres zoólogos, se encuentra una nueva jungla cuando se muda a Illinois. Allí acude a la escuela pública, donde se enamorará del ex-novio de la chica más popular del colegio.",
 		"classification": "B15",
-		"minutes": 131,
+		"minutes": 97,
 		"year": 2014,
-		"cover": "cover_movie2.png",
-		"trailer": "https://www.youtube.com/watch?v=j7RlqH5PXLo",
-		"category_id": 4
+		"cover": "cover_movie1.png",
+		"trailer": "https://www.youtube.com/watch?v=oDU84nmSDZY",
+		"category_id": 2
 	},
 	{
-		"title": "Película 2",
-		"description": "Una paleontóloga de Nueva York se dirige a Maine, donde oficiales locales de Caza y Pesca han aparentemente descubierto a un gigantesco cocodrilo de nueve metros que parece habitar en uno de los lagos de la localidad.",
+		"title": "El Muñeco Diabólico",
+		"description": "Después de mudarse a una ciudad nueva, Karen le regala a su hijo Andy un muñeco que se convierte en el mejor amigo del niño. Lo que ellos desconocían es que el muñeco es un ser maligno que tiene vida propia. Andy deberá aliarse con otros niños vecinos para detener a esta diabólica criatura que está provocando muertes en la ciudad.",
 		"classification": "B15",
-		"minutes": 131,
-		"year": 2014,
+		"minutes": 90,
+		"year": 1988,
 		"cover": "cover_movie2.png",
-		"trailer": "https://www.youtube.com/watch?v=j7RlqH5PXLo",
-		"category_id": 3
-	},
-	{
-		"title": "Película 3",
-		"description": "Una paleontóloga de Nueva York se dirige a Maine, donde oficiales locales de Caza y Pesca han aparentemente descubierto a un gigantesco cocodrilo de nueve metros que parece habitar en uno de los lagos de la localidad.",
-		"classification": "B15",
-		"minutes": 131,
-		"year": 2014,
-		"cover": "cover_movie2.png",
-		"trailer": "https://www.youtube.com/watch?v=j7RlqH5PXLo",
+		"trailer": "https://www.youtube.com/watch?v=sjiyV8mtXiU",
 		"category_id": 1
 	},
 	{
-		"title": "Película 4",
-		"description": "Una paleontóloga de Nueva York se dirige a Maine, donde oficiales locales de Caza y Pesca han aparentemente descubierto a un gigantesco cocodrilo de nueve metros que parece habitar en uno de los lagos de la localidad.",
+		"title": "Yo Antes de Ti",
+		"description": "Yo antes de ti reúne a dos personas que no podrían tener menos en común en una novela conmovedoramente romántica con una pregunta: ¿Qué decidirías cuando hacer feliz a la persona a la que amas significa también destrozarte el corazón?",
 		"classification": "B15",
-		"minutes": 131,
-		"year": 2014,
-		"cover": "cover_movie2.png",
-		"trailer": "https://www.youtube.com/watch?v=j7RlqH5PXLo",
+		"minutes": 110,
+		"year": 2016,
+		"cover": "cover_movie3.png",
+		"trailer": "https://www.youtube.com/watch?v=5XN_P1kpg5s",
+		"category_id": 3
+	},
+	{
+		"title": "Busqueda Implacable",
+		"description": "Bryan Mills, agente jubilado de la CIA, quiere pasar más tiempo con su hija Kim de 17 años, que ahora vive con su ex esposa Leonore y su rico padrastro, Stuart. Bryan conecta el celular a una grabadora para que un ex analista de la CIA trate de obtener información de los raptores.",
+		"classification": "B15",
+		"minutes": 93,
+		"year": 2008,
+		"cover": "cover_movie4.png",
+		"trailer": "https://www.youtube.com/watch?v=aa74oId0RNc",
 		"category_id": 4
 	},
 	{
-		"title": "Película 5",
-		"description": "Una paleontóloga de Nueva York se dirige a Maine, donde oficiales locales de Caza y Pesca han aparentemente descubierto a un gigantesco cocodrilo de nueve metros que parece habitar en uno de los lagos de la localidad.",
+		"title": "Greta",
+		"description": "ULa trama sigue a una joven que se hace amiga de una viuda solitaria que alberga una agenda oscura y mortal para ella. Greta tuvo su estreno mundial en el Festival Internacional de Cine de Toronto el 6 de septiembre de 2018. Fue estrenada el 1 de marzo de 2019 en los Estados Unidos, por Focus Features.",
 		"classification": "B15",
-		"minutes": 131,
-		"year": 2014,
-		"cover": "cover_movie2.png",
-		"trailer": "https://www.youtube.com/watch?v=j7RlqH5PXLo",
+		"minutes": 98,
+		"year": 2019,
+		"cover": "cover_movie5.png",
+		"trailer": "https://www.youtube.com/watch?v=ZPhL0HvM5x0",
 		"category_id": 5
 	}
 ]

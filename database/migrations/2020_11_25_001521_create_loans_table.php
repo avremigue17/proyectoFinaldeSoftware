@@ -16,8 +16,8 @@ class CreateLoansTable extends Migration
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('fecha_de_prestamo')->default(0);
-            $table->integer('fecha_de_devolucion')->default(0);
+            $table->string('fecha_de_prestamo')->default(0);
+            $table->string('fecha_de_devolucion')->default("sin devolver");
             $table->string('estatusLoan');
 
             $table->unsignedBigInteger('user_id');

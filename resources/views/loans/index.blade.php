@@ -2,22 +2,17 @@
     <x-slot name="header">
         <div class="row">
             <div class="col-8">
-                <h2 class="font-semibold text-xl text-gray-800  leading-tight ">
+                <h2 class="font-semibold text-xl text-gray-800  leading-tight " style="font-size: 50px; margin: 0">
                     {{ __('Prestamos') }} 
                 </h2>
             </div>
         </div>  
     </x-slot>
-
-    <div class="py-12">
+@if(Auth::user()->hasRole('user'))
+    <div class="py-12" style="background-color: rgb(26,32,44);">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-
-                  @if(Auth::user()->hasRole('user'))
-                    <div class="py-12">
-                        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" >
+                                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" style="background-color: rgb(26,32,44);">
                                     @if (isset($loans) && count($loans)>0)
                                         @foreach ($loans as $loan)
                                           @if ($loan->estatusLoan=="activo")
@@ -25,10 +20,10 @@
                                                 <div class="card dropdown-item col-md-12" onclick="viewMovie({{ $loan->movie->id }},{{ $loan->id }})" data-toggle="modal" data-target="#viewMovie">
                                                     <img src="{{url('/')}}/img/{{ $loan->movie->cover }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
                                                     <div class="card-body">
-                                                        <h5 class="card-title">{{ $loan->movie->title }}</h5>
+                                                        <h5 class="card-title" style="text-align: center;">{{ $loan->movie->title }}</h5>
                                                     </div>
                                                     <div class="card-footer">
-                                                        <small class="text-muted"> {{ $loan->fecha_de_prestamo }} </small>
+                                                        <small class="text-muted" style="text-align: center;">Fecha de Prestamo: {{ $loan->fecha_de_prestamo }} </small>
                                                     </div>
               
                                                 </div>
@@ -37,14 +32,11 @@
                                         @endforeach
                                     @endif 
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                  @endif 
+                  
             </div>
         </div>
     </div>
-
+@endif 
     @if(Auth::user()->hasRole('Admin'))
       <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -53,10 +45,11 @@
               <thead class="thead-dark ">
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">pelicula</th>
-                  <th scope="col">fecha de prestamo</th>
-                  <th scope="col">estatus</th>
-                  <th> Actions </th>
+                  <th scope="col">Pelicula</th>
+                  <th scope="col">Fecha de Prestamo</th>
+                  <th scope="col">Fecha de Devolucion</th>
+                  <th scope="col">Estatus</th>
+                  <th> Acciones </th>
                 </tr>
               </thead>
               <tbody>
@@ -66,16 +59,17 @@
                       <td> {{ $loan->id}} </td>
                       <td> {{ $loan->movie->title }} </td>
                       <td> {{ $loan->fecha_de_prestamo }} </td>
+                      <td> {{ $loan->fecha_de_devolucion }} </td>
                       <td> {{ $loan->estatusLoan }} </td>
                       <td>
                         <div class="btn-group" role="group" aria-label="Button group with nested dropdown"> 
                           <div class="btn-group" role="group">
                             <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Actions
+                                Acciones
                             </button>
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                 <a onclick="editLoan({{ $loan->id }})" class="dropdown-item" data-toggle="modal" data-target="#editLoan" href="#">
-                                  Edit Prestamo
+                                  Editar Prestamo
                                 </a>
                                 {{-- <a class="dropdown-item" href="#">Dropdown link</a> --}}
                             </div>
@@ -111,7 +105,7 @@
           </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
               <button type="button" class="btn btn-primary" id="buttonDevolver" onclick="devolverMovie()">Devolver pelicula</button>
             </div>
         </div>
@@ -150,10 +144,10 @@
             </select>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Cancel
+              Cancelar
             </button>
             <button type="submit" class="btn btn-primary" id="idDevolver">
-              Save data
+              Guardar
             </button>
           </div>
         </form>
@@ -162,14 +156,6 @@
   <div class="modal fade" id="editLoan" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">
-                movie
-              </h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
 
             <form  method="post" action="{{ url('loans') }}" enctype="multipart/form-data" name="EliminarPrestamo">
               @csrf
@@ -179,7 +165,7 @@
 
                 <div class="form-group">
                 <label for="exampleInputEmail1">
-                  id loan
+                  No. Prestamo
                 </label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
@@ -226,10 +212,10 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">
-              Cancel
+              Cancelar
             </button>
             <button type="submit" class="btn btn-primary">
-              Save data
+              Guardar
             </button>
           </div>
 
@@ -342,10 +328,11 @@
           if (data.code == 200) {
             $("#form_edit_loan").attr('action', '{{ url('loans') }}/'+id);
             var loan = data.loan;
+            var dia = new Date();
             $("#idloan").val(loan.id)
             $("#estatusLoan").val("inactivo")
           $("#fecha_de_prestamo").val(loan.fecha_de_prestamo)
-          $("#fecha_de_devolucion").val(loan.fecha_de_devolucion)
+          $("#fecha_de_devolucion").val(dia.getDate()+'/'+(dia.getMonth()+1)+'/'+dia.getFullYear())
 
           document.EliminarPrestamo.submit()
 
