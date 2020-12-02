@@ -47,4 +47,6 @@ Route::middleware(['auth'])->group(function(){
 	//Route::delete('loans/{id}', 'LoanController@destroy');
 	Route::put('/loans','LoanController@update');
 
+	Route::get('/users','UserController@index')->name('users');
+
 });

@@ -61,6 +61,10 @@
                         <x-jet-responsive-nav-link href="{{ route('categories')}}">
                             {{ __('Categorias') }}
                         </x-jet-responsive-nav-link>
+
+                        <x-jet-responsive-nav-link href="{{ route('users')}}">
+                            {{ __('usuarios') }}
+                        </x-jet-responsive-nav-link>
                         @endif
 
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -166,6 +170,10 @@
                 @if(Auth::user()->hasRole('Admin'))
                 <x-jet-responsive-nav-link href="{{ route('categories')}}">
                     {{ __('Categorias') }}
+                </x-jet-responsive-nav-link>
+
+                <x-jet-responsive-nav-link href="{{ route('users')}}">
+                    {{ __('usuarios') }}
                 </x-jet-responsive-nav-link>
                 @endif
 

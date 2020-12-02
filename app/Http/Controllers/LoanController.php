@@ -19,7 +19,7 @@ class LoanController extends Controller
     public function index()
     {
         if (auth()->user()->id!=1) {
-            $loans = Loan::with('movie')->where('user_id',auth()->user()->id)->get(); 
+            $loans = Loan::with('movie','user')->where('user_id',auth()->user()->id)->get(); 
         $categories = Category::all();
         }else{
         $loans = Loan::with('movie')->get(); 

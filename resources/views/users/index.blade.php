@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-8">
                 <h2 class="font-semibold text-xl text-gray-800  leading-tight " style="font-size: 50px; margin: 0">
-                    {{ __('Prestamos') }} 
+                    {{ __('Usuarios') }} 
                 </h2>
             </div>
         </div>  
@@ -43,24 +43,25 @@
               <thead class="thead-dark ">
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Pelicula</th>
-                  <th scope="col">Usuario</th>
-                  <th scope="col">Fecha de Prestamo</th>
-                  <th scope="col">Fecha de Devolucion</th>
-                  <th scope="col">Estatus</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Correo</th>
+                  <th scope="col">Rol</th>
                   <th> Acciones </th>
                 </tr>
               </thead>
               <tbody>
-                @if (isset($loans) && count($loans)>0)
-                  @foreach ($loans as $loan)
+                @if (isset($users) && count($users)>0)
+                  @foreach ($users as $user)
                     <tr>
-                      <td> {{ $loan->id}} </td>
-                      <td> {{ $loan->movie->title }} </td>
-                      <td> {{ $loan->user->name }} </td>
-                      <td> {{ $loan->fecha_de_prestamo }} </td>
-                      <td> {{ $loan->fecha_de_devolucion }} </td>
-                      <td> {{ $loan->estatusLoan }} </td>
+                      <td> {{ $user->id}} </td>
+                      <td> {{ $user->name }} </td>
+                      <td> {{ $user->email }} </td>
+                      @if ($user->role_id==1)
+                      <td> Administrador</td>
+                      @endif 
+                      @if ($user->role_id==2)
+                      <td> Cliente</td>
+                      @endif 
                       <td>
                         <div class="btn-group" role="group" aria-label="Button group with nested dropdown"> 
                           <div class="btn-group" role="group">
@@ -68,7 +69,7 @@
                                 Acciones
                             </button>
                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <a onclick="editLoan({{ $loan->id }})" class="dropdown-item" data-toggle="modal" data-target="#editLoan" href="#">
+                                <a onclick="editLoan({{ $user->id }})" class="dropdown-item" data-toggle="modal" data-target="#editLoan" href="#">
                                   Editar Prestamo
                                 </a>
                                 {{-- <a class="dropdown-item" href="#">Dropdown link</a> --}}
