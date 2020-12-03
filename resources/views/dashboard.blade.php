@@ -1,16 +1,18 @@
 <x-app-layout >
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight" align="center" style="font-size: 50px; margin: 0">
-            -{{ __('MovieClub') }}-
-        </h2>
-    </x-slot>
-
-    @if(Auth::user()->hasRole('Admin'))
+       @if(Auth::user()->hasRole('Admin'))
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
+               <h1>
+                 
+                  HOLI
+
+
+
+
+               </h1>
             </div>
         </div>
     </div>
@@ -24,14 +26,21 @@
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{{url('/')}}/img/cover_movie_fondo1.jpg" class="d-block w-100" alt="..." style="width: 200px; height: 55vh">
+      <img src="{{url('/')}}/img/cover_movie_fondo1.jpg" class="d-block w-100" alt="..." style="width: 200px; height: 65vh">
+      <div class="carousel-caption d-none d-md-block" style="background-color: rgb(26,32,44);">
+        <h5>MovieClub</h5>
+        <p>Tus Peliculas y Series Favoritas.</p>
+      </div>
     </div>
     <div class="carousel-item">
-      <img src="{{url('/')}}/img/cover_movie_fondo2.jpg" class="d-block w-100" alt="..." style="width: 200px; height: 55vh">
+      <img src="{{url('/')}}/img/cover_movie_fondo2.jpg" class="d-block w-100" alt="..." style="width: 200px; height: 65vh">
+      <div class="carousel-caption d-none d-md-block" style="background-color: rgb(26,32,44);">
+        <h5>Estrenos</h5>
+        <p>Lo Mas Nuevo lo Encuentras en #MovieClub</p>
+      </div>
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -49,4 +58,9 @@
 
 
     @endif
+
+
+
+
+    </x-slot>
 </x-app-layout>

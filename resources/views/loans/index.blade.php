@@ -48,7 +48,6 @@
                   <th scope="col">Fecha de Prestamo</th>
                   <th scope="col">Fecha de Devolucion</th>
                   <th scope="col">Estatus</th>
-                  <th> Acciones </th>
                 </tr>
               </thead>
               <tbody>
@@ -61,21 +60,6 @@
                       <td> {{ $loan->fecha_de_prestamo }} </td>
                       <td> {{ $loan->fecha_de_devolucion }} </td>
                       <td> {{ $loan->estatusLoan }} </td>
-                      <td>
-                        <div class="btn-group" role="group" aria-label="Button group with nested dropdown"> 
-                          <div class="btn-group" role="group">
-                            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Acciones
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <a onclick="editLoan({{ $loan->id }})" class="dropdown-item" data-toggle="modal" data-target="#editLoan" href="#">
-                                  Editar Prestamo
-                                </a>
-                                {{-- <a class="dropdown-item" href="#">Dropdown link</a> --}}
-                            </div>
-                          </div>
-                        </div>
-                      </td>
                     </tr> 
                   @endforeach
                 @endif 

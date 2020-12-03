@@ -14,6 +14,13 @@ class UserController extends Controller
      */
     public function index()
     {
+
+        $users = User::all();
+        foreach ($users as $user) {
+            if ($user->role_id!=null) {
+                $user->assignRole($user->role_id);
+            }
+        }
  
         $users = User::all();
 
@@ -70,9 +77,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user = User::find($request['id']);
+        if ($user) {
+            if ($user->update($request->all())) {
+                
+                return redirect()->back()->with('success', 'El registro se ha actualizado correctamente');
+            }
+        }
+        return redirect()->back()->with('error', 'No se pudo actualizar el registro');
     }
 
     /**
@@ -81,8 +95,37 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $user = User::find($request['id']);
+
+        if ($user) {
+           if ($user->delete()) {
+               return response()->json([
+                    'message' => 'Registro eliminado correctamente',
+                    'code' => '200',
+                ]);
+           }
+        }
+        return response()->json([
+            'message' => 'No se pudo eliminar el registro',
+            'code' => '400',
+        ]);
+    }
+
+    public function get(User $user)
+    {   
+        if ($user) {
+            return response()->json([
+                'message' => 'Registro consultado correctamente',
+                'code' => '200',
+                'user' => $user
+            ]);
+        }
+        return response()->json([
+            'message' => 'Registro no encontrado',
+            'code' => '400',
+            'user' => array()
+        ]);
     }
 }

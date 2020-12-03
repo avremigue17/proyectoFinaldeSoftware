@@ -32,7 +32,7 @@
 				      						<h5 class="card-title" style="text-align: center;">{{ $movie->title }}</h5>
 				    					</div>
 				    					<div class="card-footer" style="text-align: center;">
-				      						<small class="text-muted"> {{ $movie->classification }} </small>
+				      						<small class="text-muted">{{ $movie->classification }} </small>
 			    						</div>
 									</div>
 	 							</div>
@@ -81,6 +81,9 @@
 									      		<a onclick="editMovie({{ $movie->id }})" class="dropdown-item" data-toggle="modal" data-target="#editMovie" href="#">
 									      			Editar Pelicula
 									      		</a>
+									      		<a onclick="remove({{ $movie->id }},this)" class="dropdown-item" href="#">
+				                                  Borrar
+				                                </a>
 
 									      		{{-- <a class="dropdown-item" href="#">Dropdown link</a> --}}
 									    	</div>
@@ -519,6 +522,43 @@
 			    console.log(error);
 			});
 		}
+
+		function remove(id,target){
+        swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this record!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          axios({
+          method: 'delete',
+          url: '{{ url('movies') }}',
+          data: {
+            id: id,
+            _token: '{{ csrf_token() }}'
+          }
+        }).then(function (response) { 
+            if(response.data.code==200){
+              swal("Poof! Your record has been deleted!", {
+                icon: "success",
+              });
+              $(target).parent().parent().parent().parent().parent().remove();
+            }else{
+              swal("Error ocurred", {
+                icon: "error",
+              });
+            }
+        });
+          
+        } else {
+          swal("Your record is safe!");
+        }
+      });
+        console.log(id)
+      }
 
 	</script> 
 	</x-slot>

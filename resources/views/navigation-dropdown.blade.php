@@ -63,7 +63,7 @@
                         </x-jet-responsive-nav-link>
 
                         <x-jet-responsive-nav-link href="{{ route('users')}}">
-                            {{ __('usuarios') }}
+                            {{ __('Usuarios') }}
                         </x-jet-responsive-nav-link>
                         @endif
 
@@ -173,7 +173,7 @@
                 </x-jet-responsive-nav-link>
 
                 <x-jet-responsive-nav-link href="{{ route('users')}}">
-                    {{ __('usuarios') }}
+                    {{ __('Usuarios') }}
                 </x-jet-responsive-nav-link>
                 @endif
 
