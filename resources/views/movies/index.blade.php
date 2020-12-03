@@ -79,7 +79,7 @@
 									    	</button>
 									   		<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
 									      		<a onclick="editMovie({{ $movie->id }})" class="dropdown-item" data-toggle="modal" data-target="#editMovie" href="#">
-									      			Editar Pelicula
+									      			Actualizar
 									      		</a>
 									      		<a onclick="remove({{ $movie->id }},this)" class="dropdown-item" href="#">
 				                                  Borrar
@@ -525,8 +525,7 @@
 
 		function remove(id,target){
         swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this record!",
+        title: "¿Desea Eliminar Pelicula?",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -542,19 +541,19 @@
           }
         }).then(function (response) { 
             if(response.data.code==200){
-              swal("Poof! Your record has been deleted!", {
+              swal("¡Pelicula Eliminada Correctamente!", {
                 icon: "success",
               });
               $(target).parent().parent().parent().parent().parent().remove();
             }else{
-              swal("Error ocurred", {
+              swal("¡Ocurrio un Error!", {
                 icon: "error",
               });
             }
         });
           
         } else {
-          swal("Your record is safe!");
+          swal("¡Solicitud Cancelada!");
         }
       });
         console.log(id)

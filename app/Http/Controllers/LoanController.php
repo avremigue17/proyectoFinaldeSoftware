@@ -50,9 +50,9 @@ class LoanController extends Controller
          if (Auth::user()->hasPermissionTo('add loans')) { 
 
             if ($loan = Loan::create($request->all())) {
-            return redirect()->back()->with('success', 'El registro se ha creado correctamente');
+            return redirect()->back()->with('success', '¡Solicitud Exitosa!');
         }
-        return redirect()->back()->with('error', 'No se pudo crear el registro');
+        return redirect()->back()->with('error', '¡Solicitud Fallida!');
             return redirect()->back();
         
         }
@@ -94,10 +94,10 @@ class LoanController extends Controller
 
         if ($loan) {
             if ($loan->update($request->all())) {
-                return redirect()->back()->with('success', 'El registro se ha actualizado correctamente');
+                return redirect()->back()->with('success', '¡Solicitud Exitosa!');
             }
         }
-        return redirect()->back()->with('error', 'No se pudo actualizar el registro');
+        return redirect()->back()->with('error', '¡Solicitud Fallida!');
     }
 
     /**

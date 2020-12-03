@@ -83,10 +83,10 @@ class UserController extends Controller
         if ($user) {
             if ($user->update($request->all())) {
                 
-                return redirect()->back()->with('success', 'El registro se ha actualizado correctamente');
+                return redirect()->back()->with('success', '¡El registro se ha actualizado correctamente!');
             }
         }
-        return redirect()->back()->with('error', 'No se pudo actualizar el registro');
+        return redirect()->back()->with('error', '¡No se pudo actualizar el registro!');
     }
 
     /**
@@ -102,13 +102,13 @@ class UserController extends Controller
         if ($user) {
            if ($user->delete()) {
                return response()->json([
-                    'message' => 'Registro eliminado correctamente',
+                    'message' => '¡Registro eliminado correctamente!',
                     'code' => '200',
                 ]);
            }
         }
         return response()->json([
-            'message' => 'No se pudo eliminar el registro',
+            'message' => '¡No se pudo eliminar el registro!',
             'code' => '400',
         ]);
     }

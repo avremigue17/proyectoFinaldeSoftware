@@ -20,17 +20,44 @@
     $grafica1 = $conexion->prepare("select movies.estatus, count(estatus) as cantidad from movies group by movies.estatus");
     $grafica1->execute();
     $viewResulgrafica1 = $grafica1->get_result();
-
     $grafica1->close();
 
     $estatus = array();
     $cantidad= array();
+
+    $grafica2 = $conexion->prepare("select movies.title, count(estatusLoan) as total from loans join movies on movies.id=loans.movie_id group by movies.title limit 3");
+    $grafica2->execute();
+    $viewResulgrafica2 = $grafica2->get_result();
+    $grafica2->close();
+
+    $masPedida = array();
+    $total= array();
+
+    $grafica3 = $conexion->prepare("select users.name as nombre, count(estatusLoan) as numero from loans join users on users.id=loans.user_id group by users.name limit 3");
+    $grafica3->execute();
+    $viewResulgrafica3 = $grafica3->get_result();
+    $grafica3->close();
+
+    $usuarioMas = array();
+    $numeroPrestamos= array();
 
     
     foreach ($viewResulgrafica1 as $indice => $fila)
     {
         array_push($estatus, $fila["estatus"]);
         array_push($cantidad, $fila["cantidad"]);
+    }
+
+    foreach ($viewResulgrafica2 as $indice => $fila)
+    {
+        array_push($masPedida, $fila["title"]);
+        array_push($total, $fila["total"]);
+    }
+
+    foreach ($viewResulgrafica3 as $indice => $fila)
+    {
+        array_push($usuarioMas, $fila["nombre"]);
+        array_push($numeroPrestamos, $fila["numero"]);
     }
 ?>
 
@@ -58,7 +85,7 @@
       <div class="row m-b-2" >
         <div class="col-lg-4">
           <div class="card card-block">
-            <h4 class="card-title" style="text-align: center;">Prestadas/Libres</h4>
+            <h4 class="card-title" style="text-align: center;">Estatus de Peliculas</h4>
             <div id="users-device-doughnut-chart" >
               <canvas id="myChart2" width="400" height="350"></canvas>
             </div>
@@ -68,7 +95,7 @@
       <!-- Segunda Grafica-->
         <div class="col-lg-4">
           <div class="card card-block">
-            <h4 class="card-title">Ventas de Mes</h4>
+            <h4 class="card-title" style="text-align: center;">Top Peliculas Mas Pedidas</h4>
             <div id="users-medium-pie-chart">
               <canvas id="myChart" width="400" height="350"></canvas>
             </div>
@@ -78,7 +105,7 @@
       <!-- Tercera Grafica-->
         <div class="col-lg-4">
           <div class="card card-block">
-            <h4 class="card-title">Año Actual vs Años Anteriores</h4>
+            <h4 class="card-title" style="text-align: center;">Top Clientes</h4>
             <div id="users-category-pie-chart">
               <canvas id="myChart3" width="400" height="350"></canvas>
             </div>
@@ -91,17 +118,17 @@
 
 <script>
 //Segunda Grafica-->
-/*var $fechas=<?php //echo json_encode($fecha);?>;
-var $totales=<?php //echo json_encode($total);?>;
+var $masPedida=<?php echo json_encode($masPedida);?>;
+var $total=<?php echo json_encode($total);?>;
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: $fechas,
+        labels: $masPedida,
         datasets: [{
-            label: 'Ventas por Día',
-            data: $totales,
+            label: 'Veces Pedida',
+            data: $total,
             backgroundColor:'rgba(54, 162, 235, 0.2)',
             borderColor:'rgba(54, 162, 235, 1)',
             borderWidth: 1
@@ -116,7 +143,7 @@ var myChart = new Chart(ctx, {
             }]
         }
     }
-});*/
+});
 //Segunda Grafica-->
 
 //Primera Grafica-->
@@ -145,40 +172,26 @@ var pieChart = new Chart(ctx2, {
         }
     }
 });
-//Segunda Grafica-->
+//Primera Grafica-->
 
 //Tercera Grafica-->
-/*var $años=<?php //echo json_encode($año);?>;
-var $totalesaño=<?php //echo json_encode($totalaño);?>;
+var $usuarioMas=<?php echo json_encode($usuarioMas);?>;
+var $numeroPrestamos=<?php echo json_encode($numeroPrestamos);?>;
 
-var ctx3 = document.getElementById('myChart3').getContext('2d');
-var myChart = new Chart(ctx3, {
-    type: 'line',
-    data: {
-        labels: $años,
-        datasets: [{
-            label:"Ventas por Año",
-            data: $totalesaño,
+var ctx2 = document.getElementById('myChart3').getContext('2d');
+var pieChart = new Chart(ctx2, {
+    type: 'doughnut',
+    data:{  labels:$usuarioMas,
+    datasets: [
+        {
+            data:$numeroPrestamos,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
+                "#84FF63",
+                "#8463FF",
+                "#6384FF"
+            ]
+        }]},
+     options: {
         scales: {
             yAxes: [{
                 ticks: {
@@ -187,8 +200,8 @@ var myChart = new Chart(ctx3, {
             }]
         }
     }
-});*/
-//Segunda Grafica-->
+});
+//Tercera Grafica-->
 </script>
             </div>
         </div>

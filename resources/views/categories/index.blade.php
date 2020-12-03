@@ -190,8 +190,7 @@
      	}
      	function remove(id,target){
      		swal({
-			  title: "Are you sure?",
-			  text: "Once deleted, you will not be able to recover this record!",
+			  title: "¿Desea Eliminar Categoria?",
 			  icon: "warning",
 			  buttons: true,
 			  dangerMode: true,
@@ -207,19 +206,19 @@
 				  }
 				}).then(function (response) { 
 				    if(response.data.code==200){
-				    	swal("Poof! Your record has been deleted!", {
+				    	swal("¡Categoria Eliminada Correctamente!", {
 					      icon: "success",
 					    });
 				    	$(target).parent().parent().parent().parent().parent().remove();
 				    }else{
-				    	swal("Error ocurred", {
+				    	swal("¡Ocurrio un Error!", {
 					      icon: "error",
 					    });
 				    }
 				});
 			    
 			  } else {
-			    swal("Your record is safe!");
+			    swal("¡Solicitud Cancelada!");
 			  }
 			});
      		console.log(id)

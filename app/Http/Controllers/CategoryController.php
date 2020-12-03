@@ -38,9 +38,9 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         if ($category = Category::create($request->all())) {
-            return redirect()->back()->with('success', 'El registro se ha creado correctamente');
+            return redirect()->back()->with('success', '¡El registro se ha creado correctamente!');
         }
-        return redirect()->back()->with('error', 'No se pudo crear el registro');
+        return redirect()->back()->with('error', '¡No se pudo crear el registro!');
     }
 
     /**
@@ -78,10 +78,10 @@ class CategoryController extends Controller
         if ($category) {
             if ($category->update($request->all())) {
                 
-                return redirect()->back()->with('success', 'El registro se ha actualizado correctamente');
+                return redirect()->back()->with('success', '¡El registro se ha actualizado correctamente!');
             }
         }
-        return redirect()->back()->with('error', 'No se pudo actualizar el registro');
+        return redirect()->back()->with('error', '¡No se pudo actualizar el registro!');
     }
 
     /**
@@ -97,13 +97,13 @@ class CategoryController extends Controller
         if ($category) {
            if ($category->delete()) {
                return response()->json([
-                    'message' => 'Registro eliminado correctamente',
+                    'message' => '¡Registro eliminado correctamente!',
                     'code' => '200',
                 ]);
            }
         }
         return response()->json([
-            'message' => 'No se pudo eliminar el registro',
+            'message' => '¡No se pudo eliminar el registro!',
             'code' => '400',
         ]);
     }

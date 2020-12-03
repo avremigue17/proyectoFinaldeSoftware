@@ -68,16 +68,14 @@ class MovieController extends Controller
 
                     $movie->cover = $file_name;
                     $movie->save();
-
-
                 }
 
-                return redirect()->back();
+                return redirect()->back()->with('success', '¡Solicitud Exitosa!');;
             }
             return redirect()->back();
         
         }
-        return redirect()->back()->with('error','no tienes permisos');
+        return redirect()->back()->with('error','¡Solicitud Fallida!');
     }
 
     /**
@@ -135,12 +133,12 @@ class MovieController extends Controller
                     );
 
                     $movie->cover = $file_name;
-                    $movie->save(); 
+                    $movie->save();  
                 }
-                return redirect()->back();
+                return redirect()->back()->with('success', '¡Solicitud Exitosa!');
             }
         }
-        return redirect()->back();
+        return redirect()->back()->with('error', '¡Solicitud Fallida!');
     }
 
     /**
@@ -156,13 +154,13 @@ class MovieController extends Controller
         if ($movie) {
            if ($movie->delete()) {
                return response()->json([
-                    'message' => 'Registro eliminado correctamente',
+                    'message' => '¡Registro eliminado correctamente!',
                     'code' => '200',
                 ]);
            }
         }
         return response()->json([
-            'message' => 'No se pudo eliminar el registro',
+            'message' => '¡No se pudo eliminar el registro!',
             'code' => '400',
         ]);
     }
