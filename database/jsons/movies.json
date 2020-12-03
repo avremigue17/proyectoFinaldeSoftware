@@ -22,7 +22,7 @@
 	{
 		"title": "Yo Antes de Ti",
 		"description": "Yo antes de ti reúne a dos personas que no podrían tener menos en común en una novela conmovedoramente romántica con una pregunta: ¿Qué decidirías cuando hacer feliz a la persona a la que amas significa también destrozarte el corazón?",
-		"classification": "B15",
+		"classification": "A",
 		"minutes": 110,
 		"year": 2016,
 		"cover": "cover_movie3.png",
@@ -41,12 +41,162 @@
 	},
 	{
 		"title": "Greta",
-		"description": "ULa trama sigue a una joven que se hace amiga de una viuda solitaria que alberga una agenda oscura y mortal para ella. Greta tuvo su estreno mundial en el Festival Internacional de Cine de Toronto el 6 de septiembre de 2018. Fue estrenada el 1 de marzo de 2019 en los Estados Unidos, por Focus Features.",
+		"description": "La trama sigue a una joven que se hace amiga de una viuda solitaria que alberga una agenda oscura y mortal para ella. Greta tuvo su estreno mundial en el Festival Internacional de Cine de Toronto el 6 de septiembre de 2018. Fue estrenada el 1 de marzo de 2019 en los Estados Unidos, por Focus Features.",
 		"classification": "B15",
 		"minutes": 98,
 		"year": 2019,
 		"cover": "cover_movie5.png",
 		"trailer": "https://www.youtube.com/watch?v=ZPhL0HvM5x0",
 		"category_id": 5
+	},
+	{
+		"title": "El chico nuevo",
+		"description": "Un niño de noveno grado es expulsado de la escuela y, tras recibir algunos consejos, decide renovar su imagen para volverse un joven cool.",
+		"classification": "B",
+		"minutes": 92,
+		"year": 2012,
+		"cover": "cover_movie6.png",
+		"trailer": "https://www.youtube.com/watch?v=XMm-o3GaU9g&ab_channel=indyola",
+		"category_id": 2
+	},
+	{
+		"title": "Logan",
+		"description": "Han pasado los años y los mutantes están en declive. Logan, débil y cansado, vive alejado de todos hasta que acepta una última misión de Charles Xavier: la de proteger a una joven especial, de nombre Laura Kinney pero conocida como X-23, la última esperanza de la raza mutante.",
+		"classification": "C",
+		"minutes": 141,
+		"year": 2017,
+		"cover": "cover_movie7.png",
+		"trailer": "https://www.youtube.com/watch?v=4AGCsEH7rzE&ab_channel=20thCenturyStudiosEspa%C3%B1a",
+		"category_id": 5
+	},
+	{
+		"title": "John Wick 3",
+		"description": "El legendario sicario John Wick es perseguido por las calles de Nueva York. Lo buscan unos mercenarios por una recompensa de 14 millones de dólares por su cabeza y por romper con una regla.",
+		"classification": "B15",
+		"minutes": 143,
+		"year": 2019,
+		"cover": "cover_movie8.png",
+		"trailer": "https://www.youtube.com/watch?v=pU8-7BX9uxs&ab_channel=LionsgateMovies",
+		"category_id": 4
+	},
+	{
+		"title": "Toy Story 4",
+		"description": "Woody siempre ha tenido claro cuál es su labor en el mundo: cuidar a su dueño, ya sea Andy o Bonnie. Sin embargo, ahora descubrirá lo grande que puede ser el mundo para un juguete cuando el pequeño Forky se convierta en su nuevo compañero de habitación y se embarquen en una aventura que no olvidarán jamás durante un viaje por carretera.",
+		"classification": "AA",
+		"minutes": 100,
+		"year": 2019,
+		"cover": "cover_movie9.png",
+		"trailer": "https://www.youtube.com/watch?v=wmiIUN-7qhE&ab_channel=Pixar",
+		"category_id": 2
+	},
+	{
+		"title": "Star Wars: Episodio IX",
+		"description": "Finn y Poe guían a la Resistencia para detener los planes de la Primera Orden para formar un nuevo imperio, mientras Rey anticipa un enfrentamiento inevitable con Kylo Ren.",
+		"classification": "B",
+		"minutes": 142,
+		"year": 2019,
+		"cover": "cover_movie10.png",
+		"trailer": "https://www.youtube.com/watch?v=82R2u7OuGOA&ab_channel=StarWarsEspa%C3%B1a",
+		"category_id": 4
+	},
+	{
+		"title": "Alien - El octavo pasajero",
+		"description": "La tripulación de la nave espacial Nostromo atiende una señal de auxilio y, sin saberlo, sube a bordo una letal forma de vida extraterrestre.",
+		"classification": "C",
+		"minutes": 117,
+		"year": 1976,
+		"cover": "cover_movie11.png",
+		"trailer": "https://www.youtube.com/watch?v=Eu9ZFTXXEiw&ab_channel=TrailersyEstrenos",
+		"category_id": 1
+	},
+	{
+		"title": "El planeta de los simios",
+		"description": "César y sus simios son obligados a enfrentar un conflicto mortal contra un ejército de humanos liderado por un brutal coronel. Después de sufrir pérdidas enormes, César pelea con sus instintos más oscuros en una búsqueda por vengar a su especie.",
+		"classification": "B15",
+		"minutes": 142,
+		"year": 2017,
+		"cover": "cover_movie12.png",
+		"trailer": "https://www.youtube.com/watch?v=FBgzGFCphEE",
+		"category_id": 4
+	},
+	{
+		"title": "Dragon Ball Super: Broly",
+		"description": "Goku y Vegeta encuentran a Broly, un guerrero Saiyajin. Pero, ¿cómo sobrevivió a la destrucción de su planeta y dónde estuvo todo ese tiempo? La situación empeora todavía más cuando Freezer vuelve al mundo de los vivos desde el infierno.",
+		"classification": "AA",
+		"minutes": 101,
+		"year": 2018,
+		"cover": "cover_movie13.png",
+		"trailer": "https://www.youtube.com/watch?v=9ll5zb-264w&ab_channel=manga",
+		"category_id": 4
+	},
+	{
+		"title": "Avengers: Infinity War",
+		"description": "Los superhéroes se alían para vencer al poderoso Thanos, el peor enemigo al que se han enfrentado. Si Thanos logra reunir las seis gemas del infinito: poder, tiempo, alma, realidad, mente y espacio, nadie podrá detenerlo.",
+		"classification": "A",
+		"minutes": 160,
+		"year": 2018,
+		"cover": "cover_movie14.png",
+		"trailer": "https://www.youtube.com/watch?v=823iAZOEKt8&ab_channel=MarvelLatinoam%C3%A9ricaOficial",
+		"category_id": 4
+	},
+	{
+		"title": "Avengers: Endgame",
+		"description": "Los Vengadores restantes deben encontrar una manera de recuperar a sus aliados para un enfrentamiento épico con Thanos, el malvado que diezmó el planeta y el universo.",
+		"classification": "A",
+		"minutes": 182,
+		"year": 2019,
+		"cover": "cover_movie15.png",
+		"trailer": "https://www.youtube.com/watch?v=TcMBFSGVi1c&ab_channel=MarvelEntertainment",
+		"category_id": 4
+	},
+	{
+		"title": "Scary Movie",
+		"description": "Mientras espera reunirse con su novio la joven Drew Decker es llamada por un misterioso acosador sexual, quien en un principio se muestra amistoso pero conforme avanza la conversación este se torna más agresivo y depravado al punto en que le revela estar observándola.",
+		"classification": "B15",
+		"minutes": 88,
+		"year": 2000,
+		"cover": "cover_movie16.png",
+		"trailer": "https://www.youtube.com/watch?v=3iy0pE1FBkc&ab_channel=JaJaFilms",
+		"category_id": 2
+	},
+	{
+		"title": "Scary Movie 2",
+		"description": "Un profesor engaña a cuatro adolescentes y los hace visitar una mansión hechizada para estudiar el sueño.",
+		"classification": "B15",
+		"minutes": 92,
+		"year": 2001,
+		"cover": "cover_movie17.png",
+		"trailer": "https://www.youtube.com/watch?v=NdnacU5sbcE&ab_channel=JaJaFilms",
+		"category_id": 2
+	},
+	{
+		"title": "Scary Movie 3",
+		"description": "En su afán de encontrar una noticia que impulse su carrera, la periodista Cindy Campbell descubre que la Tierra está amenazada por una serie de hechos terroríficos. La joven debe luchar para evitar que el mal se apodere del mundo otra vez.",
+		"classification": "B15",
+		"minutes": 92,
+		"year": 2003,
+		"cover": "cover_movie18.png",
+		"trailer": "https://www.youtube.com/watch?v=O21wD8Tzr2k&ab_channel=MovieclipsClassicTrailers",
+		"category_id": 2
+	},
+	{
+		"title": "Annabelle 3: vuelve a casa",
+		"description": "Ed y Lorraine Warren encierran a Annabelle, una muñeca poseída, y la dejan en una vitrina bendecida como medida de seguridad. Sin embargo, una noche terrorífica, Annabelle despierta al resto de espíritus malignos confinados en la misma habitación.",
+		"classification": "C",
+		"minutes": 106,
+		"year": 2019,
+		"cover": "cover_movie19.png",
+		"trailer": "https://www.youtube.com/watch?v=oUEyHqlZndE&ab_channel=WarnerBros.PicturesLatinoam%C3%A9rica",
+		"category_id": 1
+	},
+	{
+		"title": "¿Y dónde están las rubias?",
+		"description": "Dos torpes agentes del FBI se hacen pasar por dos chicas de la alta sociedad para investigar una serie de secuestros. No obstante, mientras preparan su plan, descubren que irrumpir en la clase privilegiada es mucho más duro de lo que creían.",
+		"classification": "A",
+		"minutes": 115,
+		"year": 2004,
+		"cover": "cover_movie20.png",
+		"trailer": "https://www.youtube.com/watch?v=UxER50XHW-I&ab_channel=JaJaFilms",
+		"category_id": 2
 	}
 ]
