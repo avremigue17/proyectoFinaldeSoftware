@@ -1,59 +1,36 @@
 <x-app-layout >
     <x-slot name="header">
        @if(Auth::user()->hasRole('Admin'))
+       <h1 style="text-align: center;">
+         KPI's Prioritarios
+       </h1>
 
-    <div class="py-12">
+    <div class="py-12" >
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                <?php
     $servidor = "localhost";
     $usuario = "root";
     $password = "";
-    $database = "menutron";
+    $database = "laravel";
 
     $conexion = new mysqli($servidor,$usuario,$password,$database);
     $conexion->set_charset("utf8");
 
-    $viewRollos = $conexion->prepare("select * from rolloMasPedido");
-    $viewRollos->execute();
-    $viewResultrollos = $viewRollos->get_result();
+    $grafica1 = $conexion->prepare("select movies.estatus, count(estatus) as cantidad from movies group by movies.estatus");
+    $grafica1->execute();
+    $viewResulgrafica1 = $grafica1->get_result();
 
-    $entradas = $conexion->prepare("select fecha, sum(total) as total from venta where MONTH(fecha) = MONTH(CURRENT_DATE()) and Year(fecha) = Year(CURRENT_DATE()) group by fecha");
-    $entradas->execute();
-    $resultentradas = $entradas->get_result();
+    $grafica1->close();
 
-    $entradas2 = $conexion->prepare("select year(fecha) as año, sum(total) as total from venta group by YEAR(fecha)  order by año desc limit 6");
-    $entradas2->execute();
-    $resultentradas2 = $entradas2->get_result();
-
-    $viewRollos->close();
-    $entradas->close();
-    $entradas2->close();
-
-    $nombre = array();
+    $estatus = array();
     $cantidad= array();
-    $fecha = array();
-    $total = array();
-    $año = array();
-    $totalaño = array();
 
     
-    foreach ($viewResultrollos as $indice => $fila)
+    foreach ($viewResulgrafica1 as $indice => $fila)
     {
-        array_push($nombre, $fila["nombre"]);
-        array_push($cantidad, $fila["ventas"]);
-    }
-
-    foreach ($resultentradas as $indice => $fila)
-    {
-        array_push($fecha, $fila["fecha"]);
-        array_push($total, $fila["total"]);
-    }
-
-    foreach ($resultentradas2 as $indice => $fila)
-    {
-        array_push($año, $fila["año"]);
-        array_push($totalaño, $fila["total"]);
+        array_push($estatus, $fila["estatus"]);
+        array_push($cantidad, $fila["cantidad"]);
     }
 ?>
 
@@ -72,39 +49,18 @@
 
 <body>
 
-  <!-- sidebar -->
-  <div class="sidebar-toggle" id="sidebar">
-    <ul class="nav nav-sidebar">
-      <li>
-        <a>class="active">
-          <i class="fa fa-clock-o fa-lg fa-fw" aria-hidden="true"></i>
-          <span>Real Time</span>
-        </a>
-      </li>
-      <li role="separator" class="divider"></li>
-      <li>
-        <a>
-          <i class="fa fa-newspaper-o fa-lg fa-fw" aria-hidden="true"></i>
-          <span>Overview</span>
-        </a>
-      </li>
-      <li role="separator" class="divider"></li>
-    </ul>
-  </div>
-  <!-- /sidebar -->
-
   <!-- page-content-wrapper -->
   <div class="page-content-toggle" id="page-content-wrapper">
     <div class="container-fluid">
 
     <!-- 1st row -->
       <!-- Primera Grafica-->
-      <div class="row m-b-2">
+      <div class="row m-b-2" >
         <div class="col-lg-4">
           <div class="card card-block">
-            <h4 class="card-title">Los 5 Rollos Mas Vendidos</h4>
-            <div id="users-device-doughnut-chart">
-              <canvas id="myChart2" width="400" height="400"></canvas>
+            <h4 class="card-title" style="text-align: center;">Prestadas/Libres</h4>
+            <div id="users-device-doughnut-chart" >
+              <canvas id="myChart2" width="400" height="350"></canvas>
             </div>
           </div>
         </div>
@@ -114,7 +70,7 @@
           <div class="card card-block">
             <h4 class="card-title">Ventas de Mes</h4>
             <div id="users-medium-pie-chart">
-              <canvas id="myChart" width="400" height="400"></canvas>
+              <canvas id="myChart" width="400" height="350"></canvas>
             </div>
           </div>
         </div>
@@ -124,7 +80,7 @@
           <div class="card card-block">
             <h4 class="card-title">Año Actual vs Años Anteriores</h4>
             <div id="users-category-pie-chart">
-              <canvas id="myChart3" width="400" height="400"></canvas>
+              <canvas id="myChart3" width="400" height="350"></canvas>
             </div>
           </div>
         </div>
@@ -135,8 +91,8 @@
 
 <script>
 //Segunda Grafica-->
-var $fechas=<?php echo json_encode($fecha);?>;
-var $totales=<?php echo json_encode($total);?>;
+/*var $fechas=<?php //echo json_encode($fecha);?>;
+var $totales=<?php //echo json_encode($total);?>;
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
@@ -160,26 +116,23 @@ var myChart = new Chart(ctx, {
             }]
         }
     }
-});
+});*/
 //Segunda Grafica-->
 
 //Primera Grafica-->
-var $nombres=<?php echo json_encode($nombre);?>;
-var $cantidades=<?php echo json_encode($cantidad);?>;
+var $estatus=<?php echo json_encode($estatus);?>;
+var $cantidad=<?php echo json_encode($cantidad);?>;
 
 var ctx2 = document.getElementById('myChart2').getContext('2d');
 var pieChart = new Chart(ctx2, {
     type: 'doughnut',
-    data:{  labels:$nombres,
+    data:{  labels:$estatus,
     datasets: [
         {
-            data:$cantidades,
+            data:$cantidad,
             backgroundColor: [
-                "#FF6384",
                 "#63FF84",
-                "#84FF63",
-                "#8463FF",
-                "#6384FF"
+                "#FF6384"
             ]
         }]},
      options: {
@@ -195,8 +148,8 @@ var pieChart = new Chart(ctx2, {
 //Segunda Grafica-->
 
 //Tercera Grafica-->
-var $años=<?php echo json_encode($año);?>;
-var $totalesaño=<?php echo json_encode($totalaño);?>;
+/*var $años=<?php //echo json_encode($año);?>;
+var $totalesaño=<?php //echo json_encode($totalaño);?>;
 
 var ctx3 = document.getElementById('myChart3').getContext('2d');
 var myChart = new Chart(ctx3, {
@@ -234,7 +187,7 @@ var myChart = new Chart(ctx3, {
             }]
         }
     }
-});
+});*/
 //Segunda Grafica-->
 </script>
             </div>
