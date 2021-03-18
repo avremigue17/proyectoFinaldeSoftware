@@ -25,3 +25,4 @@ app/Actions/Fortify/UpdateUserPassword.php
 app/Actions/Fortify/ResetUserPassword.php
 app/Actions/Fortify/PasswordValidationRules.php
 app/Actions/Fortify/CreateNewUser.php
+composer.lock
