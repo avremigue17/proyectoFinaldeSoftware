@@ -1,12 +1,20 @@
 <x-guest-layout >
+
+    <div class="fixed top-0 right-0 px-6 py-4 sm:block">
+    <div>
+         <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline" style="color: black; font-size: 15px;">Registrar</a>
+    </div>
+    </div>
+
     <x-jet-authentication-card>
         <x-slot name="logo">
             <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('welcome') }}">
-                        <img src="{{url('/')}}/img/logo.png" class="card-img-top" alt="..." style="width: 200px; height: 150px; margin-top: 10px">
-                    </a>
-                </div>
+                <a href="{{ route('login') }}">
+                    <img src="{{url('/')}}/img/cinta.png" class="card-img-top" alt="..." style="width: 200px; height: 200px; margin-top: 10px">
+                </a>
+            </div>
         </x-slot>
+
 
         <x-jet-validation-errors class="mb-4" />
 
@@ -21,7 +29,7 @@
             @csrf
 
             <div>
-                <x-jet-label for="email" value="{{ __('Correo') }}" />
+                <x-jet-label for="email" value="{{ __('Correo ó Usuario') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 

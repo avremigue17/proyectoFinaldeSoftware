@@ -15,7 +15,9 @@
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
+
     </head>
+
     <body>
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}

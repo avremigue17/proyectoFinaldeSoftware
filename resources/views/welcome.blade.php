@@ -37,13 +37,8 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-
                 <div style="text-align:center">
-                    
-                        
-                            <img src="{{url('/')}}/img/cinta.png" class="card-img-top" alt="..." style="width: 500px; height: 300px; margin-top: 20px;">
-                        
-                    
+                    <img src="{{url('/')}}/img/cinta.png" class="card-img-top" alt="..." style="width: 500px; height: 300px; margin-top: 20px;">
                 </div>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg" style="background-color: transparent;">
