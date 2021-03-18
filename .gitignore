@@ -26,3 +26,4 @@ app/Actions/Fortify/ResetUserPassword.php
 app/Actions/Fortify/PasswordValidationRules.php
 app/Actions/Fortify/CreateNewUser.php
 composer.lock
+database/seeders/UserTableSeeder.php
