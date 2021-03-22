@@ -18,13 +18,16 @@ class LoanController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->id!=1) {
-            $loans = Loan::with('movie','user')->where('user_id',auth()->user()->id)->get(); 
-        $categories = Category::all();
-        }else{
-        $loans = Loan::with('movie')->get(); 
-        $categories = Category::all();
-    }
+        if (auth()->user()->id!=1) 
+        {
+            $loans = Loan::with('movie','user')->where('user_id',auth()->user()->id)->get();
+            $categories = Category::all();
+        }
+        else
+        {
+            $loans = Loan::with('movie')->get(); 
+            $categories = Category::all();
+        }
 
        return view('loans.index',compact('loans','categories'));
     }

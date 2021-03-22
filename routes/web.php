@@ -24,9 +24,7 @@ Route::get('/welcome', function () {
 Route::get('/contact','WebController@contact');
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'PostsController@index')->name('dashboard');
 
 Route::middleware(['auth'])->group(function(){
 
