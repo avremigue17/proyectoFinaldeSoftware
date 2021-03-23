@@ -17,4 +17,13 @@ class PostsController extends Controller
 
         return view('main.index', compact('posts','users','comments'));
     }
+
+    public function perfil()
+    {
+    	$posts = Posts::all();
+        $users = User::all();
+        $comments = Comments::all();
+
+        return view('perfil.index', compact('posts','users','comments'));
+    }
 }

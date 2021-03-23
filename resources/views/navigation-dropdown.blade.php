@@ -46,11 +46,11 @@
                         </div>
 
                         <x-jet-responsive-nav-link  href="{{ route('profile.show') }}">
-                            {{ __('Perfil') }}
+                            {{ __('ya veremos') }}
                         </x-jet-responsive-nav-link>
                         
                         <x-jet-responsive-nav-link href="{{ route('movies')}}">
-                            {{ __('Peliculas') }}
+                            {{ __('Perfil') }}
                         </x-jet-responsive-nav-link>
 
                          <x-jet-responsive-nav-link href="{{ route('loans')}}">

@@ -29,7 +29,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'PostsControl
 Route::middleware(['auth'])->group(function(){
 
 
-	Route::get('/movies','MovieController@index')->name('movies');
+	Route::get('/movies','PostsController@perfil')->name('perfil');
 	Route::get('/movies-info/{movie}','MovieController@get')->name('movies');
 	Route::post('/movies','MovieController@store')->name('movies');
 	Route::put('/movies/{movie}','MovieController@update');

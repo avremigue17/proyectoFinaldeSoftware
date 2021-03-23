@@ -25,14 +25,12 @@ class MovieController extends Controller
             }
         }
 
-        if (Auth::user()->hasPermissionTo('view movies')) { 
+        //if (Auth::user()->hasPermissionTo('view movies')) { 
             $movies = Movie::with('category')->get(); 
             $categories = Category::all();
-
             return view('movies.index',compact('movies','categories'));
-
-        }
-        return redirect()->back()->with('error','no tienes permisos');
+        //}
+        //return redirect()->back()->with('error','no tienes permisos');
     }
 
     /**

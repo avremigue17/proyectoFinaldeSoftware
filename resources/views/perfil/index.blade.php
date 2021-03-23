@@ -4,16 +4,17 @@
         <div class="row">
         	<div class="col-md-8" >
         		<h2 class="font-semibold text-xl text-gray-800 leading-tight" style="font-size: 50px; margin: 0">
-		            {{ __('Peliculas') }}
+		            {{ __('Perfilechon') }}
 		        </h2>
+		        @foreach ($users as $user)
+		        @if($user->id == Auth::user()->id)
+		        	<h3>
+		        		{{$user->name}}<br>
+		        		{{$user->email}}
+		        	</h3>
+		        @endif
+		        @endforeach
         	</div>
-        	@if(Auth::user()->hasRole('Admin'))
-        	<div class="col-md-4">
-        		<button class="btn btn-primary float-right" data-toggle="modal" data-target="#addMovie">
-        			Agregar Pelicula
-        		</button>
-        	</div>
-        	@endif
         </div>
     </x-slot> 
 
@@ -21,82 +22,25 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
  				<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" style="background-color: rgb(26,32,44);" >
-					@if (isset($movies) && count($movies)>0)
-			  			@foreach ($movies as $movie)
-			  				@if ($movie->estatus =='libre')
-	  							<div class="col mb-4 col" >
-	    							<div class="card dropdown-item col-md-12" onclick="viewMovie({{ $movie->id }})" data-toggle="modal" data-target="#viewMovie">
-				   						<img src="{{url('/')}}/img/{{ $movie->cover }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
-				    					<div class="card-body">
-				      						<h5 class="card-title" style="text-align: center;">{{ $movie->title }}</h5>
-				    					</div>
-				    					<div class="card-footer" style="text-align: center;">
-				      						<small class="text-muted">{{ $movie->classification }} </small>
-			    						</div>
-									</div>
-	 							</div>
-	 						@endif 
-						@endforeach
-				  	@endif 
+		  			@foreach ($posts as $post)
+			  			@if($post->user_id == Auth::user()->id)
+  							<div class="col mb-4 col">
+    							<div class="card dropdown-item col-md-12" onclick="viewMovie({{$post->id}})" data-toggle="modal" data-target="#viewMovie">
+			   						<img src="{{url('/')}}/img/{{ $post->image }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
+			    					<div class="card-body">
+			      						<h5 class="card-title" style="text-align: center;">{{$post->id}}</h5>
+			    					</div>
+			    					<div class="card-footer" style="text-align: center;">
+			      						<small class="text-muted">{{$post->id}} </small>
+		    						</div>
+								</div>
+ 							</div>
+ 						@endif
+					@endforeach
 				</div>
 			</div>
         </div>
     </div>
-
-
-    @if(Auth::user()->hasRole('Admin'))
-	<div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-    			<table class="table table-striped table-bordered">
-    				<thead class="thead-dark ">
-				    	<tr>
-				      		<th scope="col">#</th>
-						    <th scope="col">Titulo</th>
-						    <th scope="col">Clasificacion</th>
-						    <th scope="col">Categoria</th>
-						    <th scope="col">Estatus</th>
-						    <th> Acciones </th>
-				    	</tr>
-				  	</thead>
-				  	<tbody>
-					  	@if (isset($movies) && count($movies)>0)
-						  	@foreach ($movies as $movie)
-						  	<tr>
-								<td> {{ $movie->id}} </td>
-						      	<td> {{ $movie->title }} </td>
-						      	<td> {{ $movie->classification }} </td>
-						      	<td> {{ $movie->category->name }} </td>
-						      	<td> {{ $movie->estatus }} </td>
-						      	<td>
-						      		<div class="btn-group" role="group" aria-label="Button group with nested dropdown"> 
-
-									  	<div class="btn-group" role="group">
-									    	<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									      		Acciones
-									    	</button>
-									   		<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-									      		<a onclick="editMovie({{ $movie->id }})" class="dropdown-item" data-toggle="modal" data-target="#editMovie" href="#">
-									      			Actualizar
-									      		</a>
-									      		<a onclick="remove({{ $movie->id }},this)" class="dropdown-item" href="#">
-				                                  Borrar
-				                                </a>
-
-									      		{{-- <a class="dropdown-item" href="#">Dropdown link</a> --}}
-									    	</div>
-									 	</div>
-									</div>
-						      	</td>
-						    </tr> 
-						  	@endforeach
-					  	@endif 
-				  	</tbody>
-				</table>
-			</div>
-    	</div>
-    </div>
-    @endif 
 
     <div class="modal fade" id="addMovie" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg">
