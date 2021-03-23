@@ -20,8 +20,7 @@ class Posts extends Model
         return $this->belongsTo(User::class);
     }*/
 
-    function user()
-    {
-        return $this->hasone(User::class, 'id', 'user_id'); 
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

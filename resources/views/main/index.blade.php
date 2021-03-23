@@ -12,7 +12,7 @@
           <!--usuario-->
           <div>
             <h1>
-                  {{$post->user_id}}
+              {{$post->user->name}}
             </h1>
           </div>
 
@@ -23,14 +23,21 @@
           <!--reacciones-->
           <div>
             <h1>
-                  likes: {{$post->likes}}
+              likes: {{$post->likes}}
             </h1>
           </div>
           <!--comentarios-->
           <div>
-            <div><!--likes--></div>
-            <div><!--comentarios--></div>
-            <div><!--fecha--></div>
+            @foreach($comments as $comment)
+              @if($comment->post_id == $post->id)
+              <div><!--comentarios-->
+                {{$comment->user->name}}<br>
+                {{$comment->text}}<br>
+                {{$comment->likes}}
+              </div>
+              @endif
+            @endforeach
+            <div>fecha: {{$post->created_at}}</div>
           </div>
         </div>
       @endforeach
