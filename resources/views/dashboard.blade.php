@@ -1,5 +1,11 @@
 <x-app-layout >
   <x-slot name="header">
+
+    <div>
+      <h1>
+        holis
+      </h1>
+    </div>
     <div class="">
       <h1>
         holiiii
