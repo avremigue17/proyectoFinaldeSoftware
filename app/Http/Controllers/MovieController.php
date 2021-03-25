@@ -51,7 +51,6 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::user()->hasPermissionTo('add movies')) { 
 
             if ($movie = Movie::create($request->all())) {
 
@@ -68,12 +67,10 @@ class MovieController extends Controller
                     $movie->save();
                 }
 
-                return redirect()->back()->with('success', '¡Solicitud Exitosa!');;
+                return redirect()->back()->with('success', '¡Solicitud Exitosa!');
             }
             return redirect()->back();
         
-        }
-        return redirect()->back()->with('error','¡Solicitud Fallida!');
     }
 
     /**

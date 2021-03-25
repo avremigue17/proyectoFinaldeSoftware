@@ -7,13 +7,11 @@
 		            {{ __('Peliculas') }}
 		        </h2>
         	</div>
-        	@if(Auth::user()->hasRole('Admin'))
         	<div class="col-md-4">
         		<button class="btn btn-primary float-right" data-toggle="modal" data-target="#addMovie">
         			Agregar Pelicula
         		</button>
         	</div>
-        	@endif
         </div>
     </x-slot> 
 
@@ -104,7 +102,6 @@
 
 	      <form method="post" action="{{ url('movies') }}" enctype="multipart/form-data" >
 	      	@csrf 
-
 	      	<div class="modal-body">
 		        
 	      		<div class="form-group">
