@@ -7,6 +7,9 @@
       </h1>
     </div>
     <div class="">
+      <h1>
+        holiiii
+      </h1>
       <!-- div de la derecha con sugerencias-->
       <div class="mb-8 md:w-2/5 md:mt-20 float-right">
         sugerencias
