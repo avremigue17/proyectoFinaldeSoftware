@@ -49,7 +49,7 @@
                 </p>
               </div>
               <div style="margin-top: 0">
-                <a style="color: gray; margin-left: 10px;font-size: 13px" onclick="vista('{{ $post->id }}')" href="#" data-toggle="modal" data-target="#viewMovie">
+                <a style="color: gray; margin-left: 10px;font-size: 13px" onclick="vista('{{$post}}')" href="#" data-toggle="modal" data-target="#viewMovie">
                   Ver los Comentarios {{ $post->id }}
                 </a>
               </div>
@@ -59,6 +59,9 @@
                       <div class="modal-body">
                         <div class="card mb-3" style="align-items: center;">
                         <img src="" class="card-img-top" alt="..." id="imageview" style="width: 80%; height: 250px">
+                        <h1 id="test">
+                          
+                        </h1>
                       </div>
                   </div>
                 </div>
@@ -101,15 +104,13 @@
   <x-slot name="scripts">
     <script type="text/javascript">
 
-      function vista(id){
-        console.log(id);
+      function vista(post){
         
+        var postChingon = JSON.parse(post);
 
+        document.getElementById("imageview").src = "{{url('/')}}/img/" + postChingon["image"];
+        document.getElementById("test").innerHTML = postChingon["id"];
       }
     </script>
-
-
-
-
   </x-slot>
 </x-app-layout>
