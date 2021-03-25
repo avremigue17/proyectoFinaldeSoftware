@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 ">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -76,12 +76,12 @@
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Opciones') }}
                             </div>
-                            <x-jet-responsive-nav-link  href="{{ route('profile.show') }}">
+                            <!-- <x-jet-responsive-nav-link  href="{{ route('profile.show') }}">
                                 {{ __('Perfil') }}
-                            </x-jet-responsive-nav-link>
+                            </x-jet-responsive-nav-link>-->
                             
                             <x-jet-responsive-nav-link href="{{ route('movies')}}">
-                                {{ __('Guardado') }}
+                                {{ __('Perfil') }}
                             </x-jet-responsive-nav-link>
 
                             @if(Auth::user()->hasRole('Admin'))
