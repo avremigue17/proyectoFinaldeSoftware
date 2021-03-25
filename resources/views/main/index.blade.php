@@ -13,17 +13,17 @@
               <div class="d-flex text-muted">
                 <div style="float: left;" >
                   <a class="navbar-brand" href="#">
-                  <img src="{{url('/')}}/img/user.png" class="card-img-top" alt="..." style="width: 40px; height: 40px">
+                  <img src="{{url('/')}}/img/{{$post->user->profile_image}}" class="card-img-top" alt="..." style="width: 40px; height: 40px; margin-left: 5px; margin-top: 1px">
                   </a>
                 </div>
 
                 <p class="pb-3 mb-0 small lh-sm border-bottom">
-                  <strong class="d-block text-gray-dark md:ml-1 md:mt-4" style="font-size: 15px;color: black">{{$post->user->name}}</strong>
+                  <strong class="d-block text-gray-dark md:ml-1 md:mt-4" style="font-size: 15px;color: black; margin-left: -10px">{{$post->user->name}}</strong>
                 </p>
               </div>
               <!--imagen-->
               <div align="center">
-                <img src="{{url('/')}}/img/{{$post->image}}" style="width: 100%;height: 400px">
+                <img src="{{url('/')}}/img/{{$post->image}}" style="width: 100%;height: 600px; margin-top: -10px">
               </div>
               <!--reacciones-->
               <div style="float: left; width: 100%;margin-left: 10px">
@@ -34,7 +34,7 @@
                 </div>
                 <div style="float: left;" >
                   <a class="navbar-brand" href="#">
-                  <img src="{{url('/')}}/img/messenger.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
+                  <img onclick="vista('{{$post}}')" href="#" data-toggle="modal" data-target="#viewMovie" src="{{url('/')}}/img/messenger.png"  class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
                   </a>
                 </div>
                 <div style="float: left;" >
