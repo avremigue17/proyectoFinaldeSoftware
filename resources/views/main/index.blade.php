@@ -49,19 +49,35 @@
                 </p>
               </div>
               <div style="margin-top: 0">
-                <a style="color: gray; margin-left: 10px;font-size: 13px" onclick="vista('{{$post}}')" href="#" data-toggle="modal" data-target="#viewMovie">
+                <a style="color: gray; margin-left: 10px;font-size: 13px" onclick="vista('{{$post}}','{{$comments}}')" href="#" data-toggle="modal" data-target="#viewMovie">
                   Ver los Comentarios {{ $post->id }}
                 </a>
               </div>
+
+
               <div class="modal" tabindex="-1" id="viewMovie">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                       <div class="modal-body">
-                        <div class="card mb-3" style="align-items: center;">
-                        <img src="" class="card-img-top" alt="..." id="imageview" style="width: 80%; height: 250px">
-                        <h1 id="test">
-                          
-                        </h1>
+                        <div class="card mb-3" style="align-items: center;width: 55%; float: left; height: 480px">
+                        <img src="" class="card-img-top" alt="..." id="imageview" style="width: 80%; height: 100%">
+                      </div>
+                      <div style="width: 40%;float: right; height: 400px; overflow-y: scroll;" id="myDIV">
+                        
+                      </div>
+                      <div style="float: right; width: 40%">
+                        <form method="get" action="{{ url('comments') }}" enctype="multipart/form-data">
+                    <div>
+                      hacer comentario
+                    <textarea class="form-control" rows="1" placeholder="Comment..." name="text"></textarea>
+                    <input type="hidden" class="form-control" name="user_id" value="{{Auth::user()->id}}">
+                    <input type="hidden" class="form-control" name="post_id" value="{{$post->id}}">
+                    <input type="hidden" class="form-control" name="fecha_de_creacion" value="0">
+                    <button type="submit" class="btn btn-primary">
+                      Publicar
+                    </button>
+                  </div>
+                </form>
                       </div>
                   </div>
                 </div>
@@ -104,12 +120,42 @@
   <x-slot name="scripts">
     <script type="text/javascript">
 
-      function vista(post){
+      function vista(post,comments){
         
         var postChingon = JSON.parse(post);
+        var comentarios = JSON.parse(comments);
 
         document.getElementById("imageview").src = "{{url('/')}}/img/" + postChingon["image"];
-        document.getElementById("test").innerHTML = postChingon["id"];
+        document.getElementById("myDIV").innerHTML="";
+
+        <?php foreach ($comments as $comment): ?>
+          var img = document.createElement("img");
+          var p1 = document.createElement("P");
+          var p2 = document.createElement("P");  
+          var p3 = document.createElement("P");
+          p1.style.fontWeight="bolder";
+          p1.style.marginBottom="0";
+          p1.style.float="left";
+          p1.style.width="92%";
+          img.style.width="20px";
+          img.style.height="20px";
+          img.style.float="left";
+
+          img.src ="{{url('/')}}/img/" + "{{$comment->user->profile_image}}";
+          var u = document.createTextNode("{{$comment->user->name}}");
+          var t = document.createTextNode("{{$comment->text}}");  
+          var l = document.createTextNode("{{$comment->likes}}");        
+          p1.appendChild(u);    
+          p2.appendChild(t);   
+          p3.appendChild(l);
+          document.getElementById("myDIV").appendChild(img);                                           
+          document.getElementById("myDIV").appendChild(p1);
+          document.getElementById("myDIV").appendChild(p2);   
+          //document.getElementById("myDIV").appendChild(p3);      
+        <?php endforeach ?>
+        
+          
+        
       }
     </script>
   </x-slot>
