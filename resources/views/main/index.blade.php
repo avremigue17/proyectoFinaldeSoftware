@@ -67,18 +67,18 @@
                       </div>
                       <div style="float: right; width: 40%">
                         <form method="get" action="{{ url('comments') }}" enctype="multipart/form-data">
-                    <div>
-                      hacer comentario
-                    <textarea class="form-control" rows="1" placeholder="Comment..." name="text"></textarea>
-                    <input type="hidden" class="form-control" name="user_id" value="{{Auth::user()->id}}">
-                    <input type="hidden" class="form-control" name="post_id" value="{{$post->id}}">
-                    <input type="hidden" class="form-control" name="fecha_de_creacion" value="0">
-                    <button type="submit" class="btn btn-primary">
-                      Publicar
-                    </button>
-                  </div>
-                </form>
-                      </div>
+                          <div>
+                            hacer comentario
+                          <textarea class="form-control" rows="1" placeholder="Comment..." name="text"></textarea>
+                          <input type="hidden" class="form-control" name="user_id" value="{{Auth::user()->id}}">
+                          <input type="hidden" id="comentario" class="form-control" name="post_id">
+                          <input type="hidden" class="form-control" name="fecha_de_creacion" value="0">
+                          <button type="submit" class="btn btn-primary">
+                            Publicar
+                          </button>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -127,6 +127,7 @@
 
         document.getElementById("imageview").src = "{{url('/')}}/img/" + postChingon["image"];
         document.getElementById("myDIV").innerHTML="";
+        document.getElementById("comentario").value = postChingon["id"];
 
         <?php foreach ($comments as $comment): ?>
           if("{{$comment->post_id}}" == postChingon["id"])
