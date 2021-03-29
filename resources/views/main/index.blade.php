@@ -45,7 +45,7 @@
               </div>
               <div>
                 <p style="font-weight: bolder; margin-left: 10px;font-size: 14px;margin-bottom: 0">
-                  {{$post->likes}} Me gusta
+                  0 Me gusta
                 </p>
               </div>
               <div style="margin-top: 0">
@@ -134,8 +134,7 @@
           {
             var img = document.createElement("img");
             var p1 = document.createElement("P");
-            var p2 = document.createElement("P");  
-            var p3 = document.createElement("P");
+            var p2 = document.createElement("P");
             p1.style.fontWeight="bolder";
             p1.style.marginBottom="0";
             p1.style.float="left";
@@ -146,15 +145,12 @@
 
             img.src ="{{url('/')}}/img/" + "{{$comment->user->profile_image}}";
             var u = document.createTextNode("{{$comment->user->name}}");
-            var t = document.createTextNode("{{$comment->text}}");  
-            var l = document.createTextNode("{{$comment->likes}}");        
+            var t = document.createTextNode("{{$comment->text}}");      
             p1.appendChild(u);    
-            p2.appendChild(t);   
-            p3.appendChild(l);
+            p2.appendChild(t);
             document.getElementById("myDIV").appendChild(img);                                           
             document.getElementById("myDIV").appendChild(p1);
-            document.getElementById("myDIV").appendChild(p2);   
-            //document.getElementById("myDIV").appendChild(p3);
+            document.getElementById("myDIV").appendChild(p2);  
           }  
         <?php endforeach ?>
         

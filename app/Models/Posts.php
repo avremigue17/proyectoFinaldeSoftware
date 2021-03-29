@@ -11,8 +11,6 @@ class Posts extends Model
 
      protected $fillable = [
         'image',
-        'likes',
-        'fecha_de_creacion',
         'user_id',
     ];
 
