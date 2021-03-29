@@ -129,29 +129,32 @@
         document.getElementById("myDIV").innerHTML="";
 
         <?php foreach ($comments as $comment): ?>
-          var img = document.createElement("img");
-          var p1 = document.createElement("P");
-          var p2 = document.createElement("P");  
-          var p3 = document.createElement("P");
-          p1.style.fontWeight="bolder";
-          p1.style.marginBottom="0";
-          p1.style.float="left";
-          p1.style.width="92%";
-          img.style.width="20px";
-          img.style.height="20px";
-          img.style.float="left";
+          if("{{$comment->post_id}}" == postChingon["id"])
+          {
+            var img = document.createElement("img");
+            var p1 = document.createElement("P");
+            var p2 = document.createElement("P");  
+            var p3 = document.createElement("P");
+            p1.style.fontWeight="bolder";
+            p1.style.marginBottom="0";
+            p1.style.float="left";
+            p1.style.width="92%";
+            img.style.width="20px";
+            img.style.height="20px";
+            img.style.float="left";
 
-          img.src ="{{url('/')}}/img/" + "{{$comment->user->profile_image}}";
-          var u = document.createTextNode("{{$comment->user->name}}");
-          var t = document.createTextNode("{{$comment->text}}");  
-          var l = document.createTextNode("{{$comment->likes}}");        
-          p1.appendChild(u);    
-          p2.appendChild(t);   
-          p3.appendChild(l);
-          document.getElementById("myDIV").appendChild(img);                                           
-          document.getElementById("myDIV").appendChild(p1);
-          document.getElementById("myDIV").appendChild(p2);   
-          //document.getElementById("myDIV").appendChild(p3);      
+            img.src ="{{url('/')}}/img/" + "{{$comment->user->profile_image}}";
+            var u = document.createTextNode("{{$comment->user->name}}");
+            var t = document.createTextNode("{{$comment->text}}");  
+            var l = document.createTextNode("{{$comment->likes}}");        
+            p1.appendChild(u);    
+            p2.appendChild(t);   
+            p3.appendChild(l);
+            document.getElementById("myDIV").appendChild(img);                                           
+            document.getElementById("myDIV").appendChild(p1);
+            document.getElementById("myDIV").appendChild(p2);   
+            //document.getElementById("myDIV").appendChild(p3);
+          }  
         <?php endforeach ?>
         
           
