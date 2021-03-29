@@ -15,10 +15,9 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->integer('likes');
-            $table->string('fecha_de_creacion')->default(0);
-            $table->unsignedBigInteger('user_id');
+            $table->string('image')->default("default.png");
+            $table->integer('likes')->default(0);
+            $table->unsignedBigInteger('user_id')->default(1);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

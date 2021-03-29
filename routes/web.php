@@ -32,6 +32,8 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('/movies','PostsController@perfil')->name('perfil');
 
+	Route::post('/post','PostsController@store')->name('post');
+
 	Route::get('/moviesOld','MovieController@index')->name('movies');
 	Route::get('/movies-info/{movie}','MovieController@get')->name('movies');
 	Route::post('/movies','MovieController@store')->name('movies');
