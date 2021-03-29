@@ -29,6 +29,7 @@
 		  			@foreach ($posts as $post)
 			  			@if($post->user_id == Auth::user()->id)
   							<div class="col mb-4 col">
+  								<button onclick="remove({{$post->id}},this)" class="btn btn-primary float-right">x</button>
     							<div class="card dropdown-item col-md-12" onclick="viewMovie({{$post->id}})" data-toggle="modal" data-target="#viewMovie">
 			   						<img src="{{url('/')}}/img/{{ $post->image }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
 			    					<div class="card-body">
@@ -202,42 +203,40 @@
 			});
 		}
 
-		function remove(id,target){
+		function remove(id,target)
+		{
         swal({
-        title: "¿Desea Eliminar Pelicula?",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-          axios({
-          method: 'delete',
-          url: '{{ url('movies') }}',
-          data: {
-            id: id,
-            _token: '{{ csrf_token() }}'
-          }
-        }).then(function (response) { 
-            if(response.data.code==200){
-              swal("¡Pelicula Eliminada Correctamente!", {
-                icon: "success",
-              });
-              $(target).parent().parent().parent().parent().parent().remove();
-            }else{
-              swal("¡Ocurrio un Error!", {
-                icon: "error",
-              });
-            }
-        });
-          
-        } else {
-          swal("¡Solicitud Cancelada!");
-        }
-      });
-        console.log(id)
-      }
-
+	        title: "¿Desea Eliminar Pelicula?",
+	        icon: "warning",
+	        buttons: true,
+	        dangerMode: true,
+	      }).then((willDelete) =>{
+		        if (willDelete) {
+		          axios({
+		          method: 'delete',
+		          url: '{{ url('post') }}',
+		          data: {
+		            id: id,
+		            _token: '{{ csrf_token() }}'
+		          }
+		        }).then(function (response) { 
+		            if(response.data.code==200){
+		              swal("¡Pelicula Eliminada Correctamente!", {
+		                icon: "success",
+		              });
+		              $(target).parent().parent().parent().remove();
+		            }else{
+		              swal("¡Ocurrio un Error!", {
+		                icon: "error",
+		              });
+		            }
+		        });
+		          
+		        } else {
+		          swal("¡Solicitud Cancelada!");
+		        }
+	      });
+	 	}
 	</script> 
 	</x-slot>
 
