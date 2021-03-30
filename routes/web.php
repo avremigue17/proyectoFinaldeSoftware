@@ -32,9 +32,10 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('/movies','PostsController@perfil')->name('perfil');
 
+
 	Route::post('/post','PostsController@store')->name('post');
 	Route::delete('/post','PostsController@destroy')->name('post');
-
+	
 	Route::post('/postLikes','PostLikesController@store')->name('like');
 	Route::delete('/postLikes','PostLikesController@destroy')->name('like');
 

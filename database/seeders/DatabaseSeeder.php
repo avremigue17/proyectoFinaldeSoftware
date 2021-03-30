@@ -19,8 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionsTableSeeder::class);
         $this->call(LoanSeeder::class);
         $this->call(PostsSeeder::class); 
-        $this->call(CommentsSeeder::class); 
-        $this->call(PostlikesSeeder::class); 
+        $this->call(CommentsSeeder::class);
         // \App\Models\User::factory(10)->create();
         //php artisan db:seed
         //php artisan migrate:fresh --seed

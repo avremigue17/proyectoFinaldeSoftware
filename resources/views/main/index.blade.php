@@ -29,7 +29,7 @@
               <div style="float: left; width: 100%;margin-left: 10px">
                 <div style="float: left;" >
                   <a class="navbar-brand" href="#">
-                  <img onclick="likazo('{{$post->id}}','{{Auth::user()->id}}')" src="{{url('/')}}/img/cora.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
+                    <img id="cora-{{$post->id}}" onclick="likazo('{{$post->id}}','{{Auth::user()->id}}')" src="{{url('/')}}/img/cora.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
                   </a>
                 </div>
                 <div style="float: left;" >
@@ -175,18 +175,16 @@
                 }
               }).then(function (response) {
                 console.log(response.data.message);
-                location.reload();
+                document.getElementById("cora-"+id).src = "{{url('/')}}/img/cora.png";
               });
             }
             else
             {
               console.log(response.data.message);
-              location.reload();
+              document.getElementById("cora-"+id).src = "{{url('/')}}/img/cora2.png";
             }
         });
       }
-
-
     </script>
   </x-slot>
 </x-app-layout>
