@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Posts;
+use App\Models\PostLikes;
 use App\Models\User;
 use App\Models\Comments;
 
@@ -12,10 +13,11 @@ class PostsController extends Controller
     public function index()
     {
     	$posts = Posts::all();
+        $postLikes = PostLikes::all();
         $users = User::all();
         $comments = Comments::all();
 
-        return view('main.index', compact('posts','users','comments'));
+        return view('main.index', compact('posts','postLikes','users','comments'));
     }
 
     public function perfil()

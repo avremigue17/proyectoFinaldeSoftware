@@ -45,7 +45,7 @@
               </div>
               <div>
                 <p style="font-weight: bolder; margin-left: 10px;font-size: 14px;margin-bottom: 0">
-                  0 Me gusta
+                    {{ $post->likes }} Me gusta
                 </p>
               </div>
               <div style="margin-top: 0">
@@ -153,10 +153,10 @@
             document.getElementById("myDIV").appendChild(p2);  
           }  
         <?php endforeach ?>
-        
-          
-        
       }
+
+
+
     </script>
   </x-slot>
 </x-app-layout>

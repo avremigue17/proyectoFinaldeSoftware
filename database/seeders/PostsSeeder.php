@@ -17,11 +17,13 @@ class PostsSeeder extends Seeder
         $posts = new Posts();
         $posts->image = "default.png";
         $posts->user_id = 1;
+        $posts->likes = 3;
         $posts->save();
 
         $posts = new Posts();
         $posts->image = "default.png";
         $posts->user_id = 2;
+        $posts->likes = 1;
         $posts->save();
     }
 }
