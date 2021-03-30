@@ -29,7 +29,7 @@
               <div style="float: left; width: 100%;margin-left: 10px">
                 <div style="float: left;" >
                   <a class="navbar-brand" href="#">
-                  <img src="{{url('/')}}/img/cora.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
+                  <img onclick="likazo('{{$post->id}}','{{Auth::user()->id}}')" src="{{url('/')}}/img/cora.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
                   </a>
                 </div>
                 <div style="float: left;" >
@@ -118,6 +118,7 @@
     </div>
   </x-slot>
   <x-slot name="scripts">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="text/javascript">
 
       function vista(post,comments){
@@ -155,6 +156,35 @@
         <?php endforeach ?>
       }
 
+      function likazo(id,user_id){
+        axios({
+          method: 'post',
+          url: '{{ url('postLikes') }}',
+          data: {
+            post_id: id,
+            user_id: user_id,
+          }
+        }).then(function (response) { 
+            if(response.data.code == 500)
+            {
+              axios({
+                method: 'delete',
+                url: '{{ url('postLikes') }}',
+                data: {
+                  id: response.data.id[0].id,
+                }
+              }).then(function (response) {
+                console.log(response.data.message);
+                location.reload();
+              });
+            }
+            else
+            {
+              console.log(response.data.message);
+              location.reload();
+            }
+        });
+      }
 
 
     </script>

@@ -35,6 +35,9 @@ Route::middleware(['auth'])->group(function(){
 	Route::post('/post','PostsController@store')->name('post');
 	Route::delete('/post','PostsController@destroy')->name('post');
 
+	Route::post('/postLikes','PostLikesController@store')->name('like');
+	Route::delete('/postLikes','PostLikesController@destroy')->name('like');
+
 	Route::get('/moviesOld','MovieController@index')->name('movies');
 	Route::get('/movies-info/{movie}','MovieController@get')->name('movies');
 	Route::post('/movies','MovieController@store')->name('movies');
