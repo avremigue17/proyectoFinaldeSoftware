@@ -28,9 +28,15 @@
               <!--reacciones-->
               <div style="float: left; width: 100%;margin-left: 10px">
                 <div style="float: left;" >
-                  <a class="navbar-brand" href="#">
-                    <img id="cora-{{$post->id}}" onclick="likazo('{{$post->id}}','{{Auth::user()->id}}')" src="{{url('/')}}/img/cora.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
-                  </a>
+                  @if(sizeof($postLikes->where('user_id', Auth::user()->id)->where('post_id', $post->id)) != 0)
+                    <a class="navbar-brand">
+                      <img id="cora-{{$post->id}}" onclick="likazo('{{$post->id}}','{{Auth::user()->id}}')" src="{{url('/')}}/img/cora2.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
+                    </a>
+                  @else
+                    <a class="navbar-brand">
+                      <img id="cora-{{$post->id}}" onclick="likazo('{{$post->id}}','{{Auth::user()->id}}')" src="{{url('/')}}/img/cora.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
+                    </a>
+                  @endif
                 </div>
                 <div style="float: left;" >
                   <a class="navbar-brand" href="#">
@@ -157,6 +163,14 @@
       }
 
       function likazo(id,user_id){
+
+        var salsa = document.getElementById("cora-"+id).src;
+                
+        if(salsa.substr(salsa.length - 9).includes("2"))
+          document.getElementById("cora-"+id).src = "{{url('/')}}/img/cora.png";
+        else
+          document.getElementById("cora-"+id).src = "{{url('/')}}/img/cora2.png";
+
         axios({
           method: 'post',
           url: '{{ url('postLikes') }}',
@@ -175,13 +189,11 @@
                 }
               }).then(function (response) {
                 console.log(response.data.message);
-                document.getElementById("cora-"+id).src = "{{url('/')}}/img/cora.png";
               });
             }
             else
             {
               console.log(response.data.message);
-              document.getElementById("cora-"+id).src = "{{url('/')}}/img/cora2.png";
             }
         });
       }
