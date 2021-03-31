@@ -12,7 +12,7 @@ class PostsController extends Controller
 {
     public function index()
     {
-    	$posts = Posts::all();
+    	$posts = Posts::all()->sortByDesc('created_at');;
         $postLikes = PostLikes::all();
         $users = User::all();
         $comments = Comments::all();
