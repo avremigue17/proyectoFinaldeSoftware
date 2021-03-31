@@ -259,7 +259,7 @@
 		              swal("¡Pelicula Eliminada Correctamente!", {
 		                icon: "success",
 		              });
-		              $(target).parent().parent().remove();
+		              $(target).parent().remove();
 		            }else{
 		              swal("¡Ocurrio un Error!", {
 		                icon: "error",
