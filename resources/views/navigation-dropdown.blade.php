@@ -49,7 +49,7 @@
                         </a>
                     </div>
                     <div style="float: right;" >
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="{{ route('dashboard')}}">
                         <img src="{{url('/')}}/img/home.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
                         </a>
                     </div>     

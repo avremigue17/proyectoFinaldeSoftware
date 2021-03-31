@@ -1,11 +1,11 @@
 <x-app-layout>
   <x-slot name="header">
     <div>
-      <div style="width: 35%; float: right;margin-top: 20px"></div>
+      <div style="width: 27%; float: right;margin-top: 20px"></div>
 
-      <div style="width: 50%;float: right; margin-top: 30px;background-color: white">
+      <div style="width: 50%;float: right; margin-top: 30px;background-color: black">
         <div class="my-3 p-3 bg-body rounded shadow-sm">
-          <h6 class="border-bottom pb-2 mb-0">Recent updates</h6>
+          <h6 class="border-bottom pb-2 mb-0" style="color: white">Recent updates</h6>
 
           @foreach($posts as $post)
             <div class="mb-8 md:w-3/5 md:mt-5 md:mb-0 float-left" style="width: 100%;border: solid gray .5px;">
@@ -34,17 +34,17 @@
                     </a>
                   @else
                     <a class="navbar-brand">
-                      <img id="cora-{{$post->id}}" onclick="likazo('{{$post->id}}','{{Auth::user()->id}}')" src="{{url('/')}}/img/cora.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
+                      <img id="cora-{{$post->id}}" onclick="likazo('{{$post->id}}','{{Auth::user()->id}}')" src="{{url('/')}}/img/cora.png" class="card-img-top" alt="..." style="width: 30px; height: 30px; margin-top: 50%">
                     </a>
                   @endif
                 </div>
                 <div style="float: left;" >
-                  <a class="navbar-brand" href="#">
-                  <img onclick="vista('{{$post}}')" href="#" data-toggle="modal" data-target="#viewMovie" src="{{url('/')}}/img/messenger.png"  class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
+                  <a class="navbar-brand">
+                  <img src="{{url('/')}}/img/messenger.png"  class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
                   </a>
                 </div>
                 <div style="float: left;" >
-                  <a class="navbar-brand" href="#">
+                  <a class="navbar-brand">
                   <img src="{{url('/')}}/img/gps.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
                   </a>
                 </div>
@@ -56,7 +56,7 @@
               </div>
               <div style="margin-top: 0">
                 <a style="color: gray; margin-left: 10px;font-size: 13px" onclick="vista('{{$post}}','{{$comments}}')" href="#" data-toggle="modal" data-target="#viewMovie">
-                  Ver los Comentarios {{ $post->id }}
+                  Ver los Comentarios
                 </a>
               </div>
 
@@ -120,7 +120,7 @@
         </div>
       </div>
 
-      <div style="width: 15%; float: right;margin-top: 20px"></div>
+      <div style="width: 23%; float: right;margin-top: 20px"></div>
     </div>
   </x-slot>
   <x-slot name="scripts">
@@ -189,11 +189,13 @@
                 }
               }).then(function (response) {
                 console.log(response.data.message);
+                location.reload();
               });
             }
             else
             {
               console.log(response.data.message);
+              location.reload();
             }
         });
       }
