@@ -16,9 +16,14 @@
             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="width: 40%;">
                     <nav class="navbar navbar-light bg">
                       <div class="container-fluid">
-                        <form class="d-flex">
+                       <!-- <form class="d-flex">
                           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                           <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>-->
+                        <form class="typeahead" role="search">
+                          <div class="form-group">
+                            <input type="search" name="q" class="form-control search-input" placeholder="Search" autocomplete="off">
+                          </div>
                         </form>
                       </div>
                     </nav>
@@ -253,4 +258,54 @@
             </div>
         </div>
     </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins  and Typeahead) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- Typeahead.js Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+    <!-- Typeahead Initialization -->
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+            // Set the Options for "Bloodhound" suggestion engine
+            var engine = new Bloodhound({
+                remote: {
+                    url: '/find?q=%QUERY%',
+                    wildcard: '%QUERY%'
+                },
+                datumTokenizer: Bloodhound.tokenizers.whitespace('q'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace
+            });
+
+            $(".search-input").typeahead({
+                hint: false,
+                highlight: true,
+                minLength: 1
+            }, {
+                source: engine.ttAdapter(),
+
+                // This will be appended to "tt-dataset-" to form the class name of the suggestion menu.
+                name: 'usersList',
+
+                // the key from the array we want to display (name,id,email,etc...)
+                templates: {
+                    empty: [
+                        '<div class="list-group search-results-dropdown"><div class="list-group-item">Nothing found.</div></div>'
+                    ],
+                    header: [
+                        '<div class="list-group search-results-dropdown">'
+                    ],
+                    suggestion: function (data) {
+                        return `<a  onclick="hack(`+data.id+`)" class="list-group-item">` + data.name + `</a>`
+              }
+                }
+            });
+        });
+
+        function hack(id){
+             window.location.href = "<?php echo URL::to('perfil/"+id+"'); ?>";
+        }
+    </script>
 </nav>

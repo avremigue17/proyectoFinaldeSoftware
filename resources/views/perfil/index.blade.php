@@ -1,9 +1,8 @@
 <x-app-layout>
-	
     <x-slot name="header">
-        <div class="row" style="margin-top: 20px">
-        	<div class="col-md-8" >
-        		<h2 class="font-semibold text-xl text-gray-800 leading-tight" style="font-size: 50px; margin: 0">
+    	<div>
+	        <div style="margin-top: 40px">
+	    		<h2 class="font-semibold text-xl text-gray-800 leading-tight" style="font-size: 50px; margin: 0">
 		            {{ __('Perfilechon') }}
 		        </h2>
 	        	<h3>
@@ -11,115 +10,118 @@
 	        		{{$user->name}}<br>
 	        		{{$user->email}}
 	        	</h3>
-        	</div>
-        	<button class="btn btn-primary float-right" data-toggle="modal" data-target="#addProfileImage">
-        		Foto de perfil
-        	</button>
-        	<button class="btn btn-primary float-right" data-toggle="modal" data-target="#addMovie">
-        		Agregar Imagen
-        	</button>
-        </div>
-    </x-slot> 
+	        	@if(Auth::user()->id == $user->id)
+	        	<button class="btn btn-primary float-right" data-toggle="modal" data-target="#addProfileImage">
+	        		Foto de perfil
+	        	</button>
+	        	<button class="btn btn-primary float-right" data-toggle="modal" data-target="#addMovie">
+	        		Agregar Imagen
+	        	</button>
+	        	@endif
+	        </div>
+	     
 
-    <!-- POST -->
-    <div class="py-12" style="background-color: rgb(26,32,44);">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
- 				<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" style="background-color: rgb(26,32,44);" >
-		  			@foreach ($posts as $post)
-						<div class="col mb-4 col">
-							<button onclick="remove('{{$post->id}}',this)" class="btn btn-primary float-right">x</button>
-							<div class="card dropdown-item col-md-12" onclick="viewMovie('{{$post->id}}')" data-toggle="modal" data-target="#viewMovie">
-		   						<img src="{{url('/')}}/img/{{ $post->image }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
-		    					<div class="card-body">
-		      						<h5 class="card-title" style="text-align: center;">{{$post->id}}</h5>
-		    					</div>
-		    					<div class="card-footer" style="text-align: center;">
-		      						<small class="text-muted">{{$post->id}} </small>
-	    						</div>
+		    <!-- POST -->
+		    <div class="py-12" style="background-color: rgb(26,32,44);">
+		        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+		            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+		 				<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" style="background-color: rgb(26,32,44);" >
+				  			@foreach ($posts as $post)
+								<div class="col mb-4 col">
+									@if(Auth::user()->id == $user->id)
+									<button onclick="remove('{{$post->id}}',this)" class="btn btn-primary float-right">x</button>
+									@endif
+									<div class="card dropdown-item col-md-12" onclick="viewMovie('{{$post->id}}')" data-toggle="modal" data-target="#viewMovie">
+				   						<img src="{{url('/')}}/img/{{ $post->image }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
+				    					<div class="card-body">
+				      						<h5 class="card-title" style="text-align: center;">{{$post->id}}</h5>
+				    					</div>
+				    					<div class="card-footer" style="text-align: center;">
+				      						<small class="text-muted">{{$post->id}} </small>
+			    						</div>
+									</div>
+								</div>
+							@endforeach
+						</div>
+					</div>
+		        </div>
+		    </div>
+
+		    <!-- MODAL subir post -->
+		    <div class="modal fade" id="addMovie" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-lg">
+			    <div class="modal-content">
+
+			      <form method="post" action="{{ url('post') }}" enctype="multipart/form-data" >
+			      	@csrf 
+
+			      	<div class="modal-body">
+
+						<div class="form-group">
+						    <label for="exampleInputEmail1">
+						    	Image
+						    </label>
+						    <div class="input-group mb-3">
+						    	<input hidden="" type="text" class="form-control" name="user_id" value="{{Auth::user()->id}}">
+							  	<input type="file" id="imgInp" class="form-control" name="cover_file" required="">
+							 	 <img id="blah" src="#" alt="your image" />
 							</div>
 						</div>
-					@endforeach
-				</div>
-			</div>
-        </div>
-    </div>
 
-    <!-- MODAL subir post -->
-    <div class="modal fade" id="addMovie" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-lg">
-	    <div class="modal-content">
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+				        	Cancelar
+				        </button>
+				        <button type="submit" class="btn btn-primary">
+				        	Guardar
+				        </button>
+				      </div>
 
-	      <form method="post" action="{{ url('post') }}" enctype="multipart/form-data" >
-	      	@csrf 
+			      </form>
 
-	      	<div class="modal-body">
+			    </div>
+			  </div>
+			</div> 
 
-				<div class="form-group">
-				    <label for="exampleInputEmail1">
-				    	Image
-				    </label>
-				    <div class="input-group mb-3">
-				    	<input hidden="" type="text" class="form-control" name="user_id" value="{{Auth::user()->id}}">
-					  	<input type="file" id="imgInp" class="form-control" name="cover_file" required="">
-					 	 <img id="blah" src="#" alt="your image" />
-					</div>
-				</div>
+			<!-- MODAL foto de perfil -->
+		    <div class="modal fade" id="addProfileImage" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-lg">
+			    <div class="modal-content">
 
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-		        	Cancelar
-		        </button>
-		        <button type="submit" class="btn btn-primary">
-		        	Guardar
-		        </button>
-		      </div>
+			      <form method="post" action="{{ url('users') }}" enctype="multipart/form-data" >
+			      	@csrf 
 
-	      </form>
+			      	<div class="modal-body">
 
-	    </div>
-	  </div>
-	</div> 
+						<div class="form-group">
+						    <label for="exampleInputEmail1">
+						    	Image
+						    </label>
+						    <div class="input-group mb-3">
+						    	<input hidden="" type="text" class="form-control" name="user_id" value="{{Auth::user()->id}}">
+							  	<input type="file" id="imgInp" class="form-control" name="cover_file" required="">
+							 	 <img id="blah" src="#" alt="your image" />
+							</div>
+						</div>
 
-	<!-- MODAL foto de perfil -->
-    <div class="modal fade" id="addProfileImage" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-lg">
-	    <div class="modal-content">
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+				        	Cancelar
+				        </button>
+				        <button type="submit" class="btn btn-primary">
+				        	Guardar
+				        </button>
+				      </div>
 
-	      <form method="post" action="{{ url('users') }}" enctype="multipart/form-data" >
-	      	@csrf 
+			      </form>
 
-	      	<div class="modal-body">
-
-				<div class="form-group">
-				    <label for="exampleInputEmail1">
-				    	Image
-				    </label>
-				    <div class="input-group mb-3">
-				    	<input hidden="" type="text" class="form-control" name="user_id" value="{{Auth::user()->id}}">
-					  	<input type="file" id="imgInp" class="form-control" name="cover_file" required="">
-					 	 <img id="blah" src="#" alt="your image" />
-					</div>
-				</div>
-
-		      </div>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-		        	Cancelar
-		        </button>
-		        <button type="submit" class="btn btn-primary">
-		        	Guardar
-		        </button>
-		      </div>
-
-	      </form>
-
-	    </div>
-	  </div>
-	</div> 
-
-	
+			    </div>
+			  </div>
+			</div> 
+		</div> 
+	</x-slot>
 	<x-slot name="scripts">
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 

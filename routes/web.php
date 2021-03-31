@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('/perfil/{id}','PostsController@perfil')->name('perfil');
 
+	Route::get('find', 'SearchController@find');
 
 	Route::post('/post','PostsController@store')->name('post');
 	Route::delete('/post','PostsController@destroy')->name('post');
