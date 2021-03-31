@@ -20,13 +20,13 @@ class PostsController extends Controller
         return view('main.index', compact('posts','postLikes','users','comments'));
     }
 
-    public function perfil()
+    public function perfil($id)
     {
-    	$posts = Posts::all();
-        $users = User::all();
+    	$posts = Posts::where("user_id", $id)->get();
+        $user = User::findOrFail($id);
         $comments = Comments::all();
 
-        return view('perfil.index', compact('posts','users','comments'));
+        return view('perfil.index', compact('posts','user','comments'));
     }
 
     public function store(Request $request)

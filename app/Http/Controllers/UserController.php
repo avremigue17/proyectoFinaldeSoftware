@@ -65,9 +65,23 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $user = User::find($request['user_id']);
+
+        if ($request->hasFile('cover_file')) {
+                
+            $file = $request->file('cover_file');
+            $file_name = 'profile_image'.$user->id.'.'.$file->getClientOriginalExtension();
+
+            $path = $request->file('cover_file')->storeAs(
+                'img', $file_name
+            );
+
+            $user->profile_image = $file_name;
+            $user->save();
+        }
+        return redirect()->back();
     }
 
     /**

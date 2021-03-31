@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('/comments','CommentsController@create')->name('comments');
 
-	Route::get('/movies','PostsController@perfil')->name('perfil');
+	Route::get('/perfil/{id}','PostsController@perfil')->name('perfil');
 
 
 	Route::post('/post','PostsController@store')->name('post');
@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::put('/loans','LoanController@update');
 
 	Route::get('/users','UserController@index')->name('users');
+	Route::post('/users','UserController@edit')->name('users');
 	Route::get('/users-info/{user}','UserController@get');
 	Route::put('/users','UserController@update');
 	Route::delete('/users','UserController@destroy')->name('users');

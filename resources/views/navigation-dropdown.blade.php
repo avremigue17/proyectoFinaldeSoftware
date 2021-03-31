@@ -80,7 +80,7 @@
                                 {{ __('Perfil') }}
                             </x-jet-responsive-nav-link>-->
                             
-                            <x-jet-responsive-nav-link href="{{ route('movies')}}">
+                            <x-jet-responsive-nav-link href="{{ route('perfil', Auth::user()->id)}}">
                                 {{ __('Perfil') }}
                             </x-jet-responsive-nav-link>
 
