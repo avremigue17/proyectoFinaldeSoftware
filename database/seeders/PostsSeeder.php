@@ -15,15 +15,21 @@ class PostsSeeder extends Seeder
     public function run()
     {
         $posts = new Posts();
-        $posts->image = "default.png";
+        $posts->image = "post_image1.png";
         $posts->user_id = 1;
-        $posts->likes = 3;
+        $posts->likes = 2;
         $posts->save();
 
         $posts = new Posts();
-        $posts->image = "default.png";
+        $posts->image = "post_image2.png";
         $posts->user_id = 2;
-        $posts->likes = 1;
+        $posts->likes = 2;
+        $posts->save();
+
+        $posts = new Posts();
+        $posts->image = "post_image3.png";
+        $posts->user_id = 3;
+        $posts->likes = 0;
         $posts->save();
     }
 }
