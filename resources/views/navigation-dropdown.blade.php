@@ -1,19 +1,19 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 " style="position: fixed; top: 0; width: 100%">
+<nav x-data="{ open: false }" class="bg-black border-b border-gray-100 " style="position: fixed; top: 0; width: 100%">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex" style="width: 30%">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center" style="background-color: white">
+                <div class="flex-shrink-0 flex items-center" style="background-color: black">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{url('/')}}/img/logo.png" class="card-img-top" alt="..." style="width: 120px; height: 70px;margin-left: 50%">
+                        <img src="{{url('/')}}/img/logo.png" class="card-img-top" alt="..." style="width: 150px; height: 60px;margin-left: 30%">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 
             </div>
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="width: 40%;">
+            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="width: 40%; margin-top: 6px;margin-left: 5%;" >
                     <nav class="navbar navbar-light bg">
                       <div class="container-fluid">
                        <!-- <form class="d-flex">
@@ -21,8 +21,8 @@
                           <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>-->
                         <form class="typeahead" role="search">
-                          <div class="form-group">
-                            <input type="search" name="q" class="form-control search-input" placeholder="Search" autocomplete="off">
+                          <div class="form-group" >
+                            <input type="search" name="q" class="form-control search-input" placeholder=Buscar autocomplete="off" style="width: 300px">
                           </div>
                         </form>
                       </div>
@@ -31,35 +31,37 @@
 
             <!-- Settings Dropdown -->
            
-            <div class="hidden sm:flex sm:items-center sm:ml-6" style="width: 30%;">
-                <div style="width: 70%">
-                    <div style="float: right;" >
+            <div class="hidden sm:flex sm:items-center sm:ml-6" style="width: 30%">
+                <div style="width: 90%; margin-left: 20px">
+                    <div style="float: right; margin-left: 10px" >
                         <a class="navbar-brand" href="#">
-                        <img src="{{url('/')}}/img/gps.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
+                        <img src="{{url('/')}}/img/gps.png" class="card-img-top" alt="..." style="width: 30px; height: 30px; margin-top: 50%">
                         </a>
                     </div>
-                    <div style="float: right;" >
+                    <div style="float: right;margin-left: 10px" >
                         <a class="navbar-brand" href="#">
-                        <img src="{{url('/')}}/img/cora.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
+                        <img src="{{url('/')}}/img/cora.png" class="card-img-top" alt="..." style="width: 30px; height: 30px; margin-top: 50%">
                         </a>
                     </div>
-                    <div style="float: right;" >
+                    <div style="float: right;margin-left: 10px" >
                         <a class="navbar-brand" href="#">
-                        <img src="{{url('/')}}/img/messenger.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
+                        <img src="{{url('/')}}/img/messenger.png" class="card-img-top" alt="..." style="width: 30px; height: 30px; margin-top: 50%">
                         </a>
                     </div>
-                    <div style="float: right;"  >
-                        <a class="navbar-brand" href="#">
-                        <img src="{{url('/')}}/img/mas.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
-                        </a>
-                    </div>
-                    <div style="float: right;" >
+                     <!--
+                         <div style="float: right;"  >
+                            <a class="navbar-brand" href="#">
+                            <img src="{{url('/')}}/img/mas.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
+                            </a>
+                        </div>
+                    -->
+                    <div style="float: right; margin-left: 50px;" >
                         <a class="navbar-brand" href="{{ route('dashboard')}}">
-                        <img src="{{url('/')}}/img/home.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
+                        <img src="{{url('/')}}/img/home.png" class="card-img-top" alt="..." style="width: 30px; height: 30px; margin-top: 50%;">
                         </a>
                     </div>     
                 </div> 
-                <div style="float: left;" >
+                <div style="float: left; " >
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -68,9 +70,9 @@
                                 </button>
                             @else
                                 <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                    <div style="float: right;" >
+                                    <div style="float: right; margin-left: 10px;" >
                                         <a class="navbar-brand" href="#">
-                                        <img src="{{url('/')}}/img/user.png" class="card-img-top" alt="..." style="width: 23px; height: 23px; margin-top: 50%; float: right;">
+                                        <img src="{{url('/')}}/img/user.png" class="card-img-top" alt="..." style="width: 30px; height: 23px; margin-top: 50%;  float: right;">
                                         </a>
                                     </div>
                                 </button>
