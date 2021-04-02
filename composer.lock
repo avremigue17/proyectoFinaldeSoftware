@@ -1380,10 +1380,6 @@
                 "framework",
                 "laravel"
             ],
-            "support": {
-                "issues": "https://github.com/laravel/framework/issues",
-                "source": "https://github.com/laravel/framework"
-            },
             "time": "2021-03-16T19:42:32+00:00"
         },
         {
@@ -2200,10 +2196,6 @@
                 "search",
                 "searchable"
             ],
-            "support": {
-                "issues": "https://github.com/nicolaslopezj/searchable/issues",
-                "source": "https://github.com/nicolaslopezj/searchable/tree/master"
-            },
             "time": "2020-03-30T12:30:18+00:00"
         },
         {
@@ -3209,10 +3201,6 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "support": {
-                "issues": "https://github.com/spatie/laravel-backup/issues",
-                "source": "https://github.com/spatie/laravel-backup/tree/6.15.1"
-            },
             "funding": [
                 {
                     "url": "https://github.com/sponsors/spatie",
@@ -6225,10 +6213,6 @@
                 "throwable",
                 "whoops"
             ],
-            "support": {
-                "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.10.0"
-            },
             "funding": [
                 {
                     "url": "https://github.com/denis-sokolov",
@@ -6871,10 +6855,6 @@
                 "spy",
                 "stub"
             ],
-            "support": {
-                "issues": "https://github.com/phpspec/prophecy/issues",
-                "source": "https://github.com/phpspec/prophecy/tree/1.13.0"
-            },
             "time": "2021-03-17T13:42:18+00:00"
         },
         {
@@ -7274,10 +7254,6 @@
                 "testing",
                 "xunit"
             ],
-            "support": {
-                "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.3"
-            },
             "funding": [
                 {
                     "url": "https://phpunit.de/donate.html",
@@ -8286,5 +8262,5 @@
         "php": "^7.3"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }

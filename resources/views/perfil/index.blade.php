@@ -1,31 +1,52 @@
 <x-app-layout>
     <x-slot name="header">
     	<div>
-	        <div style="margin-top: 40px">
-	    		<h2 class="font-semibold text-xl text-gray-800 leading-tight" style="font-size: 50px; margin: 0">
-		            {{ __('Perfilechon') }}
-		        </h2>
-	        	<h3>
-	        		<img width="100px" height="100px" src="{{url('/')}}/img/{{ $user->profile_image }}">
-	        		{{$user->name}}<br>
-	        		{{$user->email}}
-	        	</h3>
-	        	@if(Auth::user()->id == $user->id)
-	        	<button class="btn btn-primary float-right" data-toggle="modal" data-target="#addProfileImage">
-	        		Foto de perfil
+	        <div style="margin-top: 60px">
+	        	<div style="width: 45%; float: left; height: 150px">
+	        		<img width="120px" height="120px" src="{{url('/')}}/img/{{ $user->profile_image }}" style="float: right; border-radius: 100px">
+	        	</div>
+	        	<div style="width: 30%; float: left; height: 150px;color: white">
+	        		<h3 style="margin-left: 30px; margin-top: 50px">
+	        		{{$user->name}}
+	        		</h3>
+						@if(Auth::user()->id == $user->id)
+							        	<div style="width: 100%;float: left; margin-left: 30px">
+							        	<button class="btn btn-primary float-left" data-toggle="modal" data-target="#addProfileImage" style="background-color: black; color: white; width: 45%;border-color: gray">
+							        		<img src="{{url('/')}}/img/fotoPerfil1.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; float: left; margin-left: 5px">
+							        		<p style="float: left; margin-left: 10px; margin-bottom: 0">Foto de perfil</p>
+							        	</button>
+							        	</div>
+							        	@endif
+
+	        	</div>
+	        	<div style="width: 100%; float: left; margin-bottom: 0; margin-top: 20px">
+	        		<div style="width: 100%; float: left;height: 50px">
+	        		@if(Auth::user()->id == $user->id)
+	        	<div style="width: 100%;float: left">
+	        	<button class="btn btn-primary float-left" data-toggle="modal" data-target="#addMovie" style="margin-left: 40%; background-color: black; border-color: gray">
+	        		<img src="{{url('/')}}/img/fotoPerfil1.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; float: left; margin-left: 5px">
+							        		<p style="float: left; margin-left: 10px; margin-bottom: 0">Agregar Foto al Album</p>
 	        	</button>
-	        	<button class="btn btn-primary float-right" data-toggle="modal" data-target="#addMovie">
-	        		Agregar Imagen
-	        	</button>
+	        	</div>
 	        	@endif
+	        	</div>
+	        	</div>
 	        </div>
 	     
 
 		    <!-- POST -->
-		    <div class="py-12" style="background-color: rgb(26,32,44);">
+		    <div class="py-12" style="background-color: rgb(26,32,44); float: left;width: 100%">
+
+
 		        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+
+
 		            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 		 				<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" style="background-color: rgb(26,32,44);" >
+				  			
+
+
 				  			@foreach ($posts as $post)
 								<div class="col mb-4 col">
 									@if(Auth::user()->id == $user->id)
@@ -46,6 +67,8 @@
 					</div>
 		        </div>
 		    </div>
+
+		</div>
 
 		    <!-- MODAL subir post -->
 		    <div class="modal fade" id="addMovie" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -120,7 +143,7 @@
 			    </div>
 			  </div>
 			</div> 
-		</div> 
+		 
 	</x-slot>
 	<x-slot name="scripts">
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
