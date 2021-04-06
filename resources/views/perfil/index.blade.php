@@ -106,8 +106,8 @@
 					    </label>
 					    <div class="input-group mb-3">
 					    	<input hidden="" type="text" class="form-control" name="user_id" value="{{Auth::user()->id}}">
-					    	<img id="blah" src="{{url('/')}}/img/upload.png" alt="your image" />
-						  	<input type="file" id="imgInp" class="form-control" name="cover_file" required="" style="width: 50%; margin-left: 30%;border: none">
+					    	<img id="blah2" src="{{url('/')}}/img/upload.png" alt="your image" />
+						  	<input type="file" id="imgInp2" class="form-control" name="cover_file" required="" style="width: 50%; margin-left: 30%;border: none">
 						 	 
 						</div>
 					</div>
@@ -143,8 +143,26 @@
 	            reader.readAsDataURL(input.files[0]);
 	        }
 	    }
+
 	    $("#imgInp").change(function(){
 	        readURL(this);
+	    });
+
+	    function readURL2(input) {
+	        if (input.files && input.files[0]) {
+	            var reader = new FileReader();
+	            
+	            reader.onload = function (e) {
+	                $('#blah2').attr('src', e.target.result);
+
+	            }
+	            
+	            reader.readAsDataURL(input.files[0]);
+	        }
+	    }
+
+	    $("#imgInp2").change(function(){
+	        readURL2(this);
 	    });
 		
 		function editMovie(id){
