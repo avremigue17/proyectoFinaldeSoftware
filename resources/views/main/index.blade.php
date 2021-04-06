@@ -1,4 +1,7 @@
 <x-app-layout>
+  <style type="text/css">
+    .element::-webkit-scrollbar { width: 0 !important }
+  </style>
   <x-slot name="header">
     <div>
       <div style="width: 27%; float: right;margin-top: 20px"></div>
@@ -68,7 +71,7 @@
                         <div class="card mb-3" style="align-items: center;width: 55%; float: left; height: 480px; border:none;">
                         <img src="" class="card-img-top" alt="..." id="imageview" style="width: 80%; height: 100%">
                       </div>
-                      <div style="width: 40%;float: right; height: 400px; overflow-y: scroll;" id="myDIV">
+                      <div class="element" style="width: 40%;float: right; height: 400px; overflow-y: scroll;" id="myDIV">
                         
                       </div>
                       <div style="float: right; width: 40%;">

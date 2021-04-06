@@ -70,12 +70,12 @@
 
 					<div class="form-group">
 					    <label for="exampleInputEmail1">
-					    	Image
+					    	Agregar Foto al Album
 					    </label>
 					    <div class="input-group mb-3">
 					    	<input hidden="" type="text" class="form-control" name="user_id" value="{{Auth::user()->id}}">
-						  	<input type="file" id="imgInp" class="form-control" name="cover_file" required="">
-						 	 <img id="blah" src="#" alt="your image" />
+					    	<img id="blah" src="{{url('/')}}/img/upload.png" alt="your image" />
+						  	<input type="file" id="imgInp" class="form-control" name="cover_file" required="" style="width: 50%; margin-left: 30%;border: none">	 
 						</div>
 					</div>
 			      </div>
@@ -102,12 +102,13 @@
 
 					<div class="form-group">
 					    <label for="exampleInputEmail1">
-					    	Image
+					    	Foto de Perfil
 					    </label>
 					    <div class="input-group mb-3">
 					    	<input hidden="" type="text" class="form-control" name="user_id" value="{{Auth::user()->id}}">
-						  	<input type="file" id="imgInp" class="form-control" name="cover_file" required="">
-						 	 <img id="blah" src="#" alt="your image" />
+					    	<img id="blah" src="{{url('/')}}/img/upload.png" alt="your image" />
+						  	<input type="file" id="imgInp" class="form-control" name="cover_file" required="" style="width: 50%; margin-left: 30%;border: none">
+						 	 
 						</div>
 					</div>
 
@@ -136,12 +137,12 @@
 	            
 	            reader.onload = function (e) {
 	                $('#blah').attr('src', e.target.result);
+
 	            }
 	            
 	            reader.readAsDataURL(input.files[0]);
 	        }
 	    }
-	    
 	    $("#imgInp").change(function(){
 	        readURL(this);
 	    });
