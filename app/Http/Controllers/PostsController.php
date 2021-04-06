@@ -45,7 +45,7 @@ class PostsController extends Controller
                 $post->image = $file_name;
                 $post->save();
             }
-            return redirect()->back()->with('success', '¡Solicitud Exitosa!');
+            return redirect()->back();
         }
         return redirect()->back();
     }
@@ -57,7 +57,6 @@ class PostsController extends Controller
         if ($post) {
            if ($post->delete()) {
                return response()->json([
-                    'message' => '¡Registro eliminado correctamente!',
                     'code' => '200',
                 ]);
            }

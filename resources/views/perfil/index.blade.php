@@ -9,141 +9,118 @@
 	        		<h3 style="margin-left: 30px; margin-top: 50px">
 	        		{{$user->name}}
 	        		</h3>
-						@if(Auth::user()->id == $user->id)
-							        	<div style="width: 100%;float: left; margin-left: 30px">
-							        	<button class="btn btn-primary float-left" data-toggle="modal" data-target="#addProfileImage" style="background-color: black; color: white; width: 45%;border-color: gray">
-							        		<img src="{{url('/')}}/img/fotoPerfil1.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; float: left; margin-left: 5px">
-							        		<p style="float: left; margin-left: 10px; margin-bottom: 0">Foto de perfil</p>
-							        	</button>
-							        	</div>
-							        	@endif
-
+					@if(Auth::user()->id == $user->id)
+			        	<div style="width: 100%;float: left; margin-left: 30px">
+			        		<button class="btn btn-primary float-left" data-toggle="modal" data-target="#addProfileImage" style="background-color: black; color: white; width: 45%;border-color: gray">
+				        		<img src="{{url('/')}}/img/fotoPerfil1.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; float: left; margin-left: 5px">
+				        		<p style="float: left; margin-left: 10px; margin-bottom: 0">Foto de perfil</p>
+			        		</button>
+			        	</div>
+			        @endif
 	        	</div>
 	        	<div style="width: 100%; float: left; margin-bottom: 0; margin-top: 20px">
 	        		<div style="width: 100%; float: left;height: 50px">
-	        		@if(Auth::user()->id == $user->id)
-	        	<div style="width: 100%;float: left">
-	        	<button class="btn btn-primary float-left" data-toggle="modal" data-target="#addMovie" style="margin-left: 40%; background-color: black; border-color: gray">
-	        		<img src="{{url('/')}}/img/fotoPerfil1.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; float: left; margin-left: 5px">
-							        		<p style="float: left; margin-left: 10px; margin-bottom: 0">Agregar Foto al Album</p>
-	        	</button>
-	        	</div>
-	        	@endif
-	        	</div>
-	        	</div>
+		        		@if(Auth::user()->id == $user->id)
+		        			<div style="width: 100%;float: left">
+			        			<button class="btn btn-primary float-left" data-toggle="modal" data-target="#addMovie" style="margin-left: 40%; background-color: black; border-color: gray">
+				        			<img src="{{url('/')}}/img/fotoPerfil1.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; float: left; margin-left: 5px">
+					        		<p style="float: left; margin-left: 10px; margin-bottom: 0">Agregar Foto al Album</p>
+			        			</button>
+		        			</div>
+		        		@endif
+	        		</div>
+        		</div>
 	        </div>
 	     
 
 		    <!-- POST -->
-		    <div class="py-12" style="background-color: rgb(26,32,44); float: left;width: 100%">
-
-
+		    <div class="py-12" style="background-color: rgb(26,32,44); float: left;width: 100%;">
 		        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-
-
-		            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+		            <div class="bg-white shadow-xl sm:rounded-lg" style="border: none; height: 490px; overflow-x: hidden;scroll-behavior: auto;">
 		 				<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" style="background-color: rgb(26,32,44);" >
-				  			
-
-
 				  			@foreach ($posts as $post)
-								<div class="col mb-4 col">
-									@if(Auth::user()->id == $user->id)
-									<button onclick="remove('{{$post->id}}',this)" class="btn btn-primary float-right">x</button>
-									@endif
-									<div class="card dropdown-item col-md-12" onclick="viewMovie('{{$post->id}}')" data-toggle="modal" data-target="#viewMovie">
+								<div class="col mb-4 col">	
+									<div class="card dropdown-item col-md-12" onclick="viewMovie('{{$post->id}}')" data-toggle="modal" data-target="#viewMovie" style="background-color: rgb(26,32,44);border:none">
 				   						<img src="{{url('/')}}/img/{{ $post->image }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
-				    					<div class="card-body">
-				      						<h5 class="card-title" style="text-align: center;">{{$post->id}}</h5>
-				    					</div>
-				    					<div class="card-footer" style="text-align: center;">
-				      						<small class="text-muted">{{$post->id}} </small>
-			    						</div>
 									</div>
-								</div>
+									@if(Auth::user()->id == $user->id)
+										<button onclick="remove('{{$post->id}}',this)" class="btn btn-primary float-left" style="width: 82%;background-color: red; opacity: 70%; border: none; margin-left: 9%">
+											<p style="float: right; margin-bottom: 0; width: 60%; text-align: left;">Eliminar</p>
+											<img src="{{url('/')}}/img/basura.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; float: right; margin-right: 5px">
+										</button>
+									@endif
+								</div>	
 							@endforeach
 						</div>
 					</div>
 		        </div>
 		    </div>
-
 		</div>
 
-		    <!-- MODAL subir post -->
-		    <div class="modal fade" id="addMovie" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-lg">
-			    <div class="modal-content">
+	    <!-- MODAL subir post -->
+	    <div class="modal fade" id="addMovie" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <form method="post" action="{{ url('post') }}" enctype="multipart/form-data" >
+		      	@csrf 
+		      	<div class="modal-body">
 
-			      <form method="post" action="{{ url('post') }}" enctype="multipart/form-data" >
-			      	@csrf 
-
-			      	<div class="modal-body">
-
-						<div class="form-group">
-						    <label for="exampleInputEmail1">
-						    	Image
-						    </label>
-						    <div class="input-group mb-3">
-						    	<input hidden="" type="text" class="form-control" name="user_id" value="{{Auth::user()->id}}">
-							  	<input type="file" id="imgInp" class="form-control" name="cover_file" required="">
-							 	 <img id="blah" src="#" alt="your image" />
-							</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">
+					    	Image
+					    </label>
+					    <div class="input-group mb-3">
+					    	<input hidden="" type="text" class="form-control" name="user_id" value="{{Auth::user()->id}}">
+						  	<input type="file" id="imgInp" class="form-control" name="cover_file" required="">
+						 	 <img id="blah" src="#" alt="your image" />
 						</div>
+					</div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+			        	Cancelar
+			        </button>
+			        <button type="submit" class="btn btn-primary">
+			        	Guardar
+			        </button>
+			      </div>
+		      </form>
+		    </div>
+		  </div>
+		</div> 
 
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-				        	Cancelar
-				        </button>
-				        <button type="submit" class="btn btn-primary">
-				        	Guardar
-				        </button>
-				      </div>
+		<!-- MODAL foto de perfil -->
+	    <div class="modal fade" id="addProfileImage" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		      <form method="post" action="{{ url('users') }}" enctype="multipart/form-data" >
+		      	@csrf 
+		      	<div class="modal-body">
 
-			      </form>
-
-			    </div>
-			  </div>
-			</div> 
-
-			<!-- MODAL foto de perfil -->
-		    <div class="modal fade" id="addProfileImage" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-lg">
-			    <div class="modal-content">
-
-			      <form method="post" action="{{ url('users') }}" enctype="multipart/form-data" >
-			      	@csrf 
-
-			      	<div class="modal-body">
-
-						<div class="form-group">
-						    <label for="exampleInputEmail1">
-						    	Image
-						    </label>
-						    <div class="input-group mb-3">
-						    	<input hidden="" type="text" class="form-control" name="user_id" value="{{Auth::user()->id}}">
-							  	<input type="file" id="imgInp" class="form-control" name="cover_file" required="">
-							 	 <img id="blah" src="#" alt="your image" />
-							</div>
+					<div class="form-group">
+					    <label for="exampleInputEmail1">
+					    	Image
+					    </label>
+					    <div class="input-group mb-3">
+					    	<input hidden="" type="text" class="form-control" name="user_id" value="{{Auth::user()->id}}">
+						  	<input type="file" id="imgInp" class="form-control" name="cover_file" required="">
+						 	 <img id="blah" src="#" alt="your image" />
 						</div>
+					</div>
 
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-				        	Cancelar
-				        </button>
-				        <button type="submit" class="btn btn-primary">
-				        	Guardar
-				        </button>
-				      </div>
-
-			      </form>
-
-			    </div>
-			  </div>
-			</div> 
-		 
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+			        	Cancelar
+			        </button>
+			        <button type="submit" class="btn btn-primary">
+			        	Guardar
+			        </button>
+			      </div>
+		      </form>
+		    </div>
+		  </div>
+		</div> 
 	</x-slot>
 	<x-slot name="scripts">
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
