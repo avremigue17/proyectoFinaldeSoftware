@@ -5,21 +5,30 @@
     <x-slot name="header">
     	<div>
 	        <div style="margin-top: 60px">
-	        	<div style="width: 45%; float: left; height: 150px">
-	        		<img width="120px" height="120px" src="{{url('/')}}/img/{{ $user->profile_image }}" style="float: right; border-radius: 100px">
+	        	<div style="width: 30%; float: left; height: 150px">
+	        		<img width="150px" height="150px" src="{{url('/')}}/img/{{ $user->profile_image }}" style="float: right; border-radius: 100px">
 	        	</div>
-	        	<div style="width: 30%; float: left; height: 150px;color: white">
-	        		<h3 style="margin-left: 30px; margin-top: 50px">
+	        	<div style="width: 65%; float: left; height: 20px;color: white">
+	        		<h3 style="margin-left: 90px; margin-top: 10px">
 	        		{{$user->name}}
 	        		</h3>
 					@if(Auth::user()->id == $user->id)
-			        	<div style="width: 100%;float: left; margin-left: 30px">
-			        		<button class="btn btn-primary float-left" data-toggle="modal" data-target="#addProfileImage" style="background-color: black; color: white; width: 45%;border-color: gray">
+			        	<div style="width: 100%;float: left; margin-left: 90px">
+			        		<button class="btn btn-primary float-left" data-toggle="modal" data-target="#addProfileImage" style="background-color: black; color: white; width: 235px;border-color: gray">
 				        		<img src="{{url('/')}}/img/fotoPerfil1.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; float: left; margin-left: 5px">
-				        		<p style="float: left; margin-left: 10px; margin-bottom: 0">Foto de perfil</p>
+				        		<p style="float: left; width: 170px; margin-left: 10px; margin-bottom: 0">Cambiar foto de perfil</p>
 			        		</button>
 			        	</div>
 			        @endif
+			        <div style="width: 20%; float: left; height: 50px; margin-left: 90px;">
+	        			<p style="float: left; margin-left: 10px;margin-top: 10px;">Publicaciones</p>
+	        		</div>
+	        		<div style="width: 20%; float: left; height: 50px;margin-left: 10px;">
+	        			<p style="float: left;  margin-left: 10px;margin-top: 10px;">Seguidores</p>
+	        		</div>
+	        		<div style="width: 20%; float: left; height: 50px;margin-left: 10px;">
+	        			<p style="float: left; margin-left: 10px;margin-top: 10px;">Seguidos</p>
+	        		</div>
 	        	</div>
 	        	<div style="width: 100%; float: left; margin-bottom: 0; margin-top: 20px">
 	        		<div style="width: 100%; float: left;height: 50px">
