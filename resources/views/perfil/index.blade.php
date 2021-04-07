@@ -48,7 +48,7 @@
 		    <!-- POST -->
 		    <div class="py-12" style="background-color: rgb(26,32,44); float: left;width: 100%;">
 		        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-		            <div class="bg-white shadow-xl sm:rounded-lg element" style="border: none; height: 490px; overflow-x: hidden;">
+		            <div class=" shadow-xl sm:rounded-lg element" style="border: none; height: 490px; overflow-x: hidden; background-color:rgb(26,32,44)">
 		 				<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" style="background-color: rgb(26,32,44);" >
 				  			@foreach ($posts as $post)
 								<div class="col mb-4 col">	
@@ -274,7 +274,7 @@
 		function remove(id,target)
 		{
         swal({
-	        title: "¿Desea Eliminar Pelicula?",
+	        title: "¿Desea Eliminar la Imagen?",
 	        icon: "warning",
 	        buttons: true,
 	        dangerMode: true,
@@ -289,7 +289,7 @@
 		          }
 		        }).then(function (response) { 
 		            if(response.data.code==200){
-		              swal("¡Pelicula Eliminada Correctamente!", {
+		              swal("¡Imagen Eliminada Correctamente!", {
 		                icon: "success",
 		              });
 		              $(target).parent().remove();
