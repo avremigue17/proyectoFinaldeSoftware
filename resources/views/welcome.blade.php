@@ -41,7 +41,7 @@
                     <img src="{{url('/')}}/img/cinta.png" class="card-img-top" alt="..." style="width: 500px; height: 300px; margin-top: 20px;">
                 </div>
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg" style="background-color: transparent;">
+                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg" style="background-color: black;">
                     <h1 style="color: white; text-align: center;">Tus Peliculas y Series Favoritas...</h1>
                 </div>
             </div>

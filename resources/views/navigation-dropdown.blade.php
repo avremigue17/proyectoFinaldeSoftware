@@ -55,7 +55,7 @@
                             </a>
                         </div>
                     -->
-                    <div style="float: right; margin-left: 50px;" >
+                    <div style="float: right; margin-left: 10px;" >
                         <a class="navbar-brand" href="{{ route('dashboard')}}">
                         <img src="{{url('/')}}/img/home.png" class="card-img-top" alt="..." style="width: 30px; height: 30px; margin-top: 50%;">
                         </a>
@@ -91,15 +91,7 @@
                                 {{ __('Perfil') }}
                             </x-jet-responsive-nav-link>
 
-                            @if(Auth::user()->hasRole('Admin'))
-                            <x-jet-responsive-nav-link href="{{ route('categories')}}">
-                                {{ __('Categorias') }}
-                            </x-jet-responsive-nav-link>
-
-                            <x-jet-responsive-nav-link href="{{ route('users')}}">
-                                {{ __('Usuarios') }}
-                            </x-jet-responsive-nav-link>
-                            @endif
+                            
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
@@ -179,7 +171,7 @@
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
                 <div class="flex-shrink-0">
-                    <img class="h-10 w-10 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                    <img class="h-10 w-10 rounded-full" src="{{url('/')}}/img/{{Auth::user()->profile_image }}"  />
                 </div>
 
                 <div class="ml-3">
@@ -194,24 +186,7 @@
                     {{ __('Perfil') }}
                 </x-jet-responsive-nav-link>
 
-                <x-jet-responsive-nav-link href="{{ route('movies')}}">
-                    {{ __('Peliculas') }}
-                </x-jet-responsive-nav-link>
-
-                <x-jet-responsive-nav-link href="{{ route('loans')}}">
-                    {{ __('Prestamos') }}
-                </x-jet-responsive-nav-link>
-                        
-                @if(Auth::user()->hasRole('Admin'))
-                <x-jet-responsive-nav-link href="{{ route('categories')}}">
-                    {{ __('Categorias') }}
-                </x-jet-responsive-nav-link>
-
-                <x-jet-responsive-nav-link href="{{ route('users')}}">
-                    {{ __('Usuarios') }}
-                </x-jet-responsive-nav-link>
-                @endif
-
+               
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                         {{ __('API Tokens') }}
