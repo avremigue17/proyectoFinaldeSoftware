@@ -61,7 +61,7 @@
                         </a>
                     </div>     
                 </div> 
-                <div style="float: left; " >
+                <div style="float: left; background-color: black" >
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -72,7 +72,7 @@
                                 <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                                     <div style="float: right; margin-left: 10px;" >
                                         <a class="navbar-brand" href="#">
-                                        <img src="{{url('/')}}/img/user.png" class="card-img-top" alt="..." style="width: 30px; height: 23px; margin-top: 50%;  float: right;">
+                                        <img src="{{url('/')}}/img/{{Auth::user()->profile_image }}" class=" rounded-full" alt="..." style="width: 30px; height: 23px; margin-top: 50%;  float: right;">
                                         </a>
                                     </div>
                                 </button>
@@ -88,7 +88,6 @@
                             </x-jet-responsive-nav-link>-->
                             
                             <x-jet-responsive-nav-link href="{{ route('perfil', Auth::user()->id)}}">
-                                <img class="h-10 w-10 rounded-full" src="{{url('/')}}/img/{{Auth::user()->profile_image }}" style="float: left; width: 30px;height: 30px; margin-right: 10px;" />
                                {{ __('Perfil') }}
                             </x-jet-responsive-nav-link>
 

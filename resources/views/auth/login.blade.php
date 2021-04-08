@@ -2,7 +2,7 @@
 
     <div class="fixed top-0 right-0 px-6 py-4 sm:block">
     <div>
-         <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline" style="color: black; font-size: 15px;">Registrar</a>
+         <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline" style="color: white; font-size: 15px;">Registrar</a>
     </div>
     </div>
 
