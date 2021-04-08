@@ -46,13 +46,13 @@
 	     
 
 		    <!-- POST -->
-		    <div class="py-12" style="background-color: rgb(26,32,44); float: left;width: 100%;">
+		    <div class="py-12" style="background-color: black; float: left;width: 100%;">
 		        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-		            <div class=" shadow-xl sm:rounded-lg element" style="border: none; height: 490px; overflow-x: hidden; background-color:rgb(26,32,44)">
-		 				<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" style="background-color: rgb(26,32,44);" >
+		            <div class=" shadow-xl sm:rounded-lg element" style="border: none; height: 490px; overflow-x: hidden; background-color:black;border: solid white;">
+		 				<div class="row row-cols-2 row-cols-md-3 row-cols-lg-4" style="background-color: black;" >
 				  			@foreach ($posts as $post)
-								<div class="col mb-4 col">	
-									<div class="card dropdown-item col-md-12" onclick="viewMovie('{{$post->id}}')" data-toggle="modal" data-target="#viewMovie" style="background-color: rgb(26,32,44);border:none">
+								<div class="col mb-4 col" style="margin-top: 20px">	
+									<div class="card dropdown-item col-md-12" onclick="viewMovie('{{$post->id}}')" data-toggle="modal" data-target="#viewMovie" style="background-color: black;border:none">
 				   						<img src="{{url('/')}}/img/{{ $post->image }}" class="card-img-top" alt="..." style="width: 100%; height: 200px">
 									</div>
 									@if(Auth::user()->id == $user->id)
