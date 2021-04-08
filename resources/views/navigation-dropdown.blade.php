@@ -88,7 +88,8 @@
                             </x-jet-responsive-nav-link>-->
                             
                             <x-jet-responsive-nav-link href="{{ route('perfil', Auth::user()->id)}}">
-                                {{ __('Perfil') }}
+                                <img class="h-10 w-10 rounded-full" src="{{url('/')}}/img/{{Auth::user()->profile_image }}" style="float: left; width: 30px;height: 30px; margin-right: 10px;" />
+                               {{ __('Perfil') }}
                             </x-jet-responsive-nav-link>
 
                             
