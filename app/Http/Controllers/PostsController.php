@@ -12,7 +12,7 @@ class PostsController extends Controller
 {
     public function index()
     {
-    	$posts = Posts::all()->sortByDesc('created_at');;
+    	$posts = Posts::all()->sortByDesc('created_at');
         $postLikes = PostLikes::all();
         $users = User::all();
         $comments = Comments::all();
@@ -22,7 +22,7 @@ class PostsController extends Controller
 
     public function perfil($id)
     {
-    	$posts = Posts::where("user_id", $id)->get();
+    	$posts = Posts::where("user_id", $id)->get()->sortByDesc('created_at');
         $user = User::findOrFail($id);
         $comments = Comments::all();
 
