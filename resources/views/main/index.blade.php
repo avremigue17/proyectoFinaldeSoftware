@@ -4,9 +4,9 @@
   </style>
   <x-slot name="header">
     <div>
-      <div style="width: 27%; float: right;margin-top: 20px"></div>
+      <div id="divIzquierda" style="width: 27%; float: right;margin-top: 20px"></div>
 
-      <div style="width: 50%;float: right; margin-top: 30px;background-color: black">
+      <div id="divCentral" style="width: 50%;float: right; margin-top: 30px;background-color: black">
         <div class="my-3 p-3 bg-body rounded shadow-sm">
           <h6 class="border-bottom pb-2 mb-0" style="color: white">Publicaciones recientes</h6>
 
@@ -69,24 +69,26 @@
                     <div class="modal-content">
                       <div class="modal-body">
                         <div class="card mb-3" style="align-items: center;width: 55%; float: left; height: 480px; border:none;">
-                        <img src="" class="card-img-top" alt="..." id="imageview" style="width: 80%; height: 100%">
+                        <img src="" class="card-img-top" alt="..." id="imageview" style="width: 100%; height: 100%">
                       </div>
-                      <div class="element" style="width: 40%;float: right; height: 400px; overflow-y: scroll;" id="myDIV">
+                      <div style="float: right; width: 43%; border: solid .05px #D1D1D1;">
+                      <div class="element" style="width: 100%;float: right; height: 361px; overflow-y: scroll;" id="myDIV">
                         
                       </div>
-                      <div style="float: right; width: 40%;">
+                      <div style="float: right; width: 100%;">
                         <form method="get" action="{{ url('comments') }}" enctype="multipart/form-data">
                           <div>
                             
-                          <textarea class="form-control" rows="1" placeholder="Hacer un comentario" name="text"></textarea>
+                          <textarea class="form-control" rows="2" placeholder="Hacer un comentario" name="text" style="margin:  5px; width: 97%"></textarea>
                           <input type="hidden" class="form-control" name="user_id" value="{{Auth::user()->id}}">
                           <input type="hidden" id="comentario" class="form-control" name="post_id">
                           <input type="hidden" class="form-control" name="fecha_de_creacion" value="0">
-                          <button type="submit" class="btn btn-primary" style="background-color: black; border: none; height:35px; margin-top: 5px;">
+                          <button type="submit" class="btn btn-primary" style="background-color: black; border: none; height:35px; margin: 5px; float:left;">
                             Comentar
                           </button>
                         </div>
                       </form>
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -123,7 +125,7 @@
         </div>
       </div>
 
-      <div style="width: 23%; float: right;margin-top: 20px"></div>
+      <div id="divDerecha" style="width: 23%; float: right;margin-top: 20px"></div>
     </div>
   </x-slot>
   <x-slot name="scripts">
@@ -148,10 +150,19 @@
             p1.style.fontWeight="bolder";
             p1.style.marginBottom="0";
             p1.style.float="left";
-            p1.style.width="92%";
+            p1.style.width="90%";
+            p1.style.marginLeft="4px";
+            p1.style.marginTop="0";
+            p1.style.marginBottom="0";
+            p2.style.marginLeft="4px";
+            p2.style.marginTop="0";
+            p2.style.marginBottom="0";
+            img.style.marginLeft="4px";
+            img.style.marginTop="5px";
             img.style.width="20px";
             img.style.height="20px";
             img.style.float="left";
+            img.style.borderRadius="100px";
 
             img.src ="{{url('/')}}/img/" + "{{$comment->user->profile_image}}";
             var u = document.createTextNode("{{$comment->user->name}}");
