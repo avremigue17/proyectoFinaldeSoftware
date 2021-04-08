@@ -22,7 +22,7 @@
                         </form>-->
                         <form class="typeahead" role="search">
                           <div class="form-group" >
-                            <input type="search" name="q" class="form-control search-input" placeholder=Buscar autocomplete="off" style="width: 300px">
+                            <input type="search" name="q" class="form-control search-input" placeholder=Buscar autocomplete="off" style="width: 300px;background-color: black;color: white;">
                           </div>
                         </form>
                       </div>
@@ -276,7 +276,7 @@
                         '<div class="list-group search-results-dropdown">'
                     ],
                     suggestion: function (data) {
-                        return `<a  onclick="hack(`+data.id+`)" class="list-group-item">` + data.name + `</a>`
+                        return `<div style="align:center"><a style="background-color:black" onclick="hack(`+data.id+`)" class="list-group-item">` + data.name + `</a></div>`
               }
                 }
             });
