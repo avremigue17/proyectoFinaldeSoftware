@@ -21,7 +21,7 @@
 			        	</div>
 			        @endif
 			        <div style="width: 20%; float: left; height: 50px; margin-left: 90px;">
-	        			<p style="float: left; margin-left: 10px;margin-top: 10px;">Publicaciones</p>
+	        			<p style="float: left; margin-left: 10px;margin-top: 10px;">{{sizeOf($posts)}} Publicaciones</p>
 	        		</div>
 	        		<div style="width: 20%; float: left; height: 50px;margin-left: 10px;">
 	        			<p style="float: left;  margin-left: 10px;margin-top: 10px;">Seguidores</p>
