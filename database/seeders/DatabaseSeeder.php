@@ -13,15 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    	$this->call(CategorySeeder::class);
-    	$this->call(MovieSeeder::class);
  		$this->call(UserTableSeeder::class); 
         $this->call(PermissionsTableSeeder::class);
-        $this->call(LoanSeeder::class);
         $this->call(PostsSeeder::class); 
         $this->call(CommentsSeeder::class);
-        $this->call(PostlikesSeeder::class); 
-        // \App\Models\User::factory(10)->create();
+        $this->call(PostlikesSeeder::class);
         //php artisan db:seed
         //php artisan migrate:fresh --seed
     }
