@@ -44,5 +44,4 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/users-info/{user}','UserController@get');
 	Route::put('/users','UserController@update');
 	Route::delete('/users','UserController@destroy')->name('users');
-
 });
