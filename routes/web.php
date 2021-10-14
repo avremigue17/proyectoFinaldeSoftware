@@ -22,7 +22,7 @@ Route::get('/welcome', function () {
 })->name('welcome');;
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 'PostsController@index')->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/test/{id}', 'PostsController@index')->name('test');
 
 Route::middleware(['auth'])->group(function(){
 

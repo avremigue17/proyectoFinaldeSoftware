@@ -10,14 +10,16 @@ use App\Models\Comments;
 
 class PostsController extends Controller
 {
-    public function index()
+    public function index($id)
     {
     	$posts = Posts::all()->sortByDesc('created_at');
         $postLikes = PostLikes::all();
         $users = User::all();
+        $user = User::findOrFail($id);
         $comments = Comments::all();
 
-        return view('main.index', compact('posts','postLikes','users','comments'));
+        return view('test', compact('users'));
+        //return view('main.index', compact('posts','postLikes','users','comments'));
     }
 
     public function perfil($id)

@@ -5,7 +5,7 @@
             <div class="flex" style="width: 30%">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center" style="background-color: black">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ route('test', 3) }}">
                         <img src="{{url('/')}}/img/logo.png" class="card-img-top" alt="..." style="width: 150px; height: 60px;margin-left: 30%">
                     </a>
                 </div>
@@ -56,7 +56,7 @@
                         </div>
                     -->
                     <div style="float: right; margin-left: 10px;" >
-                        <a class="navbar-brand" href="{{ route('dashboard')}}">
+                        <a class="navbar-brand" href="{{ route('test', 3)}}">
                         <img src="{{url('/')}}/img/home.png" class="card-img-top" alt="..." style="width: 30px; height: 30px; margin-top: 50%;">
                         </a>
                     </div>     
@@ -162,7 +162,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <x-jet-responsive-nav-link href="{{ route('test', 3) }}" :active="request()->routeIs('test', 3)">
                 {{ __('Inicio') }}
             </x-jet-responsive-nav-link>
         </div>
