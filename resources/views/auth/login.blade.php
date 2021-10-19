@@ -11,7 +11,7 @@
             <x-slot name="logo">
                 <div class="flex-shrink-0 flex items-center" style="margin-left: 30%">
                     <a href="{{ route('login') }}">
-                        <img src="{{url('/')}}/img/cinta3.png" class="card-img-top" alt="..." style="width: 170px; height:  150px; margin-top: 10px">
+                        <img src="{{url('/')}}/img/logo.png" class="card-img-top" alt="..." style="width: 170px; height:  150px; margin-top: 10px">
                     </a>
                 </div>
             </x-slot>
