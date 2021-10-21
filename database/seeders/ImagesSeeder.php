@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\images;
 
 class ImagesSeeder extends Seeder
 {
@@ -13,6 +14,8 @@ class ImagesSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $image = new images();
+        $image->img ="default.png";
+        $image->save();
     }
 }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\templates;
 
 class TemplatesSeeder extends Seeder
 {
@@ -13,6 +14,7 @@ class TemplatesSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $template = new templates();
+        $template->save();
     }
 }
