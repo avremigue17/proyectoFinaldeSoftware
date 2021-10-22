@@ -33,33 +33,7 @@
            
             <div class="hidden sm:flex sm:items-center sm:ml-6" style="width: 30%">
                 <div style="width: 90%; margin-left: 20px">
-                    <div style="float: right; margin-left: 10px" >
-                        <a class="navbar-brand" href="#">
-                        <img src="{{url('/')}}/img/gps.png" class="card-img-top" alt="..." style="width: 30px; height: 30px; margin-top: 50%">
-                        </a>
-                    </div>
-                    <div style="float: right;margin-left: 10px" >
-                        <a class="navbar-brand" href="#">
-                        <img src="{{url('/')}}/img/cora.png" class="card-img-top" alt="..." style="width: 30px; height: 30px; margin-top: 50%">
-                        </a>
-                    </div>
-                    <div style="float: right;margin-left: 10px" >
-                        <a class="navbar-brand" href="#">
-                        <img src="{{url('/')}}/img/messenger.png" class="card-img-top" alt="..." style="width: 30px; height: 30px; margin-top: 50%">
-                        </a>
-                    </div>
-                     <!--
-                         <div style="float: right;"  >
-                            <a class="navbar-brand" href="#">
-                            <img src="{{url('/')}}/img/mas.png" class="card-img-top" alt="..." style="width: 20px; height: 20px; margin-top: 50%">
-                            </a>
-                        </div>
-                    -->
-                    <div style="float: right; margin-left: 10px;" >
-                        <a class="navbar-brand" href="{{ route('test', 3)}}">
-                        <img src="{{url('/')}}/img/home.png" class="card-img-top" alt="..." style="width: 30px; height: 30px; margin-top: 50%;">
-                        </a>
-                    </div>     
+                         
                 </div> 
                 <div style="float: left; background-color: black" >
                     <x-jet-dropdown align="right" width="48">
