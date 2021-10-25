@@ -25,8 +25,6 @@ class CreateUsersTable extends Migration
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
             $table->integer('role_id')->default(2);
-            $table->unsignedBigInteger('post_id')->default(1);
-            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RecordsSeeder::class);
         $this->call(QuestionsSeeder::class);
         $this->call(AnswersSeeder::class);
+        $this->call(UserPostsSeeder::class);
         //php artisan db:seed
         //php artisan migrate:fresh --seed
     }

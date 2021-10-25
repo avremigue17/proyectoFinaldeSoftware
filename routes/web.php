@@ -26,7 +26,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/test/{id}', 'PostsControl
 
 Route::middleware(['auth'])->group(function(){
 
-	Route::get('/comments','CommentsController@create')->name('comments');
+	Route::get('/create-area','AreasController@create')->name('create-area');
+	Route::delete('/delete-area','AreasController@destroy')->name('delete-area');
 
 	Route::get('/perfil/{id}','PostsController@perfil')->name('perfil');
 

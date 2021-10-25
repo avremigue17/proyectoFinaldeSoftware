@@ -7,79 +7,34 @@ use Illuminate\Http\Request;
 
 class AreasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
+    public function create(Request $request)
+    {   
+        $data = $request->all();
+        $area = new areas;
+        $area->name = $data["name"];
+        $area->save();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return redirect()->back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function destroy(Request $request)
     {
-        //
-    }
+        $area = areas::find($request['id']);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\areas  $areas
-     * @return \Illuminate\Http\Response
-     */
-    public function show(areas $areas)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\areas  $areas
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(areas $areas)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\areas  $areas
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, areas $areas)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\areas  $areas
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(areas $areas)
-    {
-        //
+        if ($area) {
+           if ($area->delete()) {
+               return response()->json([
+                    'code' => '200',
+                ]);
+           }
+        }
+        return response()->json([
+            'message' => '¡No se pudo eliminar el registro!',
+            'code' => '400',
+        ]);
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Posts;
 use App\Models\PostLikes;
 use App\Models\User;
 use App\Models\Comments;
+use App\Models\Areas;
 
 class PostsController extends Controller
 {
@@ -15,10 +16,11 @@ class PostsController extends Controller
     	$posts = Posts::all()->sortByDesc('created_at');
         $postLikes = PostLikes::all();
         $users = User::all();
+        $areas = Areas::all();
         $user = User::findOrFail($id);
         $comments = Comments::all();
 
-        return view('test', compact('users'));
+        return view('test', compact('users','areas'));
         //return view('main.index', compact('posts','postLikes','users','comments'));
     }
 
