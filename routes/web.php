@@ -29,6 +29,9 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/create-area','AreasController@create')->name('create-area');
 	Route::delete('/delete-area','AreasController@destroy')->name('delete-area');
 
+	Route::get('/create-image','ImagesController@create')->name('create-image');
+	Route::delete('/delete-image','ImagesController@destroy')->name('delete-image');
+
 	Route::get('/perfil/{id}','PostsController@perfil')->name('perfil');
 
 	Route::get('find', 'SearchController@find');
@@ -39,7 +42,6 @@ Route::middleware(['auth'])->group(function(){
 	
 	Route::post('/postLikes','PostLikesController@store')->name('like');
 	Route::delete('/postLikes','PostLikesController@destroy')->name('like');
-
 
 	Route::get('/users','UserController@index')->name('users');
 	Route::post('/users','UserController@edit')->name('users');

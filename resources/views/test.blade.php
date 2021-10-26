@@ -48,6 +48,22 @@
             <p>{{ $post->name }} <button onclick="removePost('{{$post->id}}',this)">X</button></p>
           @endforeach
         </div>
+        <p>-----------------------------</p>
+        <form method="get" action="{{ url('create-image') }}" enctype="multipart/form-data">
+          <div>
+            <textarea class="form-control" rows="1" placeholder="imagen" name="img" style="margin:  5px; width: 50%"></textarea>
+            <textarea class="form-control" rows="1" placeholder="template" name="template_id" style="margin:  5px; width: 50%"></textarea>
+            <button type="submit" class="btn btn-primary" style="background-color: black; border: none; height:35px; margin: 5px; float:left;">
+              guardar imagen
+            </button>
+          </div>
+        </form>
+        <div class="mt-20">
+          <h1>imagenes:</h1>
+          @foreach($images as $image)
+            <p>{{ $image->img }} <button onclick="removeImage('{{$image->id}}',this)">X</button></p>
+          @endforeach
+        </div>
       </div>
 
       <div id="divDerecha" style="width: 23%; float: right;margin-top: 20px"></div>
@@ -94,6 +110,7 @@
       });
     }
 
+    //remove puesto
     function removePost(id,target)
     {
       swal({
@@ -113,6 +130,42 @@
           }).then(function (response) { 
               if(response.data.code==200){
                 swal("puesto Eliminado Correctamente!", {
+                  icon: "success",
+                });
+                $(target).parent().remove();
+              }else{
+                swal("¡Ocurrio un Error!", {
+                  icon: "error",
+                });
+              }
+          });
+            
+          } else {
+            swal("¡Solicitud Cancelada!");
+          }
+      });
+    }
+
+    //remove image
+    function removeImage(id,target)
+    {
+      swal({
+        title: "¿Desea Eliminar la imagen?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) =>{
+          if (willDelete) {
+            axios({
+            method: 'delete',
+            url: '{{ url('delete-image') }}',
+            data: {
+              id: id,
+              _token: '{{ csrf_token() }}'
+            }
+          }).then(function (response) { 
+              if(response.data.code==200){
+                swal("imagen Eliminado Correctamente!", {
                   icon: "success",
                 });
                 $(target).parent().remove();

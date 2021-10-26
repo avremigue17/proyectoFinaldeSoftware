@@ -8,19 +8,19 @@ use App\Models\PostLikes;
 use App\Models\User;
 use App\Models\Comments;
 use App\Models\Areas;
+use App\Models\images;
 
 class PostsController extends Controller
 {
     public function index($id)
     {
     	$posts = Posts::all()->sortByDesc('created_at');
-        $postLikes = PostLikes::all();
         $users = User::all();
         $areas = Areas::all();
+        $images = images::all();
         $user = User::findOrFail($id);
-        $comments = Comments::all();
 
-        return view('test', compact('users','areas','posts'));
+        return view('test', compact('users','areas','posts','images'));
         //return view('main.index', compact('posts','postLikes','users','comments'));
     }
 
