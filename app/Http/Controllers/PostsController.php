@@ -10,6 +10,7 @@ use App\Models\Comments;
 use App\Models\Areas;
 use App\Models\images;
 use App\Models\texts;
+use App\Models\templates;
 
 class PostsController extends Controller
 {
@@ -20,9 +21,10 @@ class PostsController extends Controller
         $areas = Areas::all();
         $images = images::all();
         $texts = texts::all();
+        $templates = templates::all();
         $user = User::findOrFail($id);
 
-        return view('test', compact('users','areas','posts','images','texts'));
+        return view('test', compact('users','areas','posts','images','texts','templates'));
         //return view('main.index', compact('posts','postLikes','users','comments'));
     }
 

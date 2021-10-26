@@ -7,79 +7,35 @@ use Illuminate\Http\Request;
 
 class TemplatesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function create(Request $request)
+    {   
+        $data = $request->all();
+        $template = new templates;
+        $template->course_id = $data["course_id"];
+        $template->save();
+
+        return redirect()->back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function destroy(Request $request)
     {
-        //
-    }
+        $template = templates::find($request['id']);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\templates  $templates
-     * @return \Illuminate\Http\Response
-     */
-    public function show(templates $templates)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\templates  $templates
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(templates $templates)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\templates  $templates
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, templates $templates)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\templates  $templates
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(templates $templates)
-    {
-        //
+        if ($template) {
+           if ($template->delete()) {
+               return response()->json([
+                    'code' => '200',
+                ]);
+           }
+        }
+        return response()->json([
+            'message' => '¡No se pudo eliminar el registro!',
+            'code' => '400',
+        ]);
     }
 }

@@ -80,6 +80,28 @@
             <p>{{ $text->text }} <button onclick="removeText('{{$text->id}}',this)">X</button></p>
           @endforeach
         </div>
+        <p>-----------------------------</p>
+        <form method="get" action="{{ url('create-template') }}" enctype="multipart/form-data">
+          <div>
+            <textarea class="form-control" rows="1" placeholder="course" name="course_id" style="margin:  5px; width: 50%"></textarea>
+            <button type="submit" class="btn btn-primary" style="background-color: black; border: none; height:35px; margin: 5px; float:left;">
+              guardar template
+            </button>
+          </div>
+        </form>
+        <div class="mt-20">
+          <h1>templates:</h1>
+          @foreach($templates as $template)
+            <p>{{ $template->course_id }} <button onclick="removeTemplate('{{$template->id}}',this)">X</button></p>
+            @foreach($images as $image)  
+            <p>
+              @if($image->template_id == $template->id)
+              {{ $image->img }}
+              @endif
+            </p>
+            @endforeach
+          @endforeach
+        </div>
       </div>
 
       <div id="divDerecha" style="width: 23%; float: right;margin-top: 20px"></div>
@@ -211,6 +233,42 @@
             axios({
             method: 'delete',
             url: '{{ url('delete-text') }}',
+            data: {
+              id: id,
+              _token: '{{ csrf_token() }}'
+            }
+          }).then(function (response) { 
+              if(response.data.code==200){
+                swal("texto Eliminado Correctamente!", {
+                  icon: "success",
+                });
+                $(target).parent().remove();
+              }else{
+                swal("¡Ocurrio un Error!", {
+                  icon: "error",
+                });
+              }
+          });
+            
+          } else {
+            swal("¡Solicitud Cancelada!");
+          }
+      });
+    }
+
+    //remove template
+    function removeTemplate(id,target)
+    {
+      swal({
+        title: "¿Desea Eliminar el template?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) =>{
+          if (willDelete) {
+            axios({
+            method: 'delete',
+            url: '{{ url('delete-template') }}',
             data: {
               id: id,
               _token: '{{ csrf_token() }}'

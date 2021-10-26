@@ -35,6 +35,9 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/create-text','TextsController@create')->name('create-text');
 	Route::delete('/delete-text','TextsController@destroy')->name('delete-text');
 
+	Route::get('/create-template','TemplatesController@create')->name('create-template');
+	Route::delete('/delete-template','TemplatesController@destroy')->name('delete-template');
+
 	Route::get('/perfil/{id}','PostsController@perfil')->name('perfil');
 
 	Route::get('find', 'SearchController@find');
