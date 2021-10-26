@@ -29,7 +29,23 @@
         <div class="mt-20">
           <h1>Areas:</h1>
           @foreach($areas as $area)
-            <p>{{ $area->name }} <button onclick="remove('{{$area->id}}',this)">X</button></p>
+            <p>{{ $area->name }} <button onclick="removeArea('{{$area->id}}',this)">X</button></p>
+          @endforeach
+        </div>
+        <p>-----------------------------</p>
+        <form method="get" action="{{ url('create-post') }}" enctype="multipart/form-data">
+          <div>
+            <textarea class="form-control" rows="1" placeholder="puesto" name="name" style="margin:  5px; width: 50%"></textarea>
+            <textarea class="form-control" rows="1" placeholder="area" name="area_id" style="margin:  5px; width: 50%"></textarea>
+            <button type="submit" class="btn btn-primary" style="background-color: black; border: none; height:35px; margin: 5px; float:left;">
+              guardar puesto
+            </button>
+          </div>
+        </form>
+        <div class="mt-20">
+          <h1>puestos:</h1>
+          @foreach($posts as $post)
+            <p>{{ $post->name }} <button onclick="removePost('{{$post->id}}',this)">X</button></p>
           @endforeach
         </div>
       </div>
@@ -42,7 +58,8 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
   <script type="text/javascript">
 
-    function remove(id,target)
+    //remueve un area
+    function removeArea(id,target)
     {
       swal({
         title: "¿Desea Eliminar el area?",
@@ -60,7 +77,42 @@
             }
           }).then(function (response) { 
               if(response.data.code==200){
-                swal("¡Imagen Eliminada Correctamente!", {
+                swal("¡area Eliminada Correctamente!", {
+                  icon: "success",
+                });
+                $(target).parent().remove();
+              }else{
+                swal("¡Ocurrio un Error!", {
+                  icon: "error",
+                });
+              }
+          });
+            
+          } else {
+            swal("¡Solicitud Cancelada!");
+          }
+      });
+    }
+
+    function removePost(id,target)
+    {
+      swal({
+        title: "¿Desea Eliminar el puesto?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) =>{
+          if (willDelete) {
+            axios({
+            method: 'delete',
+            url: '{{ url('delete-post') }}',
+            data: {
+              id: id,
+              _token: '{{ csrf_token() }}'
+            }
+          }).then(function (response) { 
+              if(response.data.code==200){
+                swal("puesto Eliminado Correctamente!", {
                   icon: "success",
                 });
                 $(target).parent().remove();

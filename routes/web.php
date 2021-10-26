@@ -34,7 +34,8 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('find', 'SearchController@find');
 
 	Route::post('/post','PostsController@store')->name('post');
-	Route::delete('/post','PostsController@destroy')->name('post');
+	Route::get('/create-post','PostsController@create')->name('create-post');
+	Route::delete('/delete-post','PostsController@destroy')->name('delete-post');
 	
 	Route::post('/postLikes','PostLikesController@store')->name('like');
 	Route::delete('/postLikes','PostLikesController@destroy')->name('like');

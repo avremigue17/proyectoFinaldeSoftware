@@ -20,8 +20,19 @@ class PostsController extends Controller
         $user = User::findOrFail($id);
         $comments = Comments::all();
 
-        return view('test', compact('users','areas'));
+        return view('test', compact('users','areas','posts'));
         //return view('main.index', compact('posts','postLikes','users','comments'));
+    }
+
+    public function create(Request $request)
+    {   
+        $data = $request->all();
+        $post = new Posts;
+        $post->name = $data["name"];
+        $post->area_id = $data["area_id"];
+        $post->save();
+
+        return redirect()->back();
     }
 
     public function perfil($id)
