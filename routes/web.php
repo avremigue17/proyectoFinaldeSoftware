@@ -32,6 +32,9 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/create-image','ImagesController@create')->name('create-image');
 	Route::delete('/delete-image','ImagesController@destroy')->name('delete-image');
 
+	Route::get('/create-text','TextsController@create')->name('create-text');
+	Route::delete('/delete-text','TextsController@destroy')->name('delete-text');
+
 	Route::get('/perfil/{id}','PostsController@perfil')->name('perfil');
 
 	Route::get('find', 'SearchController@find');

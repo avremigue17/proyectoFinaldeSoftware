@@ -7,79 +7,36 @@ use Illuminate\Http\Request;
 
 class TextsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function create(Request $request)
+    {   
+        $data = $request->all();
+        $text = new texts;
+        $text->text = $data["text"];
+        $text->template_id = $data["template_id"];
+        $text->save();
+
+        return redirect()->back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function destroy(Request $request)
     {
-        //
-    }
+        $text = texts::find($request['id']);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\texts  $texts
-     * @return \Illuminate\Http\Response
-     */
-    public function show(texts $texts)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\texts  $texts
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(texts $texts)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\texts  $texts
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, texts $texts)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\texts  $texts
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(texts $texts)
-    {
-        //
+        if ($text) {
+           if ($text->delete()) {
+               return response()->json([
+                    'code' => '200',
+                ]);
+           }
+        }
+        return response()->json([
+            'message' => '¡No se pudo eliminar el registro!',
+            'code' => '400',
+        ]);
     }
 }

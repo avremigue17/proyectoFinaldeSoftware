@@ -64,6 +64,22 @@
             <p>{{ $image->img }} <button onclick="removeImage('{{$image->id}}',this)">X</button></p>
           @endforeach
         </div>
+        <p>-----------------------------</p>
+        <form method="get" action="{{ url('create-text') }}" enctype="multipart/form-data">
+          <div>
+            <textarea class="form-control" rows="1" placeholder="texto" name="text" style="margin:  5px; width: 50%"></textarea>
+            <textarea class="form-control" rows="1" placeholder="template" name="template_id" style="margin:  5px; width: 50%"></textarea>
+            <button type="submit" class="btn btn-primary" style="background-color: black; border: none; height:35px; margin: 5px; float:left;">
+              guardar texto
+            </button>
+          </div>
+        </form>
+        <div class="mt-20">
+          <h1>textos:</h1>
+          @foreach($texts as $text)
+            <p>{{ $text->text }} <button onclick="removeText('{{$text->id}}',this)">X</button></p>
+          @endforeach
+        </div>
       </div>
 
       <div id="divDerecha" style="width: 23%; float: right;margin-top: 20px"></div>
@@ -166,6 +182,42 @@
           }).then(function (response) { 
               if(response.data.code==200){
                 swal("imagen Eliminado Correctamente!", {
+                  icon: "success",
+                });
+                $(target).parent().remove();
+              }else{
+                swal("¡Ocurrio un Error!", {
+                  icon: "error",
+                });
+              }
+          });
+            
+          } else {
+            swal("¡Solicitud Cancelada!");
+          }
+      });
+    }
+
+    //remove texto
+    function removeText(id,target)
+    {
+      swal({
+        title: "¿Desea Eliminar el texto?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) =>{
+          if (willDelete) {
+            axios({
+            method: 'delete',
+            url: '{{ url('delete-text') }}',
+            data: {
+              id: id,
+              _token: '{{ csrf_token() }}'
+            }
+          }).then(function (response) { 
+              if(response.data.code==200){
+                swal("texto Eliminado Correctamente!", {
                   icon: "success",
                 });
                 $(target).parent().remove();
