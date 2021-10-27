@@ -5,10 +5,42 @@
   </style>
 
   <x-slot name="header">
-    <div>
-      <div id="divIzquierda" style="width: 27%; float: right;margin-top: 20px"></div>
-
-      <div id="divCentral" style="width: 50%;float: right; margin-top: 30px;background-color:white">
+    
+  </x-slot>
+<div class="container" style="float: left;">
+ <div class="row row-cols-1 row-cols-md-2 g-4 p-5" style="text-align: center;">
+  <div class="col-md-5 p-2" style="">
+    <div class="card" style="background-color: #03989E">
+      <div class="card-body">
+        <h1 style="color: white">Registrar un Area / Puesto</h1>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5 p-2">
+    <div class="card" style="background-color: #03989E">
+      <div class="card-body">
+        <h1 style="color: white">Registrar un Candidato</h1>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5 p-2">
+    <div class="card" style="background-color: #03989E">
+      <div class="card-body">
+        <h1 style="color: white">Registrar un Curso nuevo</h1>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5 p-2">
+    <div class="card" style="background-color: #03989E">
+      <div class="card-body">
+        <h1 style="color: white">Tablero de informacion</h1>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+      <!--
+        <div id="divCentral" style="width: 50%;float: right; margin-top: 30px;background-color:white">
         <div class="my-3 p-3 bg-body rounded shadow-sm">
           @if(Auth::user()->hasRole('Admin'))
             <h1 class="border-bottom pb-2 mb-0" style="color: black">Espacio administrador</h1>
@@ -16,7 +48,8 @@
             <h1 class="border-bottom pb-2 mb-0" style="color: black">Espacio Usuario</h1>
           @endif
         </div>
-
+        -->
+        <!--
         <form method="get" action="{{ url('create-area') }}" enctype="multipart/form-data">
           <div>
             <textarea class="form-control" rows="2" placeholder="area" name="name" style="margin:  5px; width: 97%"></textarea>
@@ -103,10 +136,7 @@
           @endforeach
         </div>
       </div>
-
-      <div id="divDerecha" style="width: 23%; float: right;margin-top: 20px"></div>
-    </div>
-  </x-slot>
+      -->
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 

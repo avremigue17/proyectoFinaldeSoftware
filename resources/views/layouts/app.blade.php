@@ -21,8 +21,8 @@
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.0/dist/alpine.js" defer></script>
     </head>
-    <body class="font-sans antialiased bg-white">
-        <div class="min-h-screen bg-white">
+    <body class="font-sans antialiased bg-white" >
+        <div class="min-h-screen bg-white" style="background-image: url('/img/fondo4.jpg'); background-size: cover;">
             @livewire('navigation-dropdown')
 
             <!-- Page Heading -->

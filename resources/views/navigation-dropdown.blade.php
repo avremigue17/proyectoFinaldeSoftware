@@ -1,25 +1,25 @@
-<nav x-data="{ open: false }" class="bg-black border-b border-gray-100 " style="position: fixed; top: 0; width: 100%">
+<nav x-data="{ open: false }" class="border-b border-gray-100 " style="position: fixed; top: 0; width: 100%; background-color: #324C59">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex" style="width: 30%">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center" style="background-color: black">
+                <div class="flex-shrink-0 flex items-center" style="background-color: #324C59">
                     <a href="{{ route('test', 3) }}">
-                        <img src="{{url('/')}}/img/logo.png" class="card-img-top" alt="..." style="width: 150px; height: 60px;margin-left: 30%">
+                        <img src="{{url('/')}}/img/logo.png" class="card-img-top" alt="..." style="width: 70px; height: 60px;margin-left: 30%">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 
             </div>
-            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="width: 40%; margin-top: 6px;margin-left: 5%;" >
+            <!--<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="width: 40%; margin-top: 6px;margin-left: 5%;" >
                     <nav class="navbar navbar-light bg">
                       <div class="container-fluid">
-                       <!-- <form class="d-flex">
+                        <form class="d-flex">
                           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                           <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>-->
+                        </form>
                         <form class="typeahead" role="search">
                           <div class="form-group" >
                             <input type="search" name="q" class="form-control search-input" placeholder=Buscar autocomplete="off" style="width: 300px;background-color: black;color: white;">
@@ -27,13 +27,14 @@
                         </form>
                       </div>
                     </nav>
-                </div>
+                </div>-->
 
             <!-- Settings Dropdown -->
            
             <div class="hidden sm:flex sm:items-center sm:ml-6" style="width: 30%">
                 <div style="width: 90%; margin-left: 20px">
-                         
+                     <h3 style="color: white">{{ Auth::user()->name}}</h3>
+                     <h5>{{ Auth::user()->post}}</h5>   
                 </div> 
                 <div style="float: left; background-color: black" >
                     <x-jet-dropdown align="right" width="48">
