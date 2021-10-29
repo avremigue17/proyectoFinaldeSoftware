@@ -8,36 +8,142 @@
     
   </x-slot>
 <div class="container" style="float: left;">
- <div class="row row-cols-1 row-cols-md-2 g-4 p-5" style="text-align: center;">
-  <div class="col-md-5 p-2" style="">
-    <div class="card" style="background-color: #03989E">
-      <div class="card-body">
-        <h1 style="color: white">Registrar un Area / Puesto</h1>
+  <div class="row row-cols-1 row-cols-md-2 g-4 p-5" style="text-align: center;">
+    <div class="col-md-10 p-2" data-toggle="modal" data-target="#areaModal" type="button">
+      <div class="card" style="background-color: #03989E">
+        <div class="card-body">
+          <h1 style="color: white">Registrar un Area / Puesto</h1>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-5 p-2">
-    <div class="card" style="background-color: #03989E">
-      <div class="card-body">
-        <h1 style="color: white">Registrar un Candidato</h1>
+    <div class="col-md-10 p-2" data-toggle="modal" data-target="#candidatoModal" type="button">
+      <div class="card" style="background-color: #03989E">
+        <div class="card-body">
+          <h1 style="color: white">Registrar un Candidato</h1>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-5 p-2">
-    <div class="card" style="background-color: #03989E">
-      <div class="card-body">
-        <h1 style="color: white">Registrar un Curso nuevo</h1>
+    <div class="col-md-10 p-2">
+      <div class="card" style="background-color: #03989E">
+        <div class="card-body">
+          <h1 style="color: white">Registrar un Curso nuevo</h1>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-5 p-2">
-    <div class="card" style="background-color: #03989E">
-      <div class="card-body">
-        <h1 style="color: white">Tablero de informacion</h1>
+    <div class="col-md-10 p-2">
+      <div class="card" style="background-color: #03989E">
+        <div class="card-body">
+          <h1 style="color: white">Tablero de informacion</h1>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="areaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content items-center" style="background-color: rgba(255,255,255,.9);">
+      <div class="modal-header">
+        <h5 class="modal-title"  style="font-weight: bolder;color: black;font-size: 40px">
+              Registrar un Area / Puesto
+        </h5>
+      </div>
+      <div class="container mt-2">
+        <div class="row" style="text-align: center;">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title" style="color: white; font-weight: bolder; background-color: #03989E; border-radius: 10px">Registrar Area</h2>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title" style="font-weight: bolder;font-size: 25px">Nombre
+                    </h5>
+                    <form>
+                      <input type="text" class="form-control" id="name" required="" name="name">
+                      <button type="submit" class="btn btn-primary" style="margin-top: 10px">Guardar
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 mb-2">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title" style="color: white; font-weight: bolder; background-color: #03989E; border-radius: 10px">Registrar Puesto</h2>
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title" style="font-weight: bolder;font-size: 25px">Seleccionar Area
+                    </h5>
+                    <form>
+                      <select class="form-select">
+                        <option>
+                          Variedades
+                        </option>
+                        <option>
+                          Perecederos
+                        </option>
+                      </select>
+                      <h5 class="card-title" style="font-weight: bolder; margin-top: 10px;font-size: 25px">Nombre
+                      </h5>
+                      <input type="text" class="form-control" id="name" required="" name="name">
+                      <button type="submit" class="btn btn-primary" style="margin-top: 10px">Guardar
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="candidatoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content items-center" style="background-color: rgba(255,255,255,.9);">
+      <div class="modal-header">
+        <h5 class="modal-title"  style="font-weight: bolder;color: black;font-size: 40px">
+              Registrar un Candidato
+        </h5>
+      </div>
+      <div class="container">
+        <div class="container bg-white" style="margin-top:3px; margin-bottom: 3px">
+          <form class="mb-2">
+            <div>
+              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Nombre:</label>
+              <input type="textarea" class="form-control" id="">
+            </div>
+            <div >
+              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Apellido Paterno:</label>
+              <input type="textarea" class="form-control" id="">
+            </div>
+            <div >
+              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Apellido Materno:</label>
+              <input type="textarea" class="form-control" id="">
+            </div>
+            <div >
+              <label class="form-label" style="font-weight: bolder; margin-top: 10px;font-size: 20px">Area:</label>
+              <select id="" class="form-select"></select>
+            </div>
+            <div >
+              <label class="form-label" style="font-weight: bolder; margin-top: 10px;font-size: 20px">Puesto:</label>
+              <select id="" class="form-select"></select>
+            </div>
+            <div >
+              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Acceso:</label>
+              <input type="textarea" class="form-control" id="">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px; margin-left: 41%">Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
       <!--
         <div id="divCentral" style="width: 50%;float: right; margin-top: 30px;background-color:white">

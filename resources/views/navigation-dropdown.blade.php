@@ -2,16 +2,19 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-            <div class="flex" style="width: 30%">
+            <div class="flex items-center" style="width: 15%">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center" style="background-color: #324C59">
+                <div style="background-color: #324C59; width: 100%;">
                     <a href="{{ route('test', 3) }}">
-                        <img src="{{url('/')}}/img/logo.png" class="card-img-top" alt="..." style="width: 70px; height: 60px;margin-left: 30%">
+                        <img src="{{url('/')}}/img/logo.png" class="card-img-top" alt="..." style="width: 70px; height: 60px; float: right;">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 
+            </div>
+            <div class="hidden sm:flex sm:items-center sm:ml-6 mt-2" style="width: 50%">
+                <h5 style="text-align: center;color: white;margin-left: 20%">Sistema Web de Capacitacion y Aprendizaje</h5>
             </div>
             <!--<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="width: 40%; margin-top: 6px;margin-left: 5%;" >
                     <nav class="navbar navbar-light bg">
@@ -31,12 +34,12 @@
 
             <!-- Settings Dropdown -->
            
-            <div class="hidden sm:flex sm:items-center sm:ml-6" style="width: 30%">
-                <div style="width: 90%; margin-left: 20px">
+            <div class="hidden sm:flex sm:items-center sm:ml-6" style="width: 30%; height: 60px;">
+                <div style="width: 90%; margin-left: 20px;margin-top: 5px">
                      <h3 style="color: white">{{ Auth::user()->name}}</h3>
                      <h5>{{ Auth::user()->post}}</h5>   
                 </div> 
-                <div style="float: left; background-color: black" >
+                <div style="float: left; background-color: #324C59" >
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -47,7 +50,7 @@
                                 <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                                     <div style="float: right; margin-left: 10px;" >
                                         <a class="navbar-brand" href="#">
-                                        <img src="{{url('/')}}/img/{{Auth::user()->profile_image }}" class=" rounded-full" alt="..." style="width: 30px; height: 23px; margin-top: 50%;  float: right;">
+                                        <img src="{{url('/')}}/img/salir.png" alt="..." style="width:60px; height: 40px;   float: right;">
                                         </a>
                                     </div>
                                 </button>
