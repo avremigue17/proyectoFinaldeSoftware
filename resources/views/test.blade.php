@@ -59,7 +59,7 @@
                   <div class="card-body">
                     <h5 class="card-title" style="font-weight: bolder;font-size: 25px">Nombre
                     </h5>
-                    <form>
+                    <form method="get" action="{{ url('create-area') }}" enctype="multipart/form-data">
                       <input type="text" class="form-control" id="name" required="" name="name">
                       <button type="submit" class="btn btn-primary" style="margin-top: 10px">Guardar
                       </button>
@@ -77,14 +77,11 @@
                   <div class="card-body">
                     <h5 class="card-title" style="font-weight: bolder;font-size: 25px">Seleccionar Area
                     </h5>
-                    <form>
-                      <select class="form-select">
-                        <option>
-                          Variedades
-                        </option>
-                        <option>
-                          Perecederos
-                        </option>
+                    <form method="get" action="{{ url('create-post') }}" enctype="multipart/form-data">
+                      <select class="form-select" name="area_id">
+                        @foreach($areas as $area)
+                          <option value="{{$area->id}}">{{ $area->name }}</option>
+                        @endforeach
                       </select>
                       <h5 class="card-title" style="font-weight: bolder; margin-top: 10px;font-size: 25px">Nombre
                       </h5>

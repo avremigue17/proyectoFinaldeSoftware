@@ -38,6 +38,18 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/create-template','TemplatesController@create')->name('create-template');
 	Route::delete('/delete-template','TemplatesController@destroy')->name('delete-template');
 
+	Route::get('/create-answer','AnswersController@create')->name('create-answer');
+	Route::get('/create-userPost','UserPostsController@create')->name('create-userPost');
+	Route::get('/create-coursePost','CoursePostsController@create')->name('create-coursePost');
+
+	Route::get('/create-question','QuestionsController@create')->name('create-question');
+	Route::delete('/delete-question','QuestionsController@destroy')->name('delete-question');
+
+	Route::get('/create-record','RecordsController@create')->name('create-record');
+
+	Route::get('/create-course','CourseController@create')->name('create-course');
+	Route::delete('/delete-course','CourseController@destroy')->name('delete-course');
+
 	Route::get('/perfil/{id}','PostsController@perfil')->name('perfil');
 
 	Route::get('find', 'SearchController@find');

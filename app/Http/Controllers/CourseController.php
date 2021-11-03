@@ -7,79 +7,35 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function create(Request $request)
+    {   
+        $data = $request->all();
+        $course = new course;
+        $course->name = $data["name"];
+        $course->save();
+
+        return redirect()->back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function destroy(Request $request)
     {
-        //
-    }
+        $course = course::find($request['id']);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function show(course $course)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(course $course)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, course $course)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\course  $course
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(course $course)
-    {
-        //
+        if ($course) {
+           if ($course->delete()) {
+               return response()->json([
+                    'code' => '200',
+                ]);
+           }
+        }
+        return response()->json([
+            'message' => '¡No se pudo eliminar el registro!',
+            'code' => '400',
+        ]);
     }
 }
