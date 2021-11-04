@@ -109,30 +109,36 @@
       </div>
       <div class="container">
         <div class="container bg-white" style="margin-top:3px; margin-bottom: 3px">
-          <form class="mb-2">
+          <form class="mb-2" method="get" action="{{ url('create-user') }}" enctype="multipart/form-data">
             <div>
               <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Nombre:</label>
-              <input type="textarea" class="form-control" id="">
+              <input type="textarea" required class="form-control" id="" name="name">
             </div>
             <div >
-              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Apellido Paterno:</label>
-              <input type="textarea" class="form-control" id="">
+              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Correo:</label>
+              <input type="textarea" required class="form-control" id="" name="email">
             </div>
-            <div >
+            <!--<div >
               <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Apellido Materno:</label>
               <input type="textarea" class="form-control" id="">
-            </div>
+            </div>-->
             <div >
               <label class="form-label" style="font-weight: bolder; margin-top: 10px;font-size: 20px">Area:</label>
-              <select id="" class="form-select"></select>
+              <select id="user-areas" name="area_id" onchange="userAreas()" class="form-select" required>
+                <option disabled selected value> -- select an option -- </option>
+                @foreach($areas as $area)
+                  <option value="{{$area->id}}">{{ $area->name }}</option>
+                @endforeach
+              </select>
             </div>
             <div >
               <label class="form-label" style="font-weight: bolder; margin-top: 10px;font-size: 20px">Puesto:</label>
-              <select id="" class="form-select"></select>
+              <select id="user-posts" name="post_id" class="form-select" required>
+              </select>
             </div>
             <div >
               <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Acceso:</label>
-              <input type="textarea" class="form-control" id="">
+              <input type="textarea" class="form-control" id="" name="nick_name" required>
             </div>
             <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px; margin-left: 41%">Guardar
             </button>
@@ -244,6 +250,21 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> 
   <script type="text/javascript">
+
+    function userAreas(){
+      document.getElementById("user-posts").innerHTML = "";
+      var select = document.getElementById('user-posts');
+
+      <?php foreach ($posts as $post): ?>
+        if("{{$post->area_id}}" == document.getElementById('user-areas').value)
+        {
+          option = document.createElement('option');
+          option.setAttribute('value', "{{$post->id}}");
+          option.appendChild(document.createTextNode("{{$post->name}}"));
+          select.appendChild(option);
+        }  
+      <?php endforeach ?>
+    }
 
     //remueve un area
     function removeArea(id,target)

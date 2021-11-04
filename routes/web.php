@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/create-answer','AnswersController@create')->name('create-answer');
 	Route::get('/create-userPost','UserPostsController@create')->name('create-userPost');
 	Route::get('/create-coursePost','CoursePostsController@create')->name('create-coursePost');
+	Route::get('/create-user','UserController@create')->name('create-user');
 
 	Route::get('/create-question','QuestionsController@create')->name('create-question');
 	Route::delete('/delete-question','QuestionsController@destroy')->name('delete-question');
