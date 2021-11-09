@@ -17,9 +17,13 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::get('/welcome', function () {
-    return view('welcome');
-})->name('welcome');;
+Route::get('/registrarCurso', function () {
+    return view('registrarCurso');
+})->name('registrarCurso');;
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');;
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/test/{id}', 'PostsController@index')->name('test');

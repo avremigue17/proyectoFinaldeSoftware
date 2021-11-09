@@ -7,147 +7,168 @@
   <x-slot name="header">
     
   </x-slot>
-<div class="container" style="float: left;">
-  <div class="row row-cols-1 row-cols-md-2 g-4 p-5" style="text-align: center;">
-    <div class="col-md-10 p-2" data-toggle="modal" data-target="#areaModal" type="button">
-      <div class="card" style="background-color: #03989E">
-        <div class="card-body">
-          <h1 style="color: white">Registrar un Area / Puesto</h1>
+@if(Auth::user()->hasRole('Admin'))
+  <div class="container" style="float: left;">
+    <div class="row row-cols-1 row-cols-md-2 g-4 p-5" style="text-align: center;">
+      <div class="col-md-10 p-2" data-toggle="modal" data-target="#areaModal" type="button">
+        <div class="card" style="background-color: #03989E">
+          <div class="card-body">
+            <h1 style="color: white">Registrar un Area / Puesto</h1>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-10 p-2" data-toggle="modal" data-target="#candidatoModal" type="button">
-      <div class="card" style="background-color: #03989E">
-        <div class="card-body">
-          <h1 style="color: white">Registrar un Candidato</h1>
+      <div class="col-md-10 p-2" data-toggle="modal" data-target="#candidatoModal" type="button">
+        <div class="card" style="background-color: #03989E">
+          <div class="card-body">
+            <h1 style="color: white">Registrar un Candidato</h1>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-10 p-2">
-      <div class="card" style="background-color: #03989E">
-        <div class="card-body">
-          <h1 style="color: white">Registrar un Curso nuevo</h1>
+      <div class="col-md-10 p-2">
+        <div class="card" style="background-color: #03989E">
+          <div class="card-body">
+            <a href="{{ route('registrarCurso')}}">
+              <h1 style="color: white">Registrar un Curso nuevo</h1>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-10 p-2">
-      <div class="card" style="background-color: #03989E">
-        <div class="card-body">
-          <h1 style="color: white">Tablero de informacion</h1>
+      <div class="col-md-10 p-2">
+        <div class="card" style="background-color: #03989E">
+          <div class="card-body">
+            <a href="{{ route('dashboard')}}">
+              <h1 style="color: white">Tablero de informacion</h1>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+@else
+  <h1 class="border-bottom pb-2 mb-0" style="color: black">Espacio Usuario</h1>
+@endif
 
-<!-- Modal -->
-<div class="modal fade" id="areaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content items-center" style="background-color: rgba(255,255,255,.9);">
-      <div class="modal-header">
-        <h5 class="modal-title"  style="font-weight: bolder;color: black;font-size: 40px">
-              Registrar un Area / Puesto
-        </h5>
-      </div>
-      <div class="container mt-2">
-        <div class="row" style="text-align: center;">
-          <div class="col-sm-6">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="card-title" style="color: white; font-weight: bolder; background-color: #03989E; border-radius: 10px">Registrar Area</h2>
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title" style="font-weight: bolder;font-size: 25px">Nombre
-                    </h5>
-                    <form method="get" action="{{ url('create-area') }}" enctype="multipart/form-data">
-                      <input type="text" class="form-control" id="name" required="" name="name">
-                      <button type="submit" class="btn btn-primary" style="margin-top: 10px">Guardar
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 mb-2">
-            <div class="card">
-              <div class="card-body">
-                <h2 class="card-title" style="color: white; font-weight: bolder; background-color: #03989E; border-radius: 10px">Registrar Puesto</h2>
-                <div class="card">
-                  <div class="card-body">
-                    <h5 class="card-title" style="font-weight: bolder;font-size: 25px">Seleccionar Area
-                    </h5>
-                    <form method="get" action="{{ url('create-post') }}" enctype="multipart/form-data">
-                      <select class="form-select" name="area_id">
-                        @foreach($areas as $area)
-                          <option value="{{$area->id}}">{{ $area->name }}</option>
-                        @endforeach
-                      </select>
-                      <h5 class="card-title" style="font-weight: bolder; margin-top: 10px;font-size: 25px">Nombre
+  <!-- Modal -->
+  <div class="modal fade" id="areaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content items-center" style="background-color: rgba(255,255,255,.9);">
+        <div class="modal-header">
+          <h5 class="modal-title"  style="font-weight: bolder;color: black;font-size: 40px">
+                Registrar un Area / Puesto
+          </h5>
+        </div>
+        <div class="container mt-2">
+          <div class="row" style="text-align: center;">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="card-title" style="color: white; font-weight: bolder; background-color: #03989E; border-radius: 10px">Registrar Area</h2>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: bolder;font-size: 25px">Nombre
                       </h5>
-                      <input type="text" class="form-control" id="name" required="" name="name">
-                      <button type="submit" class="btn btn-primary" style="margin-top: 10px">Guardar
-                      </button>
-                    </form>
+                      <form method="get" action="{{ url('create-area') }}" enctype="multipart/form-data">
+                        <input type="text" class="form-control" id="name" required="" name="name">
+                        <button type="submit" class="btn btn-primary" style="margin-top: 10px">Guardar
+                        </button>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>  
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="candidatoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content items-center" style="background-color: rgba(255,255,255,.9);">
-      <div class="modal-header">
-        <h5 class="modal-title"  style="font-weight: bolder;color: black;font-size: 40px">
-              Registrar un Candidato
-        </h5>
-      </div>
-      <div class="container">
-        <div class="container bg-white" style="margin-top:3px; margin-bottom: 3px">
-          <form class="mb-2" method="get" action="{{ url('create-user') }}" enctype="multipart/form-data">
-            <div>
-              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Nombre:</label>
-              <input type="textarea" required class="form-control" id="" name="name">
+            <div class="col-sm-6 mb-2">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="card-title" style="color: white; font-weight: bolder; background-color: #03989E; border-radius: 10px">Registrar Puesto</h2>
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title" style="font-weight: bolder;font-size: 25px">Seleccionar Area
+                      </h5>
+                      <form method="get" action="{{ url('create-post') }}" enctype="multipart/form-data">
+                        <select class="form-select" name="area_id">
+                          @foreach($areas as $area)
+                            <option value="{{$area->id}}">{{ $area->name }}</option>
+                          @endforeach
+                        </select>
+                        <h5 class="card-title" style="font-weight: bolder; margin-top: 10px;font-size: 25px">Nombre
+                        </h5>
+                        <input type="text" class="form-control" id="name" required="" name="name">
+                        <button type="submit" class="btn btn-primary" style="margin-top: 10px">Guardar
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div >
-              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Correo:</label>
-              <input type="textarea" required class="form-control" id="" name="email">
-            </div>
-            <!--<div >
-              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Apellido Materno:</label>
-              <input type="textarea" class="form-control" id="">
-            </div>-->
-            <div >
-              <label class="form-label" style="font-weight: bolder; margin-top: 10px;font-size: 20px">Area:</label>
-              <select id="user-areas" name="area_id" onchange="userAreas()" class="form-select" required>
-                <option disabled selected value> -- select an option -- </option>
-                @foreach($areas as $area)
-                  <option value="{{$area->id}}">{{ $area->name }}</option>
-                @endforeach
-              </select>
-            </div>
-            <div >
-              <label class="form-label" style="font-weight: bolder; margin-top: 10px;font-size: 20px">Puesto:</label>
-              <select id="user-posts" name="post_id" class="form-select" required>
-              </select>
-            </div>
-            <div >
-              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Acceso:</label>
-              <input type="textarea" class="form-control" id="" name="nick_name" required>
-            </div>
-            <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px; margin-left: 41%">Guardar
-            </button>
-          </form>
+          </div>  
         </div>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="modal fade" id="candidatoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content items-center" style="background-color: rgba(255,255,255,.9);">
+        <div class="modal-header">
+          <h5 class="modal-title"  style="font-weight: bolder;color: black;font-size: 40px">
+                Registrar un Candidato
+          </h5>
+        </div>
+        <div class="container">
+          <div class="container bg-white" style="margin-top:3px; margin-bottom: 3px">
+            <form class="mb-2" method="get" action="{{ url('create-user') }}" enctype="multipart/form-data">
+              <div>
+                <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Nombre:</label>
+                <input type="textarea" required class="form-control" id="" name="name">
+              </div>
+              <div>
+                <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Apellido Paterno:</label>
+                <input type="textarea" required class="form-control" id="" name="apellidoP">
+              </div>
+              <div>
+                <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Apellido Materno:</label>
+                <input type="textarea" required class="form-control" id="" name="apellidoM">
+              </div>
+              <div >
+                <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Correo:</label>
+                <input type="textarea" required class="form-control" id="" name="email">
+              </div>
+              <!--<div >
+                <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Apellido Materno:</label>
+                <input type="textarea" class="form-control" id="">
+              </div>-->
+              <div >
+                <label class="form-label" style="font-weight: bolder; margin-top: 10px;font-size: 20px">Area:</label>
+                <select id="user-areas" name="area_id" onchange="userAreas()" class="form-select" required>
+                  <option disabled selected value> -- select an option -- </option>
+                  @foreach($areas as $area)
+                    <option value="{{$area->id}}">{{ $area->name }}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div >
+                <label class="form-label" style="font-weight: bolder; margin-top: 10px;font-size: 20px">Puesto:</label>
+                <select id="user-posts" name="post_id" class="form-select" required>
+                </select>
+              </div>
+              <div >
+                <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Nickname:</label>
+                <input type="textarea" class="form-control" id="" name="nick_name" required>
+              </div>
+              <div >
+                <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Contraseña:</label>
+                <input type="textarea" class="form-control" id="" name="contraseña" required>
+              </div>
+              <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px; margin-left: 41%">Guardar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
       <!--
         <div id="divCentral" style="width: 50%;float: right; margin-top: 30px;background-color:white">
         <div class="my-3 p-3 bg-body rounded shadow-sm">
