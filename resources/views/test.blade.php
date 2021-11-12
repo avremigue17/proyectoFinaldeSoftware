@@ -24,12 +24,12 @@
           </div>
         </div>
       </div>
-      <div class="col-md-10 p-2">
+      <div class="col-md-10 p-2" data-toggle="modal" data-target="#cursonuevoModal" type="button">
         <div class="card" style="background-color: #03989E">
           <div class="card-body">
-            <a href="{{ route('registrarCurso')}}">
+            <!--<a href="{{ route('registrarCurso')}}">-->
               <h1 style="color: white">Registrar un Curso nuevo</h1>
-            </a>
+            <!--</a>-->
           </div>
         </div>
       </div>
@@ -165,6 +165,28 @@
               </button>
             </form>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="cursonuevoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content items-center" style="background-color: rgba(255,255,255,.9);">
+        <div class="modal-header">
+          <h5 class="modal-title"  style="font-weight: bolder;color: black;font-size: 40px">
+                Registrar un Curso Nuevo
+          </h5>
+        </div>
+        <div class="container">
+          <form>
+            <div >
+                <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Titulo</label>
+                <input type="textarea" class="form-control" id="" name="titulocurso" required>
+              </div>
+              <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px; margin-left: 41%" onclick="window.location='{{ route('registrarCurso')}}';">Guardar
+              </button>
+          </form>
         </div>
       </div>
     </div>
