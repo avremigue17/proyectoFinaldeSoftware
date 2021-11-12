@@ -29,6 +29,8 @@ class UserController extends Controller
         $user = new User;
         $user->profile_image = "default.png";
         $user->name = $data["name"];
+        $user->middle_name = $data["middle_name"];
+        $user->last_name = $data["last_name"];
         $user->nick_name = $data["nick_name"];
         $user->email = $data["email"];
         $user->password = bcrypt("12345");

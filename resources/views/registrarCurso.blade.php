@@ -11,7 +11,7 @@
   <div class="container mt-10" style="float: left;">
     <div class="container" align="center">
       <h1 class="m-0">
-         titulo del curso nuevo
+         {{$course->name}}
       </h1>
     </div>
 

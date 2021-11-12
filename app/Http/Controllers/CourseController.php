@@ -19,7 +19,7 @@ class CourseController extends Controller
         $course->name = $data["name"];
         $course->save();
 
-        return redirect()->back();
+        return view('registrarCurso', compact('course'));
     }
 
     public function destroy(Request $request)

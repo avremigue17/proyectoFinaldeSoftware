@@ -125,11 +125,11 @@
               </div>
               <div>
                 <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Apellido Paterno:</label>
-                <input type="textarea" required class="form-control" id="" name="apellidoP">
+                <input type="textarea" required class="form-control" id="" name="middle_name">
               </div>
               <div>
                 <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Apellido Materno:</label>
-                <input type="textarea" required class="form-control" id="" name="apellidoM">
+                <input type="textarea" required class="form-control" id="" name="last_name">
               </div>
               <div >
                 <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Correo:</label>
@@ -157,10 +157,6 @@
                 <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Nickname:</label>
                 <input type="textarea" class="form-control" id="" name="nick_name" required>
               </div>
-              <div >
-                <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Contraseña:</label>
-                <input type="textarea" class="form-control" id="" name="contraseña" required>
-              </div>
               <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px; margin-left: 41%">Guardar
               </button>
             </form>
@@ -179,12 +175,12 @@
           </h5>
         </div>
         <div class="container">
-          <form>
+          <form class="mb-2" method="get" action="{{ url('create-course') }}" enctype="multipart/form-data">
             <div >
                 <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Titulo</label>
-                <input type="textarea" class="form-control" id="" name="titulocurso" required>
+                <input type="textarea" class="form-control" id="" name="name" required>
               </div>
-              <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px; margin-left: 41%" onclick="window.location='{{ route('registrarCurso')}}';">Guardar
+              <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px; margin-left: 41%;">Guardar
               </button>
           </form>
         </div>
