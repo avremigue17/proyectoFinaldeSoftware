@@ -40,6 +40,8 @@ Route::middleware(['auth'])->group(function(){
 	Route::delete('/delete-text','TextsController@destroy')->name('delete-text');
 
 	Route::get('/create-template','TemplatesController@create')->name('create-template');
+	Route::post('/create-templateMix','TemplatesController@createMix')->name('create-templateMix');
+	Route::post('/create-templateMixDoble','TemplatesController@createMixDoble')->name('create-templateMixDoble');
 	Route::delete('/delete-template','TemplatesController@destroy')->name('delete-template');
 
 	Route::get('/create-answer','AnswersController@create')->name('create-answer');

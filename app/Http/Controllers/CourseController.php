@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\course;
+use App\Models\templates;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -19,7 +20,9 @@ class CourseController extends Controller
         $course->name = $data["name"];
         $course->save();
 
-        return view('registrarCurso', compact('course'));
+        $finaly = templates::where('course_id', $course->id);
+
+        return view('registrarCurso', compact('course','finaly'));
     }
 
     public function destroy(Request $request)
