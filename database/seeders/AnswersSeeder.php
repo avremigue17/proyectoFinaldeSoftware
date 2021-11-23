@@ -26,5 +26,9 @@ class AnswersSeeder extends Seeder
         $answer = new answers();
         $answer->answer = "Jonhy";
         $answer->save();
+
+        $answer = new answers();
+        $answer->answer = "Lucas";
+        $answer->save();
     }
 }

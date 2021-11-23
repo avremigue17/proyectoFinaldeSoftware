@@ -49,13 +49,13 @@
           <button type="submit" onclick="removeCourse('{{$course->id}}')" class="btn btn-primary mb-2" style="margin-top: 5px;width: 80%; background-color: red; font-weight: bolder;">Cancelar</button>
         </div>
         <div style="float: left; width: 50%">
-          <form action="{{route('registrarPreguntas', Auth::user()->id)}}" style="width: 100%">
-    <button type="submit" onclick="" id="finalizar" class="btn btn-primary mb-2" style="margin-top: 5px;width: 80%;font-weight: bolder;">Finalizar</button>
-  </form>
+          <form action="{{ url('redirect-course') }}" style="width: 100%">
+            <textarea class="form-control" hidden name="course_id">{{$course->id}}</textarea>
+            <button type="submit" onclick="" id="finalizar" class="btn btn-primary mb-2" style="margin-top: 5px;width: 80%;font-weight: bolder;">Finalizar</button>
+          </form>
         </div>
-  
-</div>
-  </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="modal fade" id="plantilla1Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

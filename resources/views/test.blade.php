@@ -206,9 +206,9 @@
         <div class="container">
           <form class="mb-2" method="get" action="{{ url('create-course') }}" enctype="multipart/form-data">
             <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Puesto del Curso</label>
-            <select class="form-select" name="area_id">
+            <select class="form-select" name="post_id">
               @foreach($posts as $post)
-                <option value="{{$area->id}}">{{ $post->name }}</option>
+                <option value="{{$post->id}}">{{ $post->name }}</option>
               @endforeach
             </select>
             <div >

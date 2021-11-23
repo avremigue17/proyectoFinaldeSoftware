@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\course;
 use App\Models\templates;
 use Illuminate\Http\Request;
+use App\Models\CoursePosts;
+use App\Models\questions;
 
 class CourseController extends Controller
 {
@@ -20,9 +22,22 @@ class CourseController extends Controller
         $course->name = $data["name"];
         $course->save();
 
+        $coursePosts = new CoursePosts;
+        $coursePosts->course_id = $course->id;
+        $coursePosts->post_id = $data["post_id"];
+        $coursePosts->save();
+        
         $finaly = templates::where('course_id', $course->id);
 
         return view('registrarCurso', compact('course','finaly'));
+    }
+
+    public function redirect(Request $request)
+    {
+        $course = course::find($request['course_id']);
+        $finaly = questions::where('course_id', $course->id);
+
+        return view('registrarPreguntas', compact('course','finaly'));
     }
 
     public function destroy(Request $request)
