@@ -11,6 +11,10 @@ use App\Models\Areas;
 use App\Models\images;
 use App\Models\texts;
 use App\Models\templates;
+use App\Models\course;
+use App\Models\CoursePosts;
+use App\Models\UserPosts;
+use App\Models\records;
 
 class PostsController extends Controller
 {
@@ -22,22 +26,14 @@ class PostsController extends Controller
         $images = images::all();
         $texts = texts::all();
         $templates = templates::all();
+        $courses = course::all();
+        $coursePosts = CoursePosts::all();
         $user = User::findOrFail($id);
+        $userPost = UserPosts::findOrFail($id);
+        $records = records::all();
 
-        return view('test', compact('users','areas','posts','images','texts','templates'));
-        //return view('main.index', compact('posts','postLikes','users','comments'));
-    }
-    public function Preguntas($id)
-    {
-        $posts = Posts::all()->sortByDesc('created_at');
-        $users = User::all();
-        $areas = Areas::all();
-        $images = images::all();
-        $texts = texts::all();
-        $templates = templates::all();
-        $user = User::findOrFail($id);
 
-        return view('registrarPreguntas', compact('users','areas','posts','images','texts','templates'));
+        return view('test', compact('users','areas','posts','images','texts','templates','courses','coursePosts','userPost','records'));
         //return view('main.index', compact('posts','postLikes','users','comments'));
     }
 

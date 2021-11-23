@@ -54,11 +54,15 @@
           </div>
           <div style="background-color: white; height: 85%; float: left; margin: 2%">
             <div class="card">
-              <div class="card-body">
-                <h5 class="card-title" style="font-weight: bolder;">Titulohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</h5>
-                <!--<p class="card-text">Descripcion del curso</p>-->
-                <a href="#" class="btn btn-primary">Comenzar</a>
-              </div>
+              <?php foreach($coursePosts as $key => $coursePost): $course = $courses[$key]; ?>
+                @if($coursePost->post_id == $userPost->post_id) 
+                  <div class="card-body">
+                    <h5 class="card-title" style="font-weight: bolder;">{{$course['name']}}</h5>
+                    <!--<p class="card-text">Descripcion del curso</p>-->
+                    <a href="#" class="btn btn-primary">Comenzar</a>
+                  </div>
+                @endif
+              <?php endforeach;?>
             </div>
           </div>
         </div>
@@ -66,9 +70,20 @@
       <div class="col-md-5 p-2">
         <div class="card" style="background-color: #03989E; height: 80vh">
           <div class="p-2 mt-2" style="float: left;">
-            <h2 style="color: white">Cursos Realizados</h2>
+            <h2 style="color: white">Cursos Realizados{{Auth::user()->id}}</h2>
           </div>
           <div style="background-color: white; height: 85%; float: left; margin: 2%">
+            <div class="card">
+              @foreach($records as $key => $record)
+                @if($record->user_id == Auth::user()->id)
+                <div class="card-body">
+                  <h5 class="card-title" style="font-weight: bolder;">{{$record->course_id}}</h5>
+                  <!--<p class="card-text">Descripcion del curso</p>-->
+                  <a href="#" class="btn btn-primary">Comenzar</a>
+                </div>
+                @endif
+              @endforeach
+            </div>
           </div>
         </div>
       </div>
