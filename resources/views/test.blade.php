@@ -205,12 +205,18 @@
         </div>
         <div class="container">
           <form class="mb-2" method="get" action="{{ url('create-course') }}" enctype="multipart/form-data">
+            <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Puesto del Curso</label>
+            <select class="form-select" name="area_id">
+              @foreach($posts as $post)
+                <option value="{{$area->id}}">{{ $post->name }}</option>
+              @endforeach
+            </select>
             <div >
-                <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Titulo</label>
-                <input type="textarea" class="form-control" id="" name="name" required >
-              </div>
-              <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px; margin-left: 41%;">Guardar
-              </button>
+              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Titulo</label>
+              <input type="textarea" class="form-control" id="" name="name" required >
+            </div>
+            <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px; margin-left: 41%;">Guardar
+            </button>
           </form>
         </div>
       </div>

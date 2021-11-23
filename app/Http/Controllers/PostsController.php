@@ -27,6 +27,19 @@ class PostsController extends Controller
         return view('test', compact('users','areas','posts','images','texts','templates'));
         //return view('main.index', compact('posts','postLikes','users','comments'));
     }
+    public function Preguntas($id)
+    {
+        $posts = Posts::all()->sortByDesc('created_at');
+        $users = User::all();
+        $areas = Areas::all();
+        $images = images::all();
+        $texts = texts::all();
+        $templates = templates::all();
+        $user = User::findOrFail($id);
+
+        return view('registrarPreguntas', compact('users','areas','posts','images','texts','templates'));
+        //return view('main.index', compact('posts','postLikes','users','comments'));
+    }
 
     public function create(Request $request)
     {   

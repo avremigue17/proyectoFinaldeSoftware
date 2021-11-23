@@ -28,6 +28,8 @@ Route::get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/test/{id}', 'PostsController@index')->name('test');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/registrarPreguntas/{id}', 'PostsController@Preguntas')->name('registrarPreguntas');
+
 Route::middleware(['auth'])->group(function(){
 
 	Route::get('/create-area','AreasController@create')->name('create-area');
