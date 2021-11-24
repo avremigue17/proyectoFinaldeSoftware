@@ -30,7 +30,7 @@ class PostsController extends Controller
         $coursePosts = CoursePosts::all();
         $user = User::findOrFail($id);
         $userPost = UserPosts::findOrFail($id);
-        $records = records::all();
+        $records = records::with('course')->get(); 
 
 
         return view('test', compact('users','areas','posts','images','texts','templates','courses','coursePosts','userPost','records'));
