@@ -55,11 +55,13 @@
           <div style="background-color: white; height: 85%; float: left; margin: 2%">
             <div class="card">
               @foreach($coursePosts as $coursePost)
-                <div class="card-body mt-1" style="background-color: rgba(49,75,88,1);line-height">
-                  <h5 class="card-title" style="font-weight: bolder;float: left; color: white;width: 100%">{{$coursePost->course->name}}</h5>
-                  <!--<p class="card-text">Descripcion del curso</p>-->
-                  <a href="#" class="btn btn-primary position-relative">Comenzar</a>
-                </div>
+                @if(($userPost->where('user_id', Auth::user()->id)->first())->post_id == $coursePost->post_id) 
+                  <div class="card-body mt-1" style="background-color: rgba(49,75,88,1);line-height">
+                    <h5 class="card-title" style="font-weight: bolder;float: left; color: white;width: 100%">{{$coursePost->course->name}}</h5>
+                    <!--<p class="card-text">Descripcion del curso</p>-->
+                    <a href="#" class="btn btn-primary position-relative">Comenzar</a>
+                  </div>
+                @endif
               @endforeach
             </div>
           </div>
