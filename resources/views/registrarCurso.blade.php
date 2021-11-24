@@ -16,15 +16,15 @@
     </div>
 
     <div class="row row-cols-1 row-cols-md-3 g-4 p-20">
-    <div class="col" align="center" data-toggle="modal" data-target="#plantilla1Modal" type="button">
-      <div class="card items-center">
-        <img src="{{url('/')}}/img/plantilla1.png" class="card-img-top mt-3" style="width: 100px; height: 100px;">
-        <div class="card-body">
-          <h5 class="card-title">Plantilla texto</h5>
-          <p class="card-text">Al seleccionar esta plantilla se ingresara solo contenido en texto</p>
+      <div class="col" align="center" data-toggle="modal" data-target="#plantilla1Modal" type="button">
+        <div class="card items-center">
+          <img src="{{url('/')}}/img/plantilla1.png" class="card-img-top mt-3" style="width: 100px; height: 100px;">
+          <div class="card-body">
+            <h5 class="card-title">Plantilla texto</h5>
+            <p class="card-text">Al seleccionar esta plantilla se ingresara solo contenido en texto</p>
+          </div>
         </div>
       </div>
-    </div>
     <div class="col" align="center" data-toggle="modal" data-target="#plantilla2Modal" type="button">
       <div class="card items-center">
         <img src="{{url('/')}}/img/plantilla2.png" class="card-img-top mt-3" style="width:100px; height: 100px;">
@@ -34,15 +34,15 @@
         </div>
       </div>
     </div>
-    <div class="col" align="center" data-toggle="modal" data-target="#plantilla3Modal" type="button">
-      <div class="card items-center">
-        <img src="{{url('/')}}/img/plantilla3.png" class="card-img-top mt-3" style="width: 100px; height: 100px; ">
-        <div class="card-body">
-          <h5 class="card-title">Plantilla Mixta doble</h5>
-          <p class="card-text">Al seleccionar esta plantilla se ingresaran dos imagenes y dos contenidos en texto</p>
+      <div class="col" align="center" data-toggle="modal" data-target="#plantilla3Modal" type="button">
+        <div class="card items-center">
+          <img src="{{url('/')}}/img/plantilla3.png" class="card-img-top mt-3" style="width: 100px; height: 100px; ">
+          <div class="card-body">
+            <h5 class="card-title">Plantilla Mixta doble</h5>
+            <p class="card-text">Al seleccionar esta plantilla se ingresaran dos imagenes y dos contenidos en texto</p>
+          </div>
         </div>
       </div>
-    </div>
     <div class="container mt-3">
       <div style="width: 100%" class="ml-3">
         <div style="float: left; width: 50%">
@@ -96,14 +96,14 @@
             <div>
               <label class="form-label mr-3" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Imagen:</label>
               <input class="form-control" type="file" name="img" /><br>
-                <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Contenido:</label>
-                <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="8"></textarea>
-                <textarea class="form-control" hidden name="course_id">{{$course->id}}</textarea>
-              </div>
-              <div style="width: 100%" align="center">
-                <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px;">Agregar
+              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Contenido:</label>
+              <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="8"></textarea>
+              <textarea class="form-control" hidden name="course_id">{{$course->id}}</textarea>
+            </div>
+            <div style="width: 100%" align="center">
+              <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px;">Agregar
               </button>
-              </div>
+            </div>
           </form>
         </div>
       </div>
@@ -124,20 +124,20 @@
             <div>
               <label class="form-label mr-3" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Imagen:</label>
               <input class="form-control" type="file" name="img" /><br>
-                <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Contenido:</label>
-                <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="8"></textarea>
-                <textarea class="form-control" hidden name="course_id">{{$course->id}}</textarea>
-              </div>
-              <div>
-              <label class="form-label mr-3" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Imagen:</label>
-              <input class="form-control" type="file" name="img2" /><br>
-                <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Contenido:</label>
-                <textarea class="form-control" name="text2" id="exampleFormControlTextarea1" rows="8"></textarea>
-              </div>
-              <div style="width: 100%" align="center">
-                <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px;">Agregar
-              </button>
-              </div>
+              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Contenido:</label>
+              <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="8"></textarea>
+              <textarea class="form-control" hidden name="course_id">{{$course->id}}</textarea>
+            </div>
+            <div>
+            <label class="form-label mr-3" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Imagen:</label>
+            <input class="form-control" type="file" name="img2" /><br>
+              <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Contenido:</label>
+              <textarea class="form-control" name="text2" id="exampleFormControlTextarea1" rows="8"></textarea>
+            </div>
+            <div style="width: 100%" align="center">
+              <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px;">Agregar
+            </button>
+            </div>
           </form>
         </div>
       </div>

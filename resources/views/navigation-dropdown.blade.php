@@ -36,8 +36,8 @@
            
             <div class="hidden sm:flex sm:items-center sm:ml-6" style="width: 30%; height: 60px;">
                 <div style="width: 90%; margin-left: 20px;margin-top: 5px">
-                     <h3 style="color: white">{{ Auth::user()->name}}</h3>
-                     <h5>{{ Auth::user()->post}}</h5>   
+                     <h3 style="color: white">{{ Auth::user()->name}} {{ Auth::user()->middle_name}}</h3>
+                     <!--<h5>{{ Auth::user()->post}}</h5>-->   
                 </div> 
                 <div style="float: left; background-color: #324C59" >
                     <x-jet-dropdown align="right" width="48">

@@ -56,10 +56,10 @@
             <div class="card">
               <?php foreach($coursePosts as $key => $coursePost): $course = $courses[$key]; ?>
                 @if($coursePost->post_id == $userPost->post_id) 
-                  <div class="card-body">
-                    <h5 class="card-title" style="font-weight: bolder;">{{$course['name']}}</h5>
+                  <div class="card-body mt-1" style="background-color: rgba(49,75,88,1);line-height">
+                    <h5 class="card-title" style="font-weight: bolder;float: left; color: white;width: 100%">{{$course['name']}}</h5>
                     <!--<p class="card-text">Descripcion del curso</p>-->
-                    <a href="#" class="btn btn-primary">Comenzar</a>
+                    <a href="#" class="btn btn-primary position-relative">Comenzar</a>
                   </div>
                 @endif
               <?php endforeach;?>
@@ -76,10 +76,10 @@
             <div class="card">
               @foreach($records as $key => $record)
                 @if($record->user_id == Auth::user()->id)
-                <div class="card-body">
-                  <h5 class="card-title" style="font-weight: bolder;">{{$record->course->name}}</h5>
+                <div class="card-body" style="background-color: rgba(49,75,88,1);">
+                  <h5 class="card-title mt-1" style="font-weight: bolder;float: left; color: white;width: 100%">{{$record->course->name}}</h5>
                   <!--<p class="card-text">Descripcion del curso</p>-->
-                  <a href="#" class="btn btn-primary">Comenzar</a>
+                  <a href="#" class="btn btn-primary" style="float: right;">Comenzar</a>
                 </div>
                 @endif
               @endforeach
