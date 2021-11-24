@@ -27,9 +27,9 @@ class PostsController extends Controller
         $texts = texts::all();
         $templates = templates::all();
         $courses = course::all();
-        $coursePosts = CoursePosts::all();
+        $coursePosts = CoursePosts::with('course')->get();
         $user = User::findOrFail($id);
-        $userPost = UserPosts::findOrFail($id);
+        $userPost = UserPosts::all();
         $records = records::with('course')->get(); 
 
 

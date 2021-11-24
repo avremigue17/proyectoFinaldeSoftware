@@ -16,6 +16,20 @@ class RecordsSeeder extends Seeder
     {
         $record = new records();
         $record->score = 100;
+        $record->user_id = 1;
+        $record->course_id = 1;
+        $record->save();
+
+        $record = new records();
+        $record->score = 100;
+        $record->user_id = 2;
+        $record->course_id = 1;
+        $record->save();
+
+        $record = new records();
+        $record->score = 100;
+        $record->user_id = 3;
+        $record->course_id = 1;
         $record->save();
     }
 }

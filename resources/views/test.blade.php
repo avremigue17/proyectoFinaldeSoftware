@@ -54,15 +54,15 @@
           </div>
           <div style="background-color: white; height: 85%; float: left; margin: 2%">
             <div class="card">
-              <?php foreach($coursePosts as $key => $coursePost): $course = $courses[$key]; ?>
-                @if($coursePost->post_id == $userPost->post_id) 
+              @foreach($coursePosts as $coursePost)
+                @if(($userPost->where('user_id', Auth::user()->id)->take(1))['3']->post_id == $coursePost->post_id) 
                   <div class="card-body mt-1" style="background-color: rgba(49,75,88,1);line-height">
-                    <h5 class="card-title" style="font-weight: bolder;float: left; color: white;width: 100%">{{$course['name']}}</h5>
+                    <h5 class="card-title" style="font-weight: bolder;float: left; color: white;width: 100%">{{$coursePost->course->name}}</h5>
                     <!--<p class="card-text">Descripcion del curso</p>-->
                     <a href="#" class="btn btn-primary position-relative">Comenzar</a>
                   </div>
                 @endif
-              <?php endforeach;?>
+              @endforeach
             </div>
           </div>
         </div>
