@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\course;
+use App\Models\texts;
 use App\Models\templates;
 use Illuminate\Http\Request;
 use App\Models\CoursePosts;
@@ -30,6 +31,16 @@ class CourseController extends Controller
         $finaly = templates::where('course_id', $course->id);
 
         return view('registrarCurso', compact('course','finaly'));
+    }
+
+    public function show(Request $request)
+    {   
+        $data = $request->all();
+
+        $templates = templates::where("course_id", $data['course_id'])->get();
+        $texts = texts::all();
+
+        return view('mostrarCurso', compact('templates','texts'));
     }
 
     public function redirect(Request $request)

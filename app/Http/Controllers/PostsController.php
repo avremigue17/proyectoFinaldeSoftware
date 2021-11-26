@@ -25,13 +25,12 @@ class PostsController extends Controller
         $areas = Areas::all();
         $images = images::all();
         $texts = texts::all();
-        $templates = templates::all();
+        $templates = templates::where("course_id", 1)->get();
         $courses = course::all();
         $coursePosts = CoursePosts::with('course')->get();
         $user = User::findOrFail($id);
         $userPost = UserPosts::all();
         $records = records::with('course')->get(); 
-
 
         return view('test', compact('users','areas','posts','images','texts','templates','courses','coursePosts','userPost','records'));
         //return view('main.index', compact('posts','postLikes','users','comments'));

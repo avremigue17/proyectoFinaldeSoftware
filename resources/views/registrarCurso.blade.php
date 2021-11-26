@@ -72,6 +72,8 @@
               <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Contenido:</label>
               <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="8"></textarea>
               <textarea class="form-control" hidden name="course_id">{{$course->id}}</textarea>
+              <textarea class="form-control" hidden name="type">1</textarea>
+              <textarea class="form-control" hidden name="type_text">1</textarea>
             </div>
             <div style="width: 100%" align="center">
               <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px;">Agregar</button>
@@ -99,6 +101,9 @@
               <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Contenido:</label>
               <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="8"></textarea>
               <textarea class="form-control" hidden name="course_id">{{$course->id}}</textarea>
+              <textarea class="form-control" hidden name="type">2</textarea>
+              <textarea class="form-control" hidden name="type_text">1</textarea>
+              <textarea class="form-control" hidden name="type_img">2</textarea>
             </div>
             <div style="width: 100%" align="center">
               <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px;">Agregar
@@ -127,12 +132,17 @@
               <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Contenido:</label>
               <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="8"></textarea>
               <textarea class="form-control" hidden name="course_id">{{$course->id}}</textarea>
+              <textarea class="form-control" hidden name="type_text">1</textarea>
+              <textarea class="form-control" hidden name="type_img">2</textarea>
             </div>
             <div>
             <label class="form-label mr-3" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Imagen:</label>
             <input class="form-control" type="file" name="img2" /><br>
               <label class="form-label" style="font-weight: bolder; margin-top: 5px;font-size: 20px">Ingresar Contenido:</label>
               <textarea class="form-control" name="text2" id="exampleFormControlTextarea1" rows="8"></textarea>
+              <textarea class="form-control" hidden name="type">3</textarea>
+              <textarea class="form-control" hidden name="type_text2">1</textarea>
+              <textarea class="form-control" hidden name="type_img2">2</textarea>
             </div>
             <div style="width: 100%" align="center">
               <button type="submit" class="btn btn-primary mb-2" style="margin-top: 5px;">Agregar

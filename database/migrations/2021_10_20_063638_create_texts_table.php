@@ -16,6 +16,7 @@ class CreateTextsTable extends Migration
         Schema::create('texts', function (Blueprint $table) {
             $table->id();
             $table->longText('text');
+            $table->integer('type')->default(1);;
             $table->unsignedBigInteger('template_id')->default(1);
             $table->foreign('template_id')->references('id')->on('templates')->onDelete('cascade');
             $table->timestamps();

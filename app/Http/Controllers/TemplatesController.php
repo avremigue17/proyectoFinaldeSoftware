@@ -19,11 +19,12 @@ class TemplatesController extends Controller
         $data = $request->all();
         $template = new templates;
         $template->course_id = $data["course_id"];
+        $template->type = $data["type"];
         $template->save();
 
         $text = new texts;
         $text->text = $data["text"];
-        $text->template_id = $template->id;
+        $text->type = $data["type_text"];
         $text->save();
 
         $course = course::find($data["course_id"]);
@@ -37,16 +38,19 @@ class TemplatesController extends Controller
         $data = $request->all();
         $template = new templates;
         $template->course_id = $data["course_id"];
+        $template->type = $data["type"];
         $template->save();
 
         $text = new texts;
         $text->text = $data["text"];
+        $text->type = $data["type_text"];
         $text->template_id = $template->id;
         $text->save();
 
         $img = new texts;
         $img->text = 'asd';
         $img->template_id = $template->id;
+        $img->type = $data["type_img"];
         $img->save();
         $file = $request->file('img');
         $file_name = 'img'.$img->id.'.'.$file->getClientOriginalExtension();
@@ -68,15 +72,18 @@ class TemplatesController extends Controller
         $data = $request->all();
         $template = new templates;
         $template->course_id = $data["course_id"];
+        $template->type = $data["type"];
         $template->save();
 
         $text = new texts;
         $text->text = $data["text"];
+        $text->type = $data["type_text"];
         $text->template_id = $template->id;
         $text->save();
 
         $img = new texts;
         $img->text = 'asd';
+        $img->type = $data["type_img"];
         $img->template_id = $template->id;
         $img->save();
         $file = $request->file('img');
@@ -89,12 +96,14 @@ class TemplatesController extends Controller
 
         $text = new texts;
         $text->text = $data["text2"];
+        $text->type = $data["type_text2"];
         $text->template_id = $template->id;
         $text->save();
 
         $img = new texts;
         $img->text = 'asd';
         $img->template_id = $template->id;
+        $img->type = $data["type_img2"];
         $img->save();
         $file = $request->file('img2');
         $file_name = 'img'.$img->id.'.'.$file->getClientOriginalExtension();

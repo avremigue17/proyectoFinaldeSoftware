@@ -15,6 +15,7 @@ class CreateTemplatesTable extends Migration
     {
         Schema::create('templates', function (Blueprint $table) {
             $table->id();
+            $table->integer('type')->default(1);
             $table->unsignedBigInteger('course_id')->default(1);
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->timestamps();

@@ -56,11 +56,15 @@
             <div class="card">
               @foreach($coursePosts as $coursePost)
                 @if(($userPost->where('user_id', Auth::user()->id)->first())->post_id == $coursePost->post_id) 
-                  <div class="card-body mt-1" style="background-color: rgba(49,75,88,1);line-height">
-                    <h5 class="card-title" style="font-weight: bolder;float: left; color: white;width: 100%">{{$coursePost->course->name}}</h5>
-                    <!--<p class="card-text">Descripcion del curso</p>-->
-                    <a href="#" class="btn btn-primary position-relative">Comenzar</a>
-                  </div>
+                  <form method="get" action="{{ url('show-course') }}" enctype="multipart/form-data">
+                    <div class="card-body mt-1" style="background-color: rgba(49,75,88,1);line-height">
+                      <h5 class="card-title" style="font-weight: bolder;float: left; color: white;width: 100%">{{$coursePost->course->name}}</h5>
+                      <!--<p class="card-text">Descripcion del curso</p>-->
+                      <textarea class="form-control" hidden name="course_id">{{$coursePost->course_id}}</textarea>
+                      <button type="submit" class="btn btn-primary position-relative" style="margin-top: 10px">Comenzar
+                        </button>
+                    </div>
+                  </form>
                 @endif
               @endforeach
             </div>

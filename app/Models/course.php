@@ -25,4 +25,12 @@ class course extends Model
     public function records(){
          return $this->hasMany(records::class);
     }
+
+    public function templates(){
+         return $this->hasMany(templates::class);
+    }
+
+    public function questions(){
+         return $this->hasMany(questions::class);
+    }
 }

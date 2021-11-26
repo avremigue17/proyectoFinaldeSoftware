@@ -54,6 +54,7 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::get('/create-record','RecordsController@create')->name('create-record');
 
+	Route::get('/show-course','CourseController@show')->name('show-course');
 	Route::get('/create-course','CourseController@create')->name('create-course');
 	Route::get('/redirect-course','CourseController@redirect')->name('redirect-course');
 	Route::delete('/delete-course','CourseController@destroy')->name('delete-course');
