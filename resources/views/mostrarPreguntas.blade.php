@@ -94,9 +94,10 @@
     document.getElementById('respuesta3').innerHTML = answer3[iterador];
     document.getElementById('respuesta4').innerHTML = answer4[iterador];
 
+    var total = questions.length;
     function siguiente(){
       document.getElementById('boton').disabled = true;
-      if(iterador != 9){
+      if(iterador != total-1){
         iterador++;
 
         for(var i=0;i<ele.length;i++){
@@ -112,7 +113,7 @@
         document.getElementById('respuesta2').innerHTML = answer2[iterador];
         document.getElementById('respuesta3').innerHTML = answer3[iterador];
         document.getElementById('respuesta4').innerHTML = answer4[iterador];
-        if(iterador == 9){
+        if(iterador == total-1){
           document.getElementById('boton').innerHTML = 'Finalizar';
         }
       }else{

@@ -40,6 +40,6 @@ class RecordsController extends Controller
         $answers = answers::all();
         $course = course::find($request['course_id']);
 
-        return view('mostrarResultado',compact('course','questions','answers'));
+        return view('mostrarResultado',compact('course','questions','answers','record'));
     }
 }

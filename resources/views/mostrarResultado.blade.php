@@ -12,6 +12,7 @@
       <div class="col-md-10 p-2" data-toggle="modal" data-target="#areaModal" style="overflow-y: scroll; height:730px;">
         <div class="card" style="background-color: #03989E">
           <h1 class="pb-8 pt-3" style="color: white">{{$course->name}}</h1>
+          <h1 class="pb-8 pt-3" style="color: white">Score: {{$record->score}}</h1>
           @foreach($questions as $question)
             <div class="card-body text-left ml-10">
               <div class="w-full">
