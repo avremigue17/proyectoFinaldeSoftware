@@ -10,27 +10,27 @@
 
     <div class="container" style="float: left;">
     <div class="row row-cols-1 row-cols-md-2 g-4 p-5" style="text-align: center;">
-      <div class="col-md-10 p-2" data-toggle="modal" data-target="#areaModal">
-        <div class="card" style="background-color: #03989E">
+      <div class="col-md-10 p-2 bg-dark me-md-3 pb-5 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden d-flex align-items-center" data-toggle="modal" data-target="#areaModal" style="border-radius: 21px">
+        <div class="card" style="background-color: white">
           <div class="card-body text-left">
-            <div class="w-full">
-              <h5 id="pregunta" class="pb-8" style="color: white">pregunta</h5>
+            <div class="w-full ">
+              <h5 id="pregunta" class="pb-8" style="color: black; font-weight: bolder;">pregunta</h5>
             </div>
             <div class="w-1/2 float-left">
               <input class="float-left mr-3" onchange="radio()" type="radio" name="answer" value="0">
-              <h5 id="respuesta1" class="pb-8" style="color: white">respuesta</h5>
+              <h5 id="respuesta1" class="pb-8" style="color: black">respuesta</h5>
             </div>
             <div class="w-1/2 float-right">
               <input class="float-left mr-3" onchange="radio()" type="radio" name="answer" value="1">
-              <h5 id="respuesta2" class="pb-8" style="color: white">respuesta</h5>
+              <h5 id="respuesta2" class="pb-8" style="color: black">respuesta</h5>
             </div>
             <div class="w-1/2 float-left">
               <input class="float-left mr-3" onchange="radio()" type="radio" name="answer" value="2">
-              <h5 id="respuesta3" class="pb-8" style="color: white">respuesta</h5>
+              <h5 id="respuesta3" class="pb-8" style="color: black">respuesta</h5>
             </div>
             <div class="w-1/2 float-right">
               <input class="float-left mr-3" onchange="radio()" type="radio" name="answer" value="3">
-              <h5 id="respuesta4" class="pb-8" style="color: white">respuesta</h5>
+              <h5 id="respuesta4" class="pb-8" style="color: black">respuesta</h5>
             </div>
           </div>
         </div>

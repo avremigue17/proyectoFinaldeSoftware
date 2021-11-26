@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="border-b border-gray-100 " style="position: fixed; top: 0; width: 100%; background-color: #324C59">
+<nav x-data="{ open: false }" class="border-b border-gray-100 sticky-top " style="position: fixed; top: 0; width: 100%; background-color: #324C59">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -64,12 +64,6 @@
                             <!-- <x-jet-responsive-nav-link  href="{{ route('profile.show') }}">
                                 {{ __('Perfil') }}
                             </x-jet-responsive-nav-link>-->
-                            
-                            <x-jet-responsive-nav-link href="{{ route('perfil', Auth::user()->id)}}">
-                               {{ __('Perfil') }}
-                            </x-jet-responsive-nav-link>
-
-                            
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
