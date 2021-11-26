@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\questions;
 use Illuminate\Http\Request;
 use App\Models\answers;
+use App\Models\course;
 
 class QuestionsController extends Controller
 {
@@ -46,6 +47,17 @@ class QuestionsController extends Controller
         $answer->save();
 
         return redirect()->back();
+    }
+
+    public function show(Request $request)
+    {   
+        $data = $request->all();
+
+        $questions = questions::where("course_id", $data['course_id'])->get();
+        $answers = answers::all();
+        $course = course::find($request['course_id']);
+
+        return view('mostrarPreguntas', compact('course','answers','questions'));
     }
 
     public function destroy(Request $request)

@@ -14,21 +14,28 @@ class AnswersSeeder extends Seeder
      */
     public function run()
     {
-        $answer = new answers();
-        $answer->answer = "Pablito";
-        $answer->status = 1;
-        $answer->save();
 
-        $answer = new answers();
-        $answer->answer = "Pedro";
-        $answer->save();
+        for ($i = 1; $i <= 10; $i++) {
+            $answer = new answers();
+            $answer->answer = "Pablito";
+            $answer->status = 1;
+            $answer->question_id = $i;
+            $answer->save();
 
-        $answer = new answers();
-        $answer->answer = "Jonhy";
-        $answer->save();
+            $answer = new answers();
+            $answer->answer = "Pedro";
+            $answer->question_id = $i;
+            $answer->save();
 
-        $answer = new answers();
-        $answer->answer = "Lucas";
-        $answer->save();
+            $answer = new answers();
+            $answer->answer = "Jonhy";
+            $answer->question_id = $i;
+            $answer->save();
+
+            $answer = new answers();
+            $answer->answer = "Lucas";
+            $answer->question_id = $i;
+            $answer->save();
+        }
     }
 }

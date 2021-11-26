@@ -8,20 +8,31 @@
     
   </x-slot>
 
-  <div class="container">
-    @foreach($templates as $template)
-    <h5 class="card-title mt-1" style="font-weight: bolder;float: left; color: white;width: 100%">plantilla 1</h5>
-      @foreach($texts as $text)
-       @if($text->template_id == $template->id)
-       @if($text->type == 2)
-          <div class="card-body" style="background-color: rgba(49,75,88,1);">
-            <h5 class="card-title mt-1" style="font-weight: bolder;float: left; color: white;width: 100%">texto</h5>
+    <div class="container" style="float: left;">
+    <div class="row row-cols-1 row-cols-md-2 g-4 p-5" style="text-align: center;">
+      <div class="col-md-10 p-2" data-toggle="modal" data-target="#areaModal" style="overflow-y: scroll; height:730px;">
+        <div class="card" style="background-color: #03989E">
+          <div class="card-body">
+            <h1 class="mb-20" style="color: white">{{$course->name}}</h1>
+            @foreach($templates as $template)
+              @foreach($texts as $text)
+                @if($text->template_id == $template->id)
+                  @if($text->type == 1)
+                    <h5 class="pb-8" style="color: white">{{$text->text}}</h5>
+                  @endif
+                  @if($text->type == 2)
+                    <img src="{{url('/')}}/img/{{$text->text}}" class="card-img-top px-auto pb-8">
+                  @endif
+                @endif
+              @endforeach
+            @endforeach
           </div>
-        @endif
-        @endif
-      @endforeach
-
-    @endforeach
+        </div>
+      </div>
+      <form method="get" action="{{ url('show-question') }}" enctype="multipart/form-data">
+        <textarea class="form-control" hidden name="course_id">{{$course->id}}</textarea>
+        <button type="submit" class="btn btn-primary mt-6 float-left">Comenzar</button>
+      </form>
+    </div>
   </div>
-
   </x-app-layout>

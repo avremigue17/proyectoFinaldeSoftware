@@ -83,7 +83,7 @@
                 <div class="card-body" style="background-color: rgba(49,75,88,1);">
                   <h5 class="card-title mt-1" style="font-weight: bolder;float: left; color: white;width: 100%">{{$record->course->name}}</h5>
                   <!--<p class="card-text">Descripcion del curso</p>-->
-                  <a href="#" class="btn btn-primary" style="float: right;">Comenzar</a>
+                  <a class="btn btn-primary" style="float: right;">Calificacion: {{$record->score}}</a>
                 </div>
                 @endif
               @endforeach

@@ -25,6 +25,7 @@ class TemplatesController extends Controller
         $text = new texts;
         $text->text = $data["text"];
         $text->type = $data["type_text"];
+        $text->template_id = $template->id;
         $text->save();
 
         $course = course::find($data["course_id"]);

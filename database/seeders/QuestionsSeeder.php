@@ -14,8 +14,12 @@ class QuestionsSeeder extends Seeder
      */
     public function run()
     {
-        $question = new questions();
-        $question->question = "¿Quien clavo un clavito en la calva de un calvito?";
-        $question->save();
+
+        for ($i = 1; $i <= 10; $i++) {
+            $question = new questions();
+            $question->question = $i."- ¿Quien clavo un clavito en la calva de un calvito?";
+            $question->save();
+        }
+        
     }
 }

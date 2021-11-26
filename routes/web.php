@@ -50,9 +50,11 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/create-user','UserController@create')->name('create-user');
 
 	Route::get('/create-question','QuestionsController@create')->name('create-question');
+	Route::get('/show-question','QuestionsController@show')->name('show-question');
 	Route::delete('/delete-question','QuestionsController@destroy')->name('delete-question');
 
 	Route::get('/create-record','RecordsController@create')->name('create-record');
+	Route::get('/show-record','RecordsController@show')->name('show-record');
 
 	Route::get('/show-course','CourseController@show')->name('show-course');
 	Route::get('/create-course','CourseController@create')->name('create-course');

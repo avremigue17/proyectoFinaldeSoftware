@@ -39,8 +39,9 @@ class CourseController extends Controller
 
         $templates = templates::where("course_id", $data['course_id'])->get();
         $texts = texts::all();
+        $course = course::find($request['course_id']);
 
-        return view('mostrarCurso', compact('templates','texts'));
+        return view('mostrarCurso', compact('templates','texts','course'));
     }
 
     public function redirect(Request $request)
