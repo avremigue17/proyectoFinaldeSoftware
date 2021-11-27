@@ -122,8 +122,7 @@
           if(userAnswers[i] == correctAnswers[i])
             cont++;
         }
-        var score = (cont/userAnswers.length)*100;
-
+        var score = (cont*100)/total;
         document.getElementById('score').value = score;
         document.getElementById('res').submit();
       }
