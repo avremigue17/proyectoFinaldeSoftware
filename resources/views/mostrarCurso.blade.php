@@ -27,7 +27,7 @@
               @foreach($texts as $text)
                 @if($text->template_id == $template->id)
                   @if($text->type == 1)
-                    <p class="bg-dark me-md-3 pb-5 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden d-flex align-items-center" style="border-radius: 21px;height:500px; font-size: 30px">{{$text->text}}</p>
+                    <p class="bg-dark me-md-3 pb-5 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden d-flex align-items-center" style="border-radius: 21px;height:500px; font-size: 20px; word-wrap: break-word;">{{$text->text}}</p>
                   @endif
                   @if($text->type == 2)
                     <img src="{{url('/')}}/img/{{$text->text}}" class="card-img-top px-auto pb-8" style="height: 500px; border-radius: 21px">
