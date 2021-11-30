@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-10 p-2">
+      <!--<div class="col-md-10 p-2">
         <div class="card" style="background-color: #03989E">
           <div class="card-body">
             <a href="{{ route('dashboard')}}">
@@ -41,7 +41,7 @@
             </a>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
 @else
